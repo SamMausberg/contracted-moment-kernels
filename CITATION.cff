@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "Cite this research prototype with its exact commit and verification status."
+title: "Boundary certificates for contracted moment reductions"
+authors:
+  - family-names: Mausberg
+    given-names: Sam
+type: software
+version: 0.1.0
+date-released: 2026-09-04
+license: Apache-2.0
+abstract: >-
+  Research prototype for boundary-residual certificates, projected signed-moment
+  attention envelopes, and selective refinement. Includes CPU validation
+  artifacts, uncompiled Lean proof source, and untested CUDA drafts. Novelty,
+  complete formal verification, and GPU acceleration are not established.

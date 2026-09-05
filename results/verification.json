@@ -1,0 +1,61 @@
+{
+  "authored_date": "2026-09-04",
+  "authored_timezone": "America/Vancouver",
+  "recorded_utc": "2026-09-05T04:10:06.820851+00:00",
+  "status": "research_prototype_partial_verification",
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+  "compiler": "g++ (Debian 14.2.0-19) 14.2.0",
+  "pytest": {
+    "executed": true,
+    "test_groups": 10,
+    "passed": 10
+  },
+  "numerical_randomized_cases": 500,
+  "rational_randomized_attention_cases": 30,
+  "outward_export_randomized_cases": 1000,
+  "host_numerical": {
+    "host_core_pass": true,
+    "max_scaled_difference": 2.82991e-16,
+    "numerical_pass_coordinates": 48,
+    "coordinates": 48
+  },
+  "host_imported_intervals": {
+    "imported_checker_pass": true,
+    "rows": 160,
+    "host_certified_rows": 74,
+    "rational_certified_rows": 74
+  },
+  "lean": {
+    "executed": false,
+    "attempt_exit_code": 127,
+    "reason": "Lean/Lake absent; compiler download unavailable",
+    "draft_theorem_count": 25,
+    "intentional_proof_holes": 0,
+    "machine_checked_claim": false,
+    "analytic_attention_instantiation_complete": false,
+    "floating_implementation_verified": false
+  },
+  "cuda": {
+    "compiled": false,
+    "executed": false,
+    "device_measured": null
+  },
+  "github": {
+    "remote_repository_created": false,
+    "reason": "No repository-creation action exposed by connected GitHub tools",
+    "remote_ci_executed": false,
+    "publication_helper": "scripts/publish.sh",
+    "default_visibility": "private"
+  },
+  "novelty": {
+    "guaranteed": false,
+    "primary_literature_review": "docs/NOVELTY.md"
+  },
+  "performance": {
+    "gpu_speedup_established": false,
+    "cpu_screening_speedup_established": false,
+    "synthetic_summary_scalar_byte_reduction": 4.153284671532846
+  },
+  "scope": "The ordinary proofs, rational arithmetic tests, and host checks are not an end-to-end Lean-certified GPU implementation."
+}

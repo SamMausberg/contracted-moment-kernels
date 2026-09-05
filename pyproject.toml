@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "contracted-moment-kernels"
+version = "0.1.0"
+description = "Research on moment summaries and observation-directed reduction certificates"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24"]
+license = {text = "Apache-2.0"}
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+
+[tool.setuptools]
+packages = ["cmk"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

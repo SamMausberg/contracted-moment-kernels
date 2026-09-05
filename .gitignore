@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+build/
+lean/.lake/
+lean/lake-manifest.json
+results/lean-axioms.log
+*.bin
+*.so

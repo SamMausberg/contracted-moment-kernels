@@ -1,0 +1,12 @@
+Contracted moment kernels
+Copyright 2026 Sam Mausberg and contributors.
+
+This distribution is a research prototype. Its results and verification scope
+are documented in paper/PAPER.md, docs/FORMALIZATION.md, and results/.
+No claim of completed formal verification or measured GPU acceleration is made.
+
+The Python rational arithmetic scaffold was adapted from the earlier research
+archive supplied in the conversation. The refined boundary interface, projected
+moments, tests, draft Lean source, and kernel prototypes were prepared for this
+repository. Referenced third-party research is credited in the manuscript.
+No third-party research implementation or font file is bundled.
