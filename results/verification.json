@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "recorded_utc": "2026-09-05T17:44:21.982932+00:00",
+  "recorded_utc": "2026-09-05T17:46:43.345771+00:00",
   "release": "0.2.0",
   "status": "validated research manuscript with explicitly scoped implementation gaps",
   "runtime_revision": "d2c3668a8e76d434ccdd49d06c69a6d1f7ed4b19",
@@ -30,7 +30,7 @@
     "ruff": "0.16.6",
     "clang_format": "14",
     "lint_pass": true,
-    "markdown_check": "Markdown checks passed: 11 documents, 74 local links."
+    "markdown_check": "Markdown checks passed: 11 documents, 75 local links."
   },
   "cuda_imported": {
     "gpu_imported_pass": true,
@@ -112,7 +112,8 @@
     ],
     "figure_source_hashes_match": true,
     "each_caption_appears_once": true,
-    "visual_review": "All 12 figure layouts inspected; representative PDF pages inspected for math, captions, tables, and clipping."
+    "visual_review": "All 12 figure layouts inspected; representative PDF pages inspected for math, captions, tables, and clipping.",
+    "text_within_page_bounds": true
   },
   "previous_runtime_ci": {
     "revision": "d2c3668a8e76d434ccdd49d06c69a6d1f7ed4b19",
@@ -125,7 +126,7 @@
     "results/pytest.xml": "c33d931c31e28342ba4a9a5b2a508dc8f925e45d6961871916e72f837ce65bf1",
     "results/lint.log": "55c48a6f12b633bf5753b0dfd1b4f65e7fa3a6b06a61640838932a43ab133d8b",
     "results/source-check.log": "de56225880caa6f3949259a148aea4232343566ac0c314f6061d2fd0fc31a4eb",
-    "results/docs-check.log": "45b3a63d8e5181ff9b6bb46ec6fe903027b567f5f387512ddda76db62db586ce",
+    "results/docs-check.log": "917c837d0892e35fa22f5d5b820e532f43394394f91d828112f2bb71847acb1b",
     "results/lean-build.log": "d527dc75a5f2afff47d868f8074f5b99d2eaeabdc442effac6526087034c2fef",
     "results/lean-axioms.log": "e6a3b7a83467dd8ed377f61300a64ad0e69848867203e8d689b63b39337f5fb2",
     "results/lean-verification.json": "3e6218bc157fccb6cd1d18efabc07eb0439b220024bd7ec6378ef158e5927f41",
@@ -144,8 +145,16 @@
     "results/experiments.json": "26cfc30c262c862a0d6e0048b21ef650cc12ef47204d384f1505a729b7f059e3",
     "results/environment/final.json": "d16882e32f2c4a722946e54ae38410a435cd6e7bfa81ca3c16c3b6ba7963cd5a",
     "paper/figures/manifest.json": "f5af0b4de3512c4666c72c6aa3d750c7bf784eb4df765b05317335235ed3b445",
-    "paper/PAPER.md": "575842954173f42d2b11df8665168c35cdf8d692eb79ca944b8cce21b9bb8f4c",
-    "paper/PAPER.pdf": "cff6faa7ed7c076aeac7351303dd38f01e16c0cab4762fec7ebbd843266fba11",
-    "results/paper-build.log": "866e2eee1cfe941170017afb25436e50c6d9d736564d15ff5284ccfdad3e9b55"
+    "paper/PAPER.md": "f8e33608b5098407234afc03f73355212d7dd8dd80f0ecc0c281920df35d33c3",
+    "paper/PAPER.pdf": "c49fbaaf4f6b823a16cd4e0a43473bc930047c52cd1d9e5061239fd39e9e2bc5",
+    "results/paper-build.log": "c4d36346bf4f2680e5cfd9adcdf2e3cd7ac19593143c5e6c147b38f0d2bd04b8",
+    "results/ci.json": "6e48adef83fa6595570ab4013d97759bf413f5d09fa93750cc751749f407bd1c"
+  },
+  "current_implementation_ci": {
+    "revision": "79efa36aa5a80a873d9d44eb339344495344b561",
+    "conclusion": "success",
+    "url": "https://github.com/SamMausberg/contracted-moment-kernels/actions/runs/33981915718",
+    "record": "results/ci.json",
+    "implementation_and_workflow_unchanged": true
   }
 }

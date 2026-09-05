@@ -959,52 +959,51 @@ preserved.
 ## References
 
 [1] T. Dao et al. *FlashAttention: Fast and Memory-Efficient Exact Attention with
-IO-Awareness*. 2022. https://arxiv.org/abs/2205.14135
+IO-Awareness*. 2022. [arXiv:2205.14135](https://arxiv.org/abs/2205.14135)
 
 [2] C. Hooper et al. *Multipole Attention for Efficient Long Context Reasoning*.
-2025. https://arxiv.org/abs/2506.13059
+2025. [arXiv:2506.13059](https://arxiv.org/abs/2506.13059)
 
 [3] T. C. Nauen, S. Palacio, and A. Dengel. *TaylorShift: Shifting the Complexity
 of Self-Attention from Squared to Linear (and Back) using Taylor-Softmax*.
-2024. https://arxiv.org/abs/2403.02920
+2024. [arXiv:2403.02920](https://arxiv.org/abs/2403.02920)
 
 [4] F. A. Heinsen and L. Kozachkov. *Self-Attention at Constant Cost per Token via
-Symmetry-Aware Taylor Approximation*. 2026. https://arxiv.org/abs/2602.00294
+Symmetry-Aware Taylor Approximation*. 2026. [arXiv:2602.00294](https://arxiv.org/abs/2602.00294)
 
 [5] J. R. Shewchuk. *Adaptive Precision Floating-Point Arithmetic and Fast Robust
 Geometric Predicates*. Discrete & Computational Geometry 18, 305-363, 1997.
-https://www.cs.cmu.edu/~quake/robust.html
+[Author's page](https://www.cs.cmu.edu/~quake/robust.html)
 
 [6] F. Wei et al. *WitCert: Sound Runtime Risk Observability and Gating for
-KV-Cache Quantization*. 2026. https://arxiv.org/abs/2607.28699
+KV-Cache Quantization*. 2026. [arXiv:2607.28699](https://arxiv.org/abs/2607.28699)
 
 [7] F. Wei et al. *Runtime Observability for Heterogeneous Attention Memory*.
-2026. https://arxiv.org/abs/2608.05863
+2026. [arXiv:2608.05863](https://arxiv.org/abs/2608.05863)
 
 [8] Y. Kang, G. Tran, and H. De Sterck. *Fast Multipole Attention: A Scalable
 Multilevel Attention Mechanism for Text and Images*.
-2023. https://arxiv.org/abs/2310.11960
+2023. [arXiv:2310.11960](https://arxiv.org/abs/2310.11960)
 
 [9] M. Berz and G. Hoffstätter. *Computation and Application of Taylor Polynomials
 with Interval Remainder Bounds*. Reliable Computing 4, 83-97, 1998.
-https://doi.org/10.1023/A:1009958918582
+[doi:10.1023/A:1009958918582](https://doi.org/10.1023/A:1009958918582)
 
 [10] J. Hwang. *Locks: Page-Local Compact Key Summaries for Efficient Long-Context
-Decoding*. 2026. https://arxiv.org/abs/2607.24555
+Decoding*. 2026. [arXiv:2607.24555](https://arxiv.org/abs/2607.24555)
 
 [11] A. Tian et al. *COBS: Cumulant Order Block Sparse Attention*.
-2026. https://arxiv.org/abs/2607.09052
+2026. [arXiv:2607.09052](https://arxiv.org/abs/2607.09052)
 
 [12] B. Wang et al. *SPLA: Block Sparse Plus Linear Attention for Long Context
-Modeling*. 2026. https://arxiv.org/abs/2601.22379
+Modeling*. 2026. [arXiv:2601.22379](https://arxiv.org/abs/2601.22379)
 
-[13] Qwen Team. *Qwen2.5-0.5B model card and public weights*. Revision
-`060db6499f32faf8b98477b0a26969ef7d8b9987`.
-https://huggingface.co/Qwen/Qwen2.5-0.5B
+[13] Qwen Team. *Qwen2.5-0.5B model card and public weights*.
+[Pinned checkpoint](https://huggingface.co/Qwen/Qwen2.5-0.5B/tree/060db6499f32faf8b98477b0a26969ef7d8b9987).
 
 [14] J. Shah et al. *FlashAttention-3: Fast and Accurate Attention with
-Asynchrony and Low-precision*. 2024. https://arxiv.org/abs/2407.08608
+Asynchrony and Low-precision*. 2024. [arXiv:2407.08608](https://arxiv.org/abs/2407.08608)
 
 [15] R. Sanovar et al. *Lean Attention: Hardware-Aware Scalable Attention
 Mechanism for the Decode-Phase of Transformers*. 2024.
-https://arxiv.org/abs/2405.10480
+[arXiv:2405.10480](https://arxiv.org/abs/2405.10480)
