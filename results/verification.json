@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "recorded_utc": "2026-09-05T18:14:54.344089+00:00",
+  "recorded_utc": "2026-09-05T18:21:09.019042+00:00",
   "release": "0.2.0",
   "status": "validated research manuscript with explicitly scoped implementation gaps",
   "runtime_revision": "d2c3668a8e76d434ccdd49d06c69a6d1f7ed4b19",
@@ -30,7 +30,7 @@
     "ruff": "0.16.6",
     "clang_format": "14",
     "lint_pass": true,
-    "markdown_check": "Markdown checks passed: 13 documents, 105 local links."
+    "markdown_check": "Markdown checks passed: 13 documents, 106 local links."
   },
   "cuda_imported": {
     "gpu_imported_pass": true,
@@ -131,7 +131,9 @@
     "overfull_boxes": 0,
     "unresolved_references": [],
     "native_latex_build_pass": true,
-    "runtime_or_lean_rerun_for_typesetting": false
+    "local_runtime_or_lean_rerun_for_typesetting": false,
+    "hosted_build_and_layout_checks_pass": true,
+    "hosted_build_record": "results/paper-ci.json"
   },
   "previous_runtime_ci": {
     "revision": "d2c3668a8e76d434ccdd49d06c69a6d1f7ed4b19",
@@ -144,7 +146,7 @@
     "results/pytest.xml": "c33d931c31e28342ba4a9a5b2a508dc8f925e45d6961871916e72f837ce65bf1",
     "results/lint.log": "1522fccc37528dff00f632ebc95fbc054d40d1a0d9a856ab6b6131aef22b09ca",
     "results/source-check.log": "de56225880caa6f3949259a148aea4232343566ac0c314f6061d2fd0fc31a4eb",
-    "results/docs-check.log": "bd81c0b4cbdc1a664554fa1360370d180cae66798e171c34fe84f862ddb81b48",
+    "results/docs-check.log": "ba11efd0d4881ac03af3ccd38a97e672d7fe02f5102f52d87f7f3e1f51f049e8",
     "results/lean-build.log": "d527dc75a5f2afff47d868f8074f5b99d2eaeabdc442effac6526087034c2fef",
     "results/lean-axioms.log": "e6a3b7a83467dd8ed377f61300a64ad0e69848867203e8d689b63b39337f5fb2",
     "results/lean-verification.json": "3e6218bc157fccb6cd1d18efabc07eb0439b220024bd7ec6378ef158e5927f41",
@@ -166,7 +168,7 @@
     "paper/PAPER.md": "870b043f04b9d6c2483a5a60ba5c906f36201e754517ce0823af94bbcda0e27d",
     "paper/PAPER.pdf": "420b1634fd0d72403e9a5b258a46c65225f85da952d7baf28f0bdd9bc49f6c1e",
     "results/paper-build.log": "915b4a7d96309ac0c13faca8483e923b4a592cfebfde10bbe6861b712e60d20b",
-    "results/ci.json": "6e48adef83fa6595570ab4013d97759bf413f5d09fa93750cc751749f407bd1c",
+    "results/ci.json": "7d1463a4819048a8164cf2131be66a5cdb7b5197dc5d96587526e7f64858fe86",
     "results/paper-layout.json": "7b8047b470118370238802911215d2990a4518243b4298412d97931b728a401d",
     "results/paper-source-build.json": "b7c8d9201630b17fa2b645bf2d91569e5df1b7441d79a9824373cc363868a413",
     "results/paper-source-build.log": "ba330a48881ff4230b3c8ffc6794610cfc207ccec2d3612c248a936208ce0d58",
@@ -176,14 +178,22 @@
     "paper/vendor/provenance.json": "240f9516c152a88065bc2fc2d6d366bdc89230dc36c8be184fcb62d6e70910f6",
     "scripts/build_paper.sh": "dd6de487b5ce4206734e41de25e5849e7b8e63331ef69f91ef3fd3babee1d405",
     "scripts/check_paper.py": "d11216fce81332790236c9e53f3b568a09c6ddeb7a6650587590deeca9a06d28",
-    ".github/workflows/paper.yml": "7e92b4b65400a4b16d202e0b629a274d6af121767df7ddc7d7f45b50f8592e14"
+    ".github/workflows/paper.yml": "7e92b4b65400a4b16d202e0b629a274d6af121767df7ddc7d7f45b50f8592e14",
+    "results/paper-ci.json": "cdf3c40748437c28c1fab3a7c6d5fdb368dbab9b55a9430a2d75cc8d5b38a5d9"
   },
   "current_implementation_ci": {
-    "revision": "79efa36aa5a80a873d9d44eb339344495344b561",
+    "revision": "633de89adead4fbde6d3fd1621ff0cc61d9bd3c7",
     "conclusion": "success",
-    "url": "https://github.com/SamMausberg/contracted-moment-kernels/actions/runs/33981915718",
+    "url": "https://github.com/SamMausberg/contracted-moment-kernels/actions/runs/33983577514",
     "record": "results/ci.json",
     "runtime_tests_and_research_workflow_unchanged": true,
     "paper_pipeline_validated_separately": true
+  },
+  "paper_ci": {
+    "revision": "633de89adead4fbde6d3fd1621ff0cc61d9bd3c7",
+    "url": "https://github.com/SamMausberg/contracted-moment-kernels/actions/runs/33983577522",
+    "conclusion": "success",
+    "record": "results/paper-ci.json",
+    "manuscript_and_pipeline_unchanged_since_validated_revision": true
   }
 }

@@ -13,6 +13,7 @@ The manuscript contains two native TikZ drawings and ten imported vector plots.
 | --- | --- | --- |
 | Lean build and complete axiom audit | 64 theorems; only `propext`, `Classical.choice`, `Quot.sound` | [Build](lean-build.log), [audit](lean-axioms.log), [source hashes](lean-verification.json) |
 | GitHub checks | CPU, host C++, formatting, documentation, and Lean pass | [CI record](ci.json) |
+| Manuscript GitHub build | Fresh Ubuntu build; 15 pages, 12 figure captions, embedded fonts, no overfull boxes | [Paper CI record](paper-ci.json) |
 | Python tests | 46 passed after formatting | [Log](pytest.log) |
 | Ruff / clang-format | Formatting and lint checks pass | [Log](lint.log) |
 | Rational coupling | 61/149 initial accepts versus 57/149 boxes; 0 observed false certificates | [Data](certification/coupling.json), [interpretation](certification/validation.md) |
