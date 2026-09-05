@@ -1,97 +1,97 @@
 {
-  "recorded_utc": "2026-09-05T18:20:24.561313+00:00",
-  "validated_revision": "633de89adead4fbde6d3fd1621ff0cc61d9bd3c7",
+  "recorded_utc": "2026-09-05T18:52:17.224012+00:00",
+  "validated_revision": "285dcbee26c009a69ac19a2d2364c36d5d91007f",
   "workflow": "LaTeX manuscript",
-  "run_id": 33983577522,
-  "url": "https://github.com/SamMausberg/contracted-moment-kernels/actions/runs/33983577522",
+  "run_id": 33985208372,
+  "url": "https://github.com/SamMausberg/contracted-moment-kernels/actions/runs/33985208372",
   "conclusion": "success",
-  "created_at": "2026-09-05T18:17:08Z",
-  "updated_at": "2026-09-05T18:17:58Z",
+  "created_at": "2026-09-05T18:48:37Z",
+  "updated_at": "2026-09-05T18:49:34Z",
   "jobs": [
     {
-      "id": 101352993372,
+      "id": 101357336398,
       "name": "paper",
       "conclusion": "success",
-      "started_at": "2026-09-05T18:17:10Z",
-      "completed_at": "2026-09-05T18:17:57Z",
-      "html_url": "https://github.com/SamMausberg/contracted-moment-kernels/actions/runs/33983577522/job/101352993372",
+      "started_at": "2026-09-05T18:48:39Z",
+      "completed_at": "2026-09-05T18:49:33Z",
+      "html_url": "https://github.com/SamMausberg/contracted-moment-kernels/actions/runs/33985208372/job/101357336398",
       "steps": [
         {
           "name": "Set up job",
           "status": "completed",
           "conclusion": "success",
           "number": 1,
-          "started_at": "2026-09-05T18:17:11Z",
-          "completed_at": "2026-09-05T18:17:11Z"
+          "started_at": "2026-09-05T18:48:40Z",
+          "completed_at": "2026-09-05T18:48:40Z"
         },
         {
           "name": "Run actions/checkout@v4",
           "status": "completed",
           "conclusion": "success",
           "number": 2,
-          "started_at": "2026-09-05T18:17:11Z",
-          "completed_at": "2026-09-05T18:17:12Z"
+          "started_at": "2026-09-05T18:48:40Z",
+          "completed_at": "2026-09-05T18:48:41Z"
         },
         {
           "name": "Install LaTeX and PDF inspection tools",
           "status": "completed",
           "conclusion": "success",
           "number": 3,
-          "started_at": "2026-09-05T18:17:12Z",
-          "completed_at": "2026-09-05T18:17:49Z"
+          "started_at": "2026-09-05T18:48:41Z",
+          "completed_at": "2026-09-05T18:49:20Z"
         },
         {
           "name": "Build and check the native manuscript",
           "status": "completed",
           "conclusion": "success",
           "number": 4,
-          "started_at": "2026-09-05T18:17:49Z",
-          "completed_at": "2026-09-05T18:17:55Z"
+          "started_at": "2026-09-05T18:49:20Z",
+          "completed_at": "2026-09-05T18:49:26Z"
         },
         {
           "name": "Run actions/upload-artifact@v4",
           "status": "completed",
           "conclusion": "success",
           "number": 5,
-          "started_at": "2026-09-05T18:17:55Z",
-          "completed_at": "2026-09-05T18:17:55Z"
+          "started_at": "2026-09-05T18:49:26Z",
+          "completed_at": "2026-09-05T18:49:31Z"
         },
         {
           "name": "Post Run actions/checkout@v4",
           "status": "completed",
           "conclusion": "success",
           "number": 10,
-          "started_at": "2026-09-05T18:17:55Z",
-          "completed_at": "2026-09-05T18:17:56Z"
+          "started_at": "2026-09-05T18:49:31Z",
+          "completed_at": "2026-09-05T18:49:32Z"
         },
         {
           "name": "Complete job",
           "status": "completed",
           "conclusion": "success",
           "number": 11,
-          "started_at": "2026-09-05T18:17:56Z",
-          "completed_at": "2026-09-05T18:17:56Z"
+          "started_at": "2026-09-05T18:49:32Z",
+          "completed_at": "2026-09-05T18:49:32Z"
         }
       ]
     }
   ],
+  "scope": "Fresh Ubuntu 22.04 native LaTeX build and mechanical PDF checks; uploads the PDF, editable source archive, layout manifest, and final LaTeX log. Visual review and research checks are recorded separately.",
   "artifacts": [
     {
-      "id": 9974470460,
+      "id": 9974945456,
       "name": "manuscript",
-      "size_in_bytes": 648205,
-      "digest": "sha256:e7b4b5a6424724038a5ba827073c8ef9097161db13f0296bb499bec2a911bd1c",
-      "created_at": "2026-09-05T18:17:55Z",
+      "size_in_bytes": 642696,
+      "digest": "sha256:060ca37d81d7f04a320d84fc8068db8806d8e8b2b2cbdf0232188e25b714cf27",
+      "created_at": "2026-09-05T18:49:31Z",
       "expired": false
     }
   ],
-  "scope": "Fresh Ubuntu 22.04 native LaTeX build and mechanical PDF checks; uploads the PDF, editable source archive, layout manifest, and final LaTeX log. Research checks are recorded separately.",
   "observed_checker_result": {
-    "page_count": 15,
+    "page_count": 17,
     "unique_figure_captions": 12,
-    "embedded_fonts": 27,
+    "embedded_fonts": 28,
     "overfull_boxes": 0,
     "text_outside_pages": 0,
-    "underfull_boxes_informational": 15
+    "underfull_boxes_informational": 5
   }
 }

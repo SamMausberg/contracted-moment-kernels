@@ -1,185 +1,207 @@
 {
-  "recorded_utc": "2026-09-05T18:21:08.907982+00:00",
-  "validated_revision": "633de89adead4fbde6d3fd1621ff0cc61d9bd3c7",
+  "recorded_utc": "2026-09-05T18:52:16.884327+00:00",
+  "validated_revision": "285dcbee26c009a69ac19a2d2364c36d5d91007f",
   "workflow": "Research checks",
-  "run_id": 33983577514,
-  "url": "https://github.com/SamMausberg/contracted-moment-kernels/actions/runs/33983577514",
+  "run_id": 33985210223,
+  "url": "https://github.com/SamMausberg/contracted-moment-kernels/actions/runs/33985210223",
   "conclusion": "success",
-  "created_at": "2026-09-05T18:17:08Z",
-  "updated_at": "2026-09-05T18:19:46Z",
+  "created_at": "2026-09-05T18:48:40Z",
+  "updated_at": "2026-09-05T18:51:20Z",
   "jobs": [
     {
-      "id": 101352993341,
-      "name": "python-and-host",
-      "conclusion": "success",
-      "started_at": "2026-09-05T18:17:10Z",
-      "completed_at": "2026-09-05T18:17:56Z",
-      "html_url": "https://github.com/SamMausberg/contracted-moment-kernels/actions/runs/33983577514/job/101352993341",
-      "steps": [
-        {
-          "name": "Set up job",
-          "status": "completed",
-          "conclusion": "success",
-          "number": 1,
-          "started_at": "2026-09-05T18:17:10Z",
-          "completed_at": "2026-09-05T18:17:11Z"
-        },
-        {
-          "name": "Run actions/checkout@v4",
-          "status": "completed",
-          "conclusion": "success",
-          "number": 2,
-          "started_at": "2026-09-05T18:17:11Z",
-          "completed_at": "2026-09-05T18:17:12Z"
-        },
-        {
-          "name": "Run actions/setup-python@v5",
-          "status": "completed",
-          "conclusion": "success",
-          "number": 3,
-          "started_at": "2026-09-05T18:17:12Z",
-          "completed_at": "2026-09-05T18:17:12Z"
-        },
-        {
-          "name": "Run python -m pip install -c requirements-gh200.txt -e '.[test,research,dev]' cmake==3.31.10",
-          "status": "completed",
-          "conclusion": "success",
-          "number": 4,
-          "started_at": "2026-09-05T18:17:12Z",
-          "completed_at": "2026-09-05T18:17:27Z"
-        },
-        {
-          "name": "Run sudo apt-get update -qq && sudo apt-get install -y clang-format",
-          "status": "completed",
-          "conclusion": "success",
-          "number": 5,
-          "started_at": "2026-09-05T18:17:27Z",
-          "completed_at": "2026-09-05T18:17:45Z"
-        },
-        {
-          "name": "Run make lint PYTHON=python RUFF=ruff",
-          "status": "completed",
-          "conclusion": "success",
-          "number": 6,
-          "started_at": "2026-09-05T18:17:45Z",
-          "completed_at": "2026-09-05T18:17:49Z"
-        },
-        {
-          "name": "Run OPENBLAS_NUM_THREADS=1 python -m pytest -q",
-          "status": "completed",
-          "conclusion": "success",
-          "number": 7,
-          "started_at": "2026-09-05T18:17:49Z",
-          "completed_at": "2026-09-05T18:17:52Z"
-        },
-        {
-          "name": "Run python scripts/check_source.py && python scripts/check_docs.py",
-          "status": "completed",
-          "conclusion": "success",
-          "number": 8,
-          "started_at": "2026-09-05T18:17:52Z",
-          "completed_at": "2026-09-05T18:17:52Z"
-        },
-        {
-          "name": "Run python scripts/make_fixture.py /tmp/cmk-fixture.bin",
-          "status": "completed",
-          "conclusion": "success",
-          "number": 9,
-          "started_at": "2026-09-05T18:17:52Z",
-          "completed_at": "2026-09-05T18:17:54Z"
-        },
-        {
-          "name": "Post Run actions/setup-python@v5",
-          "status": "completed",
-          "conclusion": "success",
-          "number": 17,
-          "started_at": "2026-09-05T18:17:54Z",
-          "completed_at": "2026-09-05T18:17:54Z"
-        },
-        {
-          "name": "Post Run actions/checkout@v4",
-          "status": "completed",
-          "conclusion": "success",
-          "number": 18,
-          "started_at": "2026-09-05T18:17:54Z",
-          "completed_at": "2026-09-05T18:17:55Z"
-        },
-        {
-          "name": "Complete job",
-          "status": "completed",
-          "conclusion": "success",
-          "number": 19,
-          "started_at": "2026-09-05T18:17:55Z",
-          "completed_at": "2026-09-05T18:17:55Z"
-        }
-      ]
-    },
-    {
-      "id": 101352993447,
+      "id": 101357341746,
       "name": "lean",
       "conclusion": "success",
-      "started_at": "2026-09-05T18:17:10Z",
-      "completed_at": "2026-09-05T18:19:45Z",
-      "html_url": "https://github.com/SamMausberg/contracted-moment-kernels/actions/runs/33983577514/job/101352993447",
+      "started_at": "2026-09-05T18:48:42Z",
+      "completed_at": "2026-09-05T18:51:20Z",
+      "html_url": "https://github.com/SamMausberg/contracted-moment-kernels/actions/runs/33985210223/job/101357341746",
       "steps": [
         {
           "name": "Set up job",
           "status": "completed",
           "conclusion": "success",
           "number": 1,
-          "started_at": "2026-09-05T18:17:11Z",
-          "completed_at": "2026-09-05T18:17:11Z"
+          "started_at": "2026-09-05T18:48:43Z",
+          "completed_at": "2026-09-05T18:48:44Z"
         },
         {
           "name": "Run actions/checkout@v4",
           "status": "completed",
           "conclusion": "success",
           "number": 2,
-          "started_at": "2026-09-05T18:17:11Z",
-          "completed_at": "2026-09-05T18:17:12Z"
+          "started_at": "2026-09-05T18:48:44Z",
+          "completed_at": "2026-09-05T18:48:45Z"
         },
         {
           "name": "Run curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o /tmp/elan-init.sh",
           "status": "completed",
           "conclusion": "success",
           "number": 3,
-          "started_at": "2026-09-05T18:17:12Z",
-          "completed_at": "2026-09-05T18:17:13Z"
+          "started_at": "2026-09-05T18:48:45Z",
+          "completed_at": "2026-09-05T18:48:45Z"
         },
         {
           "name": "Run bash scripts/check_lean.sh",
           "status": "completed",
           "conclusion": "success",
           "number": 4,
-          "started_at": "2026-09-05T18:17:13Z",
-          "completed_at": "2026-09-05T18:19:43Z"
+          "started_at": "2026-09-05T18:48:45Z",
+          "completed_at": "2026-09-05T18:51:17Z"
         },
         {
           "name": "Run actions/upload-artifact@v4",
           "status": "completed",
           "conclusion": "success",
           "number": 5,
-          "started_at": "2026-09-05T18:19:43Z",
-          "completed_at": "2026-09-05T18:19:44Z"
+          "started_at": "2026-09-05T18:51:17Z",
+          "completed_at": "2026-09-05T18:51:18Z"
         },
         {
           "name": "Post Run actions/checkout@v4",
           "status": "completed",
           "conclusion": "success",
           "number": 10,
-          "started_at": "2026-09-05T18:19:44Z",
-          "completed_at": "2026-09-05T18:19:44Z"
+          "started_at": "2026-09-05T18:51:18Z",
+          "completed_at": "2026-09-05T18:51:18Z"
         },
         {
           "name": "Complete job",
           "status": "completed",
           "conclusion": "success",
           "number": 11,
-          "started_at": "2026-09-05T18:19:44Z",
-          "completed_at": "2026-09-05T18:19:44Z"
+          "started_at": "2026-09-05T18:51:18Z",
+          "completed_at": "2026-09-05T18:51:18Z"
+        }
+      ]
+    },
+    {
+      "id": 101357341867,
+      "name": "python-and-host",
+      "conclusion": "success",
+      "started_at": "2026-09-05T18:48:42Z",
+      "completed_at": "2026-09-05T18:49:50Z",
+      "html_url": "https://github.com/SamMausberg/contracted-moment-kernels/actions/runs/33985210223/job/101357341867",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-09-05T18:48:42Z",
+          "completed_at": "2026-09-05T18:48:43Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-09-05T18:48:43Z",
+          "completed_at": "2026-09-05T18:48:44Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-09-05T18:48:44Z",
+          "completed_at": "2026-09-05T18:48:44Z"
+        },
+        {
+          "name": "Run python -m pip install -c requirements-gh200.txt -e '.[test,research,dev]' cmake==3.31.10",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-09-05T18:48:44Z",
+          "completed_at": "2026-09-05T18:48:59Z"
+        },
+        {
+          "name": "Run sudo apt-get update -qq && sudo apt-get install -y clang-format",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-09-05T18:48:59Z",
+          "completed_at": "2026-09-05T18:49:21Z"
+        },
+        {
+          "name": "Run make lint PYTHON=python RUFF=ruff",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-09-05T18:49:21Z",
+          "completed_at": "2026-09-05T18:49:24Z"
+        },
+        {
+          "name": "Check rendered figure layout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-09-05T18:49:24Z",
+          "completed_at": "2026-09-05T18:49:41Z"
+        },
+        {
+          "name": "Run OPENBLAS_NUM_THREADS=1 python -m pytest -q",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-09-05T18:49:41Z",
+          "completed_at": "2026-09-05T18:49:45Z"
+        },
+        {
+          "name": "Run python scripts/check_source.py && python scripts/check_docs.py",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-09-05T18:49:45Z",
+          "completed_at": "2026-09-05T18:49:45Z"
+        },
+        {
+          "name": "Run python scripts/make_fixture.py /tmp/cmk-fixture.bin",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-09-05T18:49:45Z",
+          "completed_at": "2026-09-05T18:49:48Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-09-05T18:49:48Z",
+          "completed_at": "2026-09-05T18:49:49Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-09-05T18:49:49Z",
+          "completed_at": "2026-09-05T18:49:49Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-09-05T18:49:49Z",
+          "completed_at": "2026-09-05T18:49:49Z"
         }
       ]
     }
   ],
-  "scope": "GitHub-hosted CPU, host C++, formatting, documentation, and Lean checks after the native LaTeX rewrite. GPU execution is recorded separately on the GH200. The subsequent validation-record commit leaves the checked manuscript, implementations, tests, and workflows unchanged."
+  "scope": "GitHub-hosted CPU, host C++, formatting, documentation, rendered figure geometry, and Lean checks for the visual-layout revision. GPU execution is recorded separately on the GH200.",
+  "observed_checks": {
+    "figure_export_sets": 12,
+    "figure_layout_step_pass": true,
+    "python_tests_passed": 46,
+    "host_numerical_core_pass": true,
+    "host_imported_checker_pass": true,
+    "lean_built_declarations": 64,
+    "lean_axiom_audit_pass": true,
+    "allowed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  }
 }
