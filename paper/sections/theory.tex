@@ -1,0 +1,345 @@
+\section{Certificates at Observation Boundaries}
+\label{sec:certificates}
+
+Partition a finite, nonempty visible input into nonempty blocks
+$b=1,\ldots,B$. A positive normalized reduction has coordinates
+\begin{equation}
+ \begin{gathered}
+ y_j=\frac{N_j}{Z},\qquad N_j=\sum_b n_{bj},\\
+ Z=\sum_b z_b>0.
+ \end{gathered}
+ \label{eq:normalized-reduction}
+\end{equation}
+For fixed centers $\nu_{bj}$, write $m_{bj}=n_{bj}-\nu_{bj}z_b$ and assume
+sound metadata
+\begin{equation}
+ 0\le l_b\le z_b\le u_b,\qquad
+ m^-_{bj}\le m_{bj}\le m^+_{bj}.
+ \label{eq:block-boxes}
+\end{equation}
+All quantities must describe the same input, mask, query, scaling, and data
+version. Positivity of $Z$ is a separate premise; $\sum_b l_b>0$ suffices.
+
+An \emph{observation cell} $(a_j,b_j)$ is an open interval on which the consumer
+is constant. Proving $y_j$ belongs to this cell therefore determines its
+observation. For finite numerical BF16 rounding, neighboring representable
+values supply midpoint boundaries; strict containment avoids ties. This
+contract does not distinguish positive and negative zero by their bits.
+Alternatively, a monotone consumer $Q$ satisfies $Q(l)=Q(u)\Rightarrow
+Q(y)=Q(l)$ whenever $l\le y\le u$. A concrete IEEE-754 model and its
+monotonicity theorem are not supplied.
+
+\subsection{Exact Certificates for Independent Boxes}
+
+At a boundary $c$, define
+\begin{align}
+ \mathcal L_j(c)&=\sum_b\Bigl[m^-_{bj}\notag\\
+ &\qquad+\min\{(\nu_{bj}-c)l_b,(\nu_{bj}-c)u_b\}\Bigr],\label{eq:lower-residual}\\
+ \mathcal U_j(c)&=\sum_b\Bigl[m^+_{bj}\notag\\
+ &\qquad+\max\{(\nu_{bj}-c)l_b,(\nu_{bj}-c)u_b\}\Bigr].\label{eq:upper-residual}
+\end{align}
+
+\begin{theorem}[Boundary certificate]\label{thm:boundary-certificate}
+Under \cref{eq:normalized-reduction,eq:block-boxes},
+\begin{equation}
+ \mathcal L_j(c)\le N_j-cZ\le\mathcal U_j(c).
+ \label{eq:residual-enclosure}
+\end{equation}
+Consequently,
+\begin{equation}
+ \begin{gathered}
+ \mathcal L_j(a_j)>0,\qquad \mathcal U_j(b_j)<0\\
+ \Longrightarrow\quad a_j<y_j<b_j.
+ \end{gathered}
+ \label{eq:cell-certificate}
+\end{equation}
+\end{theorem}
+\begin{proof}
+The centered residual identity is
+\begin{equation}
+ N_j-cZ=\sum_b\bigl[m_{bj}+(\nu_{bj}-c)z_b\bigr].
+ \label{eq:residual-identity}
+\end{equation}
+For any scalar $\alpha$, the extrema of $\alpha z$ on $[l,u]$ are
+$\min(\alpha l,\alpha u)$ and $\max(\alpha l,\alpha u)$. Apply these bounds
+to each summand and sum. Dividing the strict residual signs by $Z>0$ gives
+the cell inequalities.
+\end{proof}
+
+The certificate requires no division. A numerical quotient may choose a
+candidate cell: a poor choice reduces acceptance but cannot invalidate sound
+residual signs.
+
+\begin{theorem}[Optimality for independent metadata]\label{thm:box-optimality}
+Over the Cartesian product of the intervals in \cref{eq:block-boxes},
+$\mathcal L_j(c)$ and $\mathcal U_j(c)$ are the attained minimum and maximum
+of the residual at each fixed $c$.
+\end{theorem}
+The proof is given in \cref{app:box-optimality}.
+
+This optimality concerns the stated product box. Actual masses and numerators
+can be correlated, and the two extrema need not come from the same input.
+Residual optimality needs no positive lower bound on total mass; interpreting
+every extremizer as a normalized output additionally requires $\sum_b l_b>0$.
+
+\begin{corollary}[Sufficiency of box metadata]\label{cor:box-sufficiency}
+If $\sum_b l_b>0$, every compatible box output belongs to $(a_j,b_j)$ if and
+only if $\mathcal L_j(a_j)>0$ and $\mathcal U_j(b_j)<0$.
+\end{corollary}
+\begin{proof}
+Sufficiency follows from \cref{thm:boundary-certificate}. If the lower test
+fails, \cref{thm:box-optimality} supplies a vertex with residual at $a_j$ at
+most zero. Its denominator is positive, so its output is at most $a_j$.
+The upper extremizer gives the corresponding counterexample at $b_j$.
+\end{proof}
+
+A rejection thus means that the metadata admits a conflicting output, even
+if the original tokens cannot realize that vertex. Acceptance then needs
+tighter bounds, retained dependence, or a different observation contract.
+
+The two-block example in \cref{ex:boundary-geometry,fig:boundary-geometry}
+shows a strict improvement over a symmetric midpoint residual bound.
+
+\subsection{Refinement and Retained Value Dependence}
+
+\begin{theorem}[Monotone refinement]\label{thm:refinement}
+Replacing each interval by a nonempty subinterval cannot decrease
+$\mathcal L_j(c)$ or increase $\mathcal U_j(c)$ at a fixed boundary $c$.
+Intersecting two sound enclosures preserves the truth.
+\end{theorem}
+\begin{proof}
+A minimum over a smaller feasible set cannot decrease, and a maximum cannot
+increase. Apply this fact to every block and sum. A point contained in both
+enclosures belongs to their intersection.
+\end{proof}
+
+Selected blocks may therefore be refined without discarding earlier work.
+The invariant is sound enclosure; the implementation's uncertainty priority
+is a heuristic. Monotonicity applies to a fixed cell. Refinement need not
+terminate with a strict certificate at a rounding midpoint, so execution
+requires bounded work and a tie-aware path or declared reference fallback.
+
+For nonnegative block weights, exact centered value extrema
+$p_{bj}=\min_{i\in b}(v_{ij}-\nu_{bj})$ and
+$q_{bj}=\max_{i\in b}(v_{ij}-\nu_{bj})$ imply
+\begin{equation}
+ p_{bj}z_b\le m_{bj}\le q_{bj}z_b:
+ \label{eq:value-coupling}
+\end{equation}
+multiply each value inequality by its weight and sum. Retain this dependence
+by defining the nonempty compact polygon
+\begin{equation}
+ P_{bj}=\left\{(z,m):\begin{aligned}
+ &l_b\le z\le u_b,\quad m^-_{bj}\le m\le m^+_{bj},\\
+ &p_{bj}z\le m\le q_{bj}z
+ \end{aligned}\right\}.
+ \label{eq:coupled-polygon}
+\end{equation}
+
+\begin{theorem}[Coupled certificate]\label{thm:coupled-certificate}
+In \cref{eq:lower-residual,eq:upper-residual}, replace each block term by the
+minimum or maximum, respectively, of $m+(\nu_{bj}-c)z$ over $P_{bj}$.
+The resulting residual enclosure and cell certificate are sound, never wider
+than the box bounds, and improve monotonically under sound box intersection
+with fixed value extrema.
+\end{theorem}
+\begin{proof}
+The true pair belongs to $P_{bj}$ by \cref{eq:block-boxes,eq:value-coupling}.
+The residual identity remains unchanged. Each polygon is contained in its
+rectangle, and shrinking the rectangle shrinks its intersection with the
+fixed cone. The extrema can only improve; summation and $Z>0$ finish the proof.
+\end{proof}
+
+The rational optimizer evaluates these extrema at polygon vertices using a
+constant number of rational operations per block/channel; bit cost depends
+on the fractions. The complete enumeration argument is in
+\cref{app:polygon-support}. Inconsistent metadata is rejected.
+
+Joint optimization can be strictly tighter than intersecting separate scalar
+bounds; \cref{ex:joint-coupling} gives an exact example.
+
+\begin{figure*}[!t]
+ \centering
+ \input{diagrams/coupled_geometry.tex}
+ \caption{An analytic coupled-geometry example: value dependence removes box
+ corners that obstruct both boundary signs. The target interval is illustrative.}
+ \label{fig:coupled-geometry}
+\end{figure*}
+
+Lean proves the positive-weight coupling and box certificate. The polygon
+optimizer has the argument in \cref{app:polygon-support} and independent exact geometry tests; its
+executable correctness is not formalized.
+
+A sufficient margin-versus-width condition explains difficult near-midpoint
+coordinates and eventual certification under convergent sound refinement
+(\cref{prop:margin-uncertainty}).
+
+\section{Projected Signed-Moment Enclosures}
+\label{sec:moments}
+
+Attention has the exact-real form
+\begin{equation}
+ y_j(q)=\frac{\sum_i e^{q^Tk_i}v_{ij}}{\sum_i e^{q^Tk_i}}.
+ \label{eq:attention}
+\end{equation}
+The query includes attention scaling; keys are those attended to after
+positional transformations. Let $\mu_b,\nu_b$ be exact block means and set
+$\delta_i=k_i-\mu_b$, $x_i=v_i-\nu_b$. Select $r\le d$ coordinates and write
+\begin{equation}
+ \begin{gathered}
+ q^T\delta_i=t_i+e_i,\qquad t_i=u^T\delta_i^{(r)},\\
+ |t_i|\le\rho_b,\qquad |e_i|\le\epsilon_b.
+ \end{gathered}
+ \label{eq:score-split}
+\end{equation}
+The implementation selects a coordinate prefix; permutation permits another
+fixed subset. No approximate PCA basis is substituted. Stored coordinate
+radii $a_{bk}\ge\max_{i\in b}|\delta_{ik}|$ and value radii
+$R_{bj}\ge\max_{i\in b}|x_{ij}|$ give
+\begin{equation}
+ \rho_b=\sum_{k<r}|q_k|a_{bk},\qquad
+ \epsilon_b=\sum_{k\ge r}|q_k|a_{bk}.
+ \label{eq:query-radii}
+\end{equation}
+
+\subsection{Signed Moments and a Quadratic Witness}
+
+Using block means, store
+\begin{equation}
+ \begin{aligned}
+ \Sigma_b&=\operatorname{mean}(\delta^{(r)}\delta^{(r)T}),\\
+ C_b&=\operatorname{mean}(\delta^{(r)}x^T),\\
+ H_{bj}&=\operatorname{mean}(\delta^{(r)}\delta^{(r)T}x_j).
+ \end{aligned}
+ \label{eq:stored-moments}
+\end{equation}
+The full signed tensor $H$ is temporary construction data. Query metadata
+retains its diagonal $D_{bj}$ and a witness
+\begin{equation}
+ \eta_{bj}\ge\max_a\sum_k|(H_{bj}-D_{bj})_{ak}|.
+ \label{eq:rowsum-witness}
+\end{equation}
+Here $D$ denotes either the diagonal matrix or its stored diagonal. Choosing
+$D=0$ is also valid. For $r=0$, the empty row-sum witness is zero.
+
+\begin{lemma}[Quadratic witness]\label{lem:quadratic-witness}
+If $F$ is symmetric and $\eta\ge\max_a\sum_k|F_{ak}|$, then
+$|u^TFu|\le\eta\|u\|_2^2$.
+\end{lemma}
+The proof is given in \cref{app:quadratic-witness}.
+
+Retaining the diagonal weakly reduces the row-sum witness but shifts the center;
+intervals need not be nested or improve acceptance
+(\cref{app:diagonal-nonnesting}).
+
+\subsection{A Sharp Exponential Remainder}
+
+Define the nonnegative coefficient
+\begin{equation}
+ \kappa(\rho)=
+ \begin{cases}
+ (e^\rho-1-\rho-\rho^2/2)/\rho^2,&\rho>0,\\
+ 0,&\rho=0.
+ \end{cases}
+ \label{eq:kappa}
+\end{equation}
+\begin{lemma}[Sharp quadratic majorant]\label{lem:sharp-remainder}
+For $\rho\ge0$ and $|t|\le\rho$,
+\begin{equation}
+ \begin{gathered}
+ |e^t-1-t-t^2/2|\le\kappa(\rho)t^2,\\
+ \kappa(\rho)\le e^\rho\rho/6.
+ \end{gathered}
+ \label{eq:sharp-remainder}
+\end{equation}
+For $\rho>0$, the second inequality is strict and $\kappa(\rho)$ is the
+smallest uniform quadratic coefficient on $[-\rho,\rho]$.
+\end{lemma}
+The proof is given in \cref{app:sharp-remainder}.
+
+At radius zero, zero is the chosen nonnegative coefficient; minimality over
+arbitrary real coefficients is not claimed. Near zero, numerical evaluation
+uses a series to avoid cancellation. It is not outward without a bounded
+remainder; the rational path instead uses an upper enclosure of $e^\rho$.
+Lean derives the bound from the convergent real exponential series and
+discharges the remainder premise of the subsequent lifting lemma.
+
+The remainder and discarded-score inflation retain exponential growth
+(\cref{fig:remainder-mechanism}).
+
+\subsection{From Moments to Full-Score Blocks}
+
+Choose any common finite shift $s$ and define the actual quantities
+\begin{equation}
+ \begin{aligned}
+ z_b(s)&=\sum_{i\in b}e^{q^Tk_i-s},\\
+ m_{bj}(s)&=\sum_{i\in b}e^{q^Tk_i-s}x_{ij}.
+ \end{aligned}
+ \label{eq:shifted-blocks}
+\end{equation}
+The factor $e^{-s}$ cancels from \cref{eq:attention}; all following bounds and
+residuals concern these shifted quantities. Set
+\begin{gather}
+ a_b=q^T\mu_b,\qquad w_b=n_b e^{a_b-s},\notag\\
+ \sigma_b^2=u^T\Sigma_bu,\qquad A_b=1+\sigma_b^2/2,\notag\\
+ \tau_b=\kappa(\rho_b)\sigma_b^2,
+ \label{eq:moment-scalars}\\
+ \widetilde l_b=w_b\max\{1,A_b-\tau_b\},\notag\\
+ \widetilde u_b=w_b(A_b+\tau_b),\label{eq:projected-mass}\\
+ \widehat m_{bj}=w_b\left[(C_b^Tu)_j+\tfrac12u^TD_{bj}u\right],\notag\\
+ \beta_{bj}=w_b\left[\tfrac12\eta_{bj}\|u\|_2^2+\tau_bR_{bj}\right].
+ \label{eq:projected-numerator}
+\end{gather}
+Here $n_b$ is the block cardinality.
+
+\begin{theorem}[Full-score block enclosures]\label{thm:full-score-enclosures}
+Under the centering, radius, symmetry, and row-sum conditions above, sound
+bounds for \cref{eq:shifted-blocks} are
+\begin{gather}
+ l_b=e^{-\epsilon_b}\widetilde l_b,\qquad
+ u_b=e^{\epsilon_b}\widetilde u_b,\label{eq:full-mass}\\
+ \begin{aligned}
+ m^\pm_{bj}&=\widehat m_{bj}\\
+ &\quad\pm\left[\beta_{bj}+(e^{\epsilon_b}-1)\widetilde u_bR_{bj}\right].
+ \end{aligned}
+ \label{eq:full-numerator}
+\end{gather}
+\end{theorem}
+The proof is given in \cref{app:full-score-enclosures}.
+
+Combining \cref{thm:full-score-enclosures,thm:boundary-certificate} certifies
+the original finite per-token quotient. The Lean witness supplies centering,
+radii, symmetry, and row sums; it does not assume the Taylor remainder or
+output enclosure. Lean uses unnormalized finite-sum tensors: multiply this
+paper's $H,D,\eta$ by $n_b$ to obtain that representation. Matching the score
+decomposition and partition to the caller's data remains necessary; the
+theorem is not a Python summary validator.
+
+Both endpoint ranks are included. At $r=0$, retained centered moments vanish
+and all score variation is discarded; at $r=d$, $\epsilon_b=0$ eliminates
+projection inflation. No fixed rank is assumed useful on arbitrary trained
+activations.
+
+\subsection{Rational Evaluation and Outward Export}
+\label{sec:rational-checking}
+
+The rational implementation uses exact fractions and bounded exponential
+series. For $0\le x\le1/2$, a partial sum through degree $n$ has first omitted
+term $a_{n+1}=x^{n+1}/(n+1)!$. Subsequent term ratios are bounded by
+$q=x/(n+2)<1$, so the tail is at most $a_{n+1}/(1-q)$.
+The partial sum and that sum plus the tail enclose $e^x$. Positive interval
+squaring handles range reduction; reciprocal intervals handle negative
+arguments. Unsupported inputs are rejected. A separate rational
+exponential-sum oracle uses no moment formulas; refinement intersects its
+result with the existing enclosure. These expensive routines are correctness
+artifacts, not the proposed fast GPU implementation.
+
+Export converts rational endpoints outward to binary64 and compares each
+float's exact rational value with its source. Centers also receive intervals
+because rational means may be unrepresentable. The host checker expands basic
+operations by one ULP; the CUDA draft uses directed rounding. Their validity
+still requires the stated floating-point semantics and faithful compilation.
+Both have been compiled and run on GH200, including memory checking of the
+imported CUDA path; neither is extracted from Lean. Ordinary NumPy/CUDA
+moment estimates do not become sound metadata through directed rounding of
+the final residual sum. Sound inputs remain a premise.

@@ -1,0 +1,113 @@
+% SPDX-License-Identifier: Apache-2.0
+% Native manuscript source. Build from the repository root with make paper.
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\input{glyphtounicode}
+\pdfgentounicode=1
+% Computer Modern's sized brackets need explicit text-extraction mappings.
+\pdfglyphtounicode{bracketleftbig}{005B}
+\pdfglyphtounicode{bracketrightbig}{005D}
+\pdfglyphtounicode{bracketleftBig}{005B}
+\pdfglyphtounicode{bracketrightBig}{005D}
+\pdfglyphtounicode{bracketleftbigg}{005B}
+\pdfglyphtounicode{bracketrightbigg}{005D}
+\pdfglyphtounicode{bracketleftBigg}{005B}
+\pdfglyphtounicode{bracketrightBigg}{005D}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{booktabs,tabularx}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{siunitx}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,positioning,patterns,fit}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{subcaption}
+\usepackage{xurl}
+\usepackage[hyperfootnotes=false]{hyperref}
+\usepackage[preprint]{icml2026}
+\usepackage[capitalize,noabbrev]{cleveref}
+
+% The supplied author has no stated institutional affiliation or contact email.
+% Retain the preprint notice and use the repository as the artifact contact.
+\makeatletter
+\renewcommand{\printAffiliationsAndNotice}[1]{%
+  \global\icml@noticeprintedtrue
+  {\let\thefootnote\relax\footnotetext{\hspace*{-\footnotesep}%
+    \href{https://github.com/SamMausberg/contracted-moment-kernels}{Code, proofs, and measurements.}\\
+    \Notice@String}}}
+\makeatother
+
+\definecolor{cmkblue}{HTML}{2369A1}
+\definecolor{cmkorange}{HTML}{CC6534}
+\definecolor{cmkgreen}{HTML}{208578}
+\definecolor{cmkgray}{HTML}{71808D}
+\hypersetup{pdftitle={When Moment Summaries Can Certify Attention},
+  pdfauthor={Sam Mausberg},pdfsubject={Research preprint: attention certificates and GH200 experiments},colorlinks=true,
+  linkcolor=cmkblue,citecolor=cmkblue,urlcolor=cmkblue}
+\sisetup{detect-all,group-separator={,},group-minimum-digits=4}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\DeclareMathOperator{\diag}{diag}
+\newcommand{\R}{\mathbb{R}}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+\newcommand{\code}[1]{\texttt{\detokenize{#1}}}
+\newcommand{\artifact}[2]{\href{https://github.com/SamMausberg/contracted-moment-kernels/blob/main/#1}{#2}}
+\icmltitlerunning{When Moment Summaries Can Certify Attention}
+
+\begin{document}
+\twocolumn[
+\icmltitle{When Moment Summaries Can Certify Attention}
+\begin{icmlauthorlist}
+\icmlauthor{Sam Mausberg}{}
+\end{icmlauthorlist}
+\icmlkeywords{attention, verified numerics, moment methods, Lean, GPU kernels}
+\vskip 0.3in
+]
+\printAffiliationsAndNotice{}
+
+\begin{abstract}
+Moment summaries can avoid a token scan if their uncertainty cannot change
+the required output decision.
+We characterize this condition exactly for independent block intervals,
+derive exponential-attention bounds from projected signed moments,
+and tighten them using dependence between block mass and value range.
+A Lean development proves the real-arithmetic certificate chain;
+all 64 theorems build and pass an axiom audit.
+Exact-rational experiments certify 61 of 149 coordinates with value coupling
+versus 57 with boxes, including one controlled gain beyond a global value hull.
+On a GH200, parallel block reduction reduces a favorable screening stage from
+118.65 to \SI{20.09}{\micro\second}, but the complete path remains slower than
+fused dense attention; trained-model traces yield no passes in 2,016 rank-eight
+head instances.
+These results identify two obstacles to useful certification: exponential
+bound inflation and decision/fallback overhead.
+\end{abstract}
+
+\input{sections/introduction}
+\input{sections/theory}
+\input{sections/execution}
+\input{sections/experiments}
+\input{sections/discussion}
+
+\clearpage
+\appendix
+\input{sections/theory_appendix}
+\input{sections/formalization}
+\input{sections/experiments_appendix}
+
+\clearpage
+\bibliographystyle{icml2026}
+\bibliography{references}
+\end{document}

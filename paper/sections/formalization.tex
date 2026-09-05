@@ -1,0 +1,80 @@
+\section{Formalization and General Consumers}
+\label{app:formalization}
+
+Lean 4.24.0 and the pinned mathlib revision build all 64 local theorems.
+The complete axiom audit contains only \code{propext}, \code{Classical.choice},
+and \code{Quot.sound}. The \artifact{results/lean-verification.json}{audit manifest}
+records source hashes and dependencies for every declaration; the
+\artifact{docs/FORMALIZATION.md}{formalization map} gives the complete list.
+
+\paragraph{The composed theorem.}
+The observation theorem in \cref{tab:formalization} applies derived block bounds
+to the actual finite, per-token real exponential quotient. Its witness assumes
+nonempty tokens, centering, nonnegative radii, radius bounds, retained-tensor
+symmetry, and an absolute row-sum bound on the omitted signed tensor.
+It does not assume the Taylor remainder or the final enclosure.
+Lean uses finite sums where the manuscript
+uses means: for a block of size $n$, its $H$, $D$, and $\eta$ are multiplied by $n$.
+
+\begin{table*}[t]
+\centering
+\caption{Key declarations in the built Lean proof chain. The complete audit covers 64 theorems.}
+\label{tab:formalization}
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\toprule
+Declaration & Established property \\
+\midrule
+\code{exp_remainder_sharp} & Actual exponential-series remainder bound. \\
+\code{quadratic_rowsum_bound} & Symmetric omitted-tensor bound from absolute row sums. \\
+\code{finite_mean_centering} & Exact means supply finite-sum centering. \\
+\code{second_moment_contraction} & Projected second-moment contraction. \\
+\code{signed_moment_contraction} & Signed key/value tensor contraction. \\
+\code{full_score_enclosure} & Full-score block mass and centered-numerator bounds. \\
+\code{full_attention_observation} & Strict cell membership for the real exponential quotient. \\
+\code{observation_cell_iff} & Necessary-and-sufficient strict signs over the independent box. \\
+\code{centered_value_mass_coupling} & Positive-weight value-range/mass dependence. \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+\paragraph{Executable bridges.}
+The rational exponential, interval conversion, BF16 cell construction,
+polygon support optimizer, and runtime identity validation are not extracted
+from Lean. Neither are CUDA memory accesses, instruction rounding, overflow,
+compiler transformations, or state updates. The concrete IEEE model, including
+signed zero, infinities, NaNs, and midpoint ties, is not formalized.
+\code{monotone_rounding} assumes an abstract monotone real function.
+The numerical summary path cannot discharge the directed checker's sound-input
+premise. These are implementation obligations beyond the real theorem.
+
+\subsection{Other Observation Contracts}
+If a consumer is constant on a set containing the output, its value is fixed
+(\code{constant_consumer}). For monotone rounding $Q$,
+$l\leq y\leq u$ and $Q(l)=Q(u)$ suffice. For argmax, $l_w>u_j$ for all $j\ne w$
+certifies winner $w$ (\code{strict_argmax}). Equality of complete deterministic
+state transitions implies equality of repeated execution
+(\code{transition_composition}); this theorem does not prove an executor's
+transition-equality premise.
+
+\subsection{Smooth Gates}
+The residual certificate applies to any positive normalized weights with
+sound block envelopes. Signed unnormalized contractions instead sum intervals.
+For a smooth gate, let
+$p=\phi(t+\alpha)$, $p_0=\phi(t)$, and $p_1=\phi'(t)$. Then
+\begin{align}
+ &p(s+\gamma)-(p_0s+p_1\alpha s+p_0\gamma)\nonumber\\
+ &\qquad=p_1\alpha\gamma+(p-p_0-p_1\alpha)(s+\gamma).
+ \label{eq:gate-identity}
+\end{align}
+If $|\alpha|\leq\rho_g$, $|\gamma|\leq\rho_u$, and
+$|p-p_0-p_1\alpha|\leq M\rho_g^2/2$, then
+\begin{equation}
+ |\mathrm{error}|\leq |p_1|\rho_g\rho_u
+       +\tfrac12M\rho_g^2(|s|+\rho_u).
+\end{equation}
+Lean proves \code{gated_residual_identity} and \code{gated_remainder_bound}.
+A curvature witness for a concrete gate remains a separate obligation.
+For SwiGLU, absolute downstream weights multiply these nonnegative radii
+before summation. Contracted coefficients may save an intermediate while
+requiring more storage than the original weights; no feed-forward speedup
+is established here.

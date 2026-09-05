@@ -1,0 +1,51 @@
+\section{Introduction}
+\label{sec:introduction}
+
+An approximate attention value and a certified output decision solve different
+problems. A small absolute error can still cross a rounding boundary, while
+a coarse value estimate may determine a broad downstream decision exactly.
+The relevant quantity is therefore the uncertainty relative to the consumer's
+decision boundary.
+
+We study positive normalized reductions represented by block masses and
+centered value moments. At any boundary $c$, the normalized comparison reduces
+to the sign of an unnormalized residual $N-cZ$. Independent interval metadata
+gives attained extrema of this residual. If total mass is positive throughout
+the box, two strict sign tests are necessary and sufficient for every compatible
+output to lie in a given open cell. A rejection identifies information missing from the box;
+it need not identify an inaccurate candidate value.
+
+We test which dependence information enables certification, which error term
+prevents it on trained activations, and whether avoided token work repays
+construction, screening, and fallback. The evidence combines value-coupled
+bounds, a formal real-attention proof chain, and GH200 implementation ablations.
+
+Value coupling adds certificates, although a global value hull explains most
+gains. Trained activations expose discarded-score uncertainty and full-rank
+Taylor inflation. Parallel reduction removes a GPU bottleneck, yet the
+complete path remains slower than fused dense attention throughout the sweep.
+
+\paragraph{Scope.}
+Lean proves the real-arithmetic chain under concrete centering, radius,
+symmetry, and row-sum witnesses. The rational checker and the directed CUDA
+checker are tested implementations, not extracted proofs. Ordinary
+NumPy/CUDA summaries do not provide outward intervals. Exact-real rounding
+also differs from the accumulation contract of a particular fused GPU kernel.
+\Cref{app:formalization} maps these claims to the checked theorems and remaining
+implementation bridges. Code, measurements, and reproduction commands are
+available in the \href{https://github.com/SamMausberg/contracted-moment-kernels}{research repository}.
+
+\paragraph{Related work.}
+Adaptive predicates refine uncertain signs \citep{shewchuk}, while Taylor
+models retain polynomial structure with bounded remainders \citep{berz}.
+Multipole attention combines grouped interactions and selected exact work
+\citep{multipole,fma}; TaylorShift and symmetry-aware features reorganize
+polynomial attention \citep{taylorshift,sata}. COBS uses covariance statistics
+for block selection, SPLA combines sparse and residual linear paths, and
+LOCKS studies limits of moment summaries for broad scores
+\citep{cobs,spla,locks}. WitCert and attention-memory observability contracts
+already connect runtime witnesses, formal scope, and fallback
+\citep{observability,witcert}. Our focus is the consumer-specific residual
+interface, the projected signed moments supplying it, and stronger mass/value
+dependence. These general principles are established; comparisons with
+unreproduced systems concern method scope, not measured performance.

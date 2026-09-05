@@ -9,7 +9,8 @@ PyTorch and CUDA libraries; the setup script checks that they actually work.
 
 ```sh
 sudo apt-get update
-sudo apt-get install -y python3-venv clang-format pandoc texlive-xetex texlive-latex-extra fonts-dejavu-core
+sudo apt-get install -y python3-venv clang-format latexmk texlive-latex-extra \
+  texlive-science texlive-fonts-recommended poppler-utils
 bash scripts/setup_gh200.sh
 source .venv/bin/activate
 make format
@@ -39,6 +40,7 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python scripts/benchmark_gpu.py \
   --trace results/model_traces/gpu_prose_4096_layer0.npz \
   --trace results/model_traces/gpu_prose_4096_layer12.npz \
   --trace results/model_traces/gpu_prose_4096_layer23.npz
+make figures
 make paper
 python scripts/check_docs.py
 ```
@@ -60,13 +62,42 @@ as GPU latency evidence.
 
 ## Paper and figures
 
-`make figures` reads committed JSON and writes vector SVG/PDF plus PNG previews.
-The figure manifest records data hashes and labels analytic examples. `make
-paper` additionally renders `paper/PAPER.pdf` and a local HTML version with
-MathJax. The Markdown retains SVG links for GitHub; the PDF renderer uses vector
-PDF siblings. The [figure index](../paper/figures/README.md) states the question
-each plot answers.
+The canonical manuscript is [paper/PAPER.tex](../paper/PAPER.tex), using the
+official ICML 2026 two-column style in `preprint` mode. Edit its native prose
+and proofs in `paper/sections/`, the two TikZ drawings in `paper/diagrams/`,
+and references in `paper/references.bib`. The
+[Markdown companion](../paper/PAPER.md) retains the expanded mathematical
+exposition and research references. Style provenance is retained in
+[paper/vendor/README.md](../paper/vendor/README.md).
 
-The GitHub workflow runs Ruff, clang-format, Python tests, documentation/source
+From the repository root, `make paper` runs `scripts/build_paper.sh`: `latexmk`
+coordinates pdfLaTeX and BibTeX, writes auxiliary files to `build/paper/`, copies
+the finished [PDF](../paper/PAPER.pdf), runs the publication checker, and creates
+[paper/latex-source.zip](../paper/latex-source.zip). It uses the committed vector
+plots without rerunning experiments or regenerating figures. The standalone
+archive includes the native source, style, bibliography, drawings, and figure
+PDFs; extract it and run:
+
+```sh
+latexmk -pdf -interaction=nonstopmode -halt-on-error PAPER.tex
+```
+
+`make figures` separately reads the recorded JSON and writes vector SVG/PDF
+plots plus PNG previews. The manuscript imports ten vector plots and compiles
+two drawings directly from TikZ. The figure manifest records plot data hashes
+and labels analytic examples; the companion's geometric SVG exports remain
+available. The [figure index](../paper/figures/README.md) describes each figure.
+
+The build runs
+`python3 scripts/check_paper.py --output results/paper-layout.json`.
+This checker uses Poppler's `pdftotext`, `pdfinfo`, and `pdffonts`, together with
+the final LaTeX log and recorder file, to check references, captions, embedded
+fonts, page dimensions, and extracted text bounds. Its report records source
+and imported-figure hashes. Visual review is still needed for graphical overlap
+and reading order; these checks do not validate scientific claims or proofs.
+
+The research GitHub workflow runs Ruff, clang-format, Python tests, documentation/source
 checks, host C++ fixtures, and the Lean build/audit. GPU evidence comes from this
 GH200's saved runs; the hosted CPU workflow does not claim GPU validation.
+The separate manuscript workflow installs LaTeX, builds and checks the paper,
+and uploads the PDF, source archive, layout report, and final LaTeX log.

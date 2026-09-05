@@ -3,7 +3,8 @@
 When can moment summaries certify an attention output? This repository combines
 real-arithmetic proofs, exact-rational checking, and measured GH200 experiments.
 
-[Paper](paper/PAPER.md) · [PDF](paper/PAPER.pdf) ·
+[Paper PDF](paper/PAPER.pdf) · [LaTeX source](paper/PAPER.tex) ·
+[Source archive](paper/latex-source.zip) · [Mathematical companion](paper/PAPER.md) ·
 [12 figures](paper/figures/README.md) · [Proof scope](docs/FORMALIZATION.md) ·
 [GPU execution](docs/GH200.md) · [Results](results/README.md)
 
@@ -20,9 +21,11 @@ make lint
 bash scripts/check_lean.sh
 ```
 
-Use `make format` for Ruff and clang-format, and `make paper` to regenerate the
-figures and PDF. See [reproduction](docs/REPRODUCING.md) for dependencies and
-experiment commands. [Apache-2.0](LICENSE).
+Use `make format` for Ruff and clang-format. `make paper` builds the native
+LaTeX PDF in official ICML 2026 preprint style, checks it, and packages the
+source archive; `make figures` regenerates plots separately. See
+[reproduction](docs/REPRODUCING.md) for dependencies and experiment commands.
+[Apache-2.0](LICENSE).
 
 ## References
 

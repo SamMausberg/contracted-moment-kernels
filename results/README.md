@@ -1,8 +1,13 @@
 # Recorded validation
 
 The September 5, 2026 results were produced on the repository's GH200. The
-paper distinguishes the proved real-arithmetic contract, exact-rational
-implementation checks, and numerical GPU screens.
+native [paper](../paper/PAPER.tex) distinguishes the proved real-arithmetic
+contract, exact-rational implementation checks, and numerical GPU screens.
+
+The [built PDF](../paper/PAPER.pdf) uses official ICML 2026 preprint style;
+[latex-source.zip](../paper/latex-source.zip) contains its editable sources.
+The [Markdown companion](../paper/PAPER.md) preserves the expanded exposition.
+The manuscript contains two native TikZ drawings and ten imported vector plots.
 
 | Evidence | Recorded outcome | Artifact |
 | --- | --- | --- |
@@ -37,3 +42,16 @@ See [reproduction commands](../docs/REPRODUCING.md) and the
 correction tokens. The counter excludes full-source validation/fingerprint reads
 and is not total memory traffic or GPU performance. The current evidence index
 and artifact hashes are in [verification.json](verification.json).
+
+`make paper` builds the native source with latexmk, pdfLaTeX, and BibTeX,
+then runs the Poppler-based publication checker. Its
+[layout report](paper-layout.json) records reference, caption, font, page, and
+text-bound checks plus source and imported-figure hashes. The built PDF has
+seven main-text pages, seven appendix pages, and one references page; all twelve
+figure captions occur once, all 27 fonts are embedded, and the final LaTeX log
+has no overfull boxes. This is publication
+validation, separate from the scientific evidence above; graphical overlap and
+reading order still require visual review. The build uses committed plots and
+does not rerun experiments. See the [paper build guide](../paper/README.md).
+The [standalone source build](paper-source-build.json) also compiles the extracted
+archive independently and confirms that its PDF text matches the repository PDF.

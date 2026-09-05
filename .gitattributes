@@ -1,0 +1,5 @@
+# Preserve the official conference style files byte for byte.
+paper/icml2026.sty -whitespace
+paper/icml2026.bst -whitespace
+# Preserve the standalone compiler transcript verbatim.
+results/paper-source-build.log -whitespace

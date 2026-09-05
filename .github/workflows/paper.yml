@@ -1,0 +1,39 @@
+name: LaTeX manuscript
+
+on:
+  push:
+    paths:
+      - 'paper/**'
+      - 'scripts/build_paper.sh'
+      - 'scripts/check_paper.py'
+      - '.github/workflows/paper.yml'
+  pull_request:
+    paths:
+      - 'paper/**'
+      - 'scripts/build_paper.sh'
+      - 'scripts/check_paper.py'
+      - '.github/workflows/paper.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  paper:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install LaTeX and PDF inspection tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends latexmk texlive-latex-extra texlive-science texlive-fonts-recommended poppler-utils
+      - name: Build and check the native manuscript
+        run: bash scripts/build_paper.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: manuscript
+          path: |
+            paper/PAPER.pdf
+            paper/latex-source.zip
+            results/paper-layout.json
+            build/paper/PAPER.log

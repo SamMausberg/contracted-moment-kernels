@@ -1,0 +1,451 @@
+{
+  "schema_version": 1,
+  "passed": true,
+  "scope": "Mechanical PDF/layout checks only; no scientific or formal verification claims.",
+  "pdf": "paper/PAPER.pdf",
+  "pdf_sha256": "420b1634fd0d72403e9a5b258a46c65225f85da952d7baf28f0bdd9bc49f6c1e",
+  "log": "build/paper/PAPER.log",
+  "log_sha256": "daf09a5c6e37627de390d9128ede118cc2776277df64436b5e7beba183e6b2c4",
+  "recorder": "build/paper/PAPER.fls",
+  "recorder_sha256": "bcd35358cddcad55089bd1ab3b0f85f3400151ede842c03dddd62f22cab6af39",
+  "page_count": 15,
+  "pagination": {
+    "appendix_start_page": 8,
+    "references_start_page": 15,
+    "main_pages_before_appendix": 7,
+    "appendix_pages_including_references": 8,
+    "appendix_pages_before_references": 7
+  },
+  "page_dimensions": [
+    {
+      "page": 1,
+      "width_pt": 612.0,
+      "height_pt": 792.0
+    },
+    {
+      "page": 2,
+      "width_pt": 612.0,
+      "height_pt": 792.0
+    },
+    {
+      "page": 3,
+      "width_pt": 612.0,
+      "height_pt": 792.0
+    },
+    {
+      "page": 4,
+      "width_pt": 612.0,
+      "height_pt": 792.0
+    },
+    {
+      "page": 5,
+      "width_pt": 612.0,
+      "height_pt": 792.0
+    },
+    {
+      "page": 6,
+      "width_pt": 612.0,
+      "height_pt": 792.0
+    },
+    {
+      "page": 7,
+      "width_pt": 612.0,
+      "height_pt": 792.0
+    },
+    {
+      "page": 8,
+      "width_pt": 612.0,
+      "height_pt": 792.0
+    },
+    {
+      "page": 9,
+      "width_pt": 612.0,
+      "height_pt": 792.0
+    },
+    {
+      "page": 10,
+      "width_pt": 612.0,
+      "height_pt": 792.0
+    },
+    {
+      "page": 11,
+      "width_pt": 612.0,
+      "height_pt": 792.0
+    },
+    {
+      "page": 12,
+      "width_pt": 612.0,
+      "height_pt": 792.0
+    },
+    {
+      "page": 13,
+      "width_pt": 612.0,
+      "height_pt": 792.0
+    },
+    {
+      "page": 14,
+      "width_pt": 612.0,
+      "height_pt": 792.0
+    },
+    {
+      "page": 15,
+      "width_pt": 612.0,
+      "height_pt": 792.0
+    }
+  ],
+  "font_checks": {
+    "all_embedded": true,
+    "fonts": [
+      {
+        "name": "IBHEUO+NimbusRomNo9L-Medi",
+        "type": "Type 1",
+        "encoding": "Custom",
+        "embedded": true,
+        "subset": true,
+        "unicode_map": true
+      },
+      {
+        "name": "RCTQDN+NimbusRomNo9L-Regu",
+        "type": "Type 1",
+        "encoding": "Custom",
+        "embedded": true,
+        "subset": true,
+        "unicode_map": true
+      },
+      {
+        "name": "VSRLXT+CMMI10",
+        "type": "Type 1",
+        "encoding": "Builtin",
+        "embedded": true,
+        "subset": true,
+        "unicode_map": true
+      },
+      {
+        "name": "VRZKDU+CMSY10",
+        "type": "Type 1",
+        "encoding": "Builtin",
+        "embedded": true,
+        "subset": true,
+        "unicode_map": true
+      },
+      {
+        "name": "NDKYJD+NimbusRomNo9L-ReguItal",
+        "type": "Type 1",
+        "encoding": "Custom",
+        "embedded": true,
+        "subset": true,
+        "unicode_map": true
+      },
+      {
+        "name": "VBWVVV+CMR10",
+        "type": "Type 1",
+        "encoding": "Builtin",
+        "embedded": true,
+        "subset": true,
+        "unicode_map": true
+      },
+      {
+        "name": "JJXWYM+CMMI7",
+        "type": "Type 1",
+        "encoding": "Builtin",
+        "embedded": true,
+        "subset": true,
+        "unicode_map": true
+      },
+      {
+        "name": "LKLKWT+CMEX10",
+        "type": "Type 1",
+        "encoding": "Builtin",
+        "embedded": true,
+        "subset": true,
+        "unicode_map": true
+      },
+      {
+        "name": "KBLAEO+CMSY7",
+        "type": "Type 1",
+        "encoding": "Builtin",
+        "embedded": true,
+        "subset": true,
+        "unicode_map": true
+      },
+      {
+        "name": "DGALQH+CMR7",
+        "type": "Type 1",
+        "encoding": "Builtin",
+        "embedded": true,
+        "subset": true,
+        "unicode_map": true
+      },
+      {
+        "name": "AJNMOM+CMMI5",
+        "type": "Type 1",
+        "encoding": "Builtin",
+        "embedded": true,
+        "subset": true,
+        "unicode_map": true
+      },
+      {
+        "name": "JCCSXX+CMMI9",
+        "type": "Type 1",
+        "encoding": "Builtin",
+        "embedded": true,
+        "subset": true,
+        "unicode_map": true
+      },
+      {
+        "name": "UESWAY+CMR9",
+        "type": "Type 1",
+        "encoding": "Builtin",
+        "embedded": true,
+        "subset": true,
+        "unicode_map": true
+      },
+      {
+        "name": "ISHUWB+CMSY9",
+        "type": "Type 1",
+        "encoding": "Builtin",
+        "embedded": true,
+        "subset": true,
+        "unicode_map": true
+      },
+      {
+        "name": "GXCJAR+CMMI6",
+        "type": "Type 1",
+        "encoding": "Builtin",
+        "embedded": true,
+        "subset": true,
+        "unicode_map": true
+      },
+      {
+        "name": "BMQQDV+DejaVuSans",
+        "type": "CID TrueType",
+        "encoding": "Identity-H",
+        "embedded": true,
+        "subset": true,
+        "unicode_map": true
+      },
+      {
+        "name": "OPNFUU+NimbusMonL-Regu",
+        "type": "Type 1",
+        "encoding": "Custom",
+        "embedded": true,
+        "subset": true,
+        "unicode_map": true
+      },
+      {
+        "name": "BMQQDV+DejaVuSans",
+        "type": "CID TrueType",
+        "encoding": "Identity-H",
+        "embedded": true,
+        "subset": true,
+        "unicode_map": true
+      },
+      {
+        "name": "BMQQDV+DejaVuSans",
+        "type": "CID TrueType",
+        "encoding": "Identity-H",
+        "embedded": true,
+        "subset": true,
+        "unicode_map": true
+      },
+      {
+        "name": "GCWXDV+DejaVuSans-Oblique",
+        "type": "CID TrueType",
+        "encoding": "Identity-H",
+        "embedded": true,
+        "subset": true,
+        "unicode_map": true
+      },
+      {
+        "name": "BMQQDV+DejaVuSans",
+        "type": "CID TrueType",
+        "encoding": "Identity-H",
+        "embedded": true,
+        "subset": true,
+        "unicode_map": true
+      },
+      {
+        "name": "BMQQDV+DejaVuSans",
+        "type": "CID TrueType",
+        "encoding": "Identity-H",
+        "embedded": true,
+        "subset": true,
+        "unicode_map": true
+      },
+      {
+        "name": "BMQQDV+DejaVuSans",
+        "type": "CID TrueType",
+        "encoding": "Identity-H",
+        "embedded": true,
+        "subset": true,
+        "unicode_map": true
+      },
+      {
+        "name": "BMQQDV+DejaVuSans",
+        "type": "CID TrueType",
+        "encoding": "Identity-H",
+        "embedded": true,
+        "subset": true,
+        "unicode_map": true
+      },
+      {
+        "name": "BMQQDV+DejaVuSans",
+        "type": "CID TrueType",
+        "encoding": "Identity-H",
+        "embedded": true,
+        "subset": true,
+        "unicode_map": true
+      },
+      {
+        "name": "BMQQDV+DejaVuSans",
+        "type": "CID TrueType",
+        "encoding": "Identity-H",
+        "embedded": true,
+        "subset": true,
+        "unicode_map": true
+      },
+      {
+        "name": "BMQQDV+DejaVuSans",
+        "type": "CID TrueType",
+        "encoding": "Identity-H",
+        "embedded": true,
+        "subset": true,
+        "unicode_map": true
+      }
+    ]
+  },
+  "text_bounds": {
+    "all_inside_page": true,
+    "word_count": 8706,
+    "tolerance_pt": 0.1,
+    "violations": []
+  },
+  "figure_captions": [
+    {
+      "number": 1,
+      "page": 4
+    },
+    {
+      "number": 2,
+      "page": 6
+    },
+    {
+      "number": 3,
+      "page": 7
+    },
+    {
+      "number": 4,
+      "page": 7
+    },
+    {
+      "number": 5,
+      "page": 9
+    },
+    {
+      "number": 6,
+      "page": 10
+    },
+    {
+      "number": 7,
+      "page": 12
+    },
+    {
+      "number": 8,
+      "page": 12
+    },
+    {
+      "number": 9,
+      "page": 13
+    },
+    {
+      "number": 10,
+      "page": 13
+    },
+    {
+      "number": 11,
+      "page": 14
+    },
+    {
+      "number": 12,
+      "page": 14
+    }
+  ],
+  "latex": {
+    "errors": [],
+    "unresolved_references": [],
+    "overfull_count": 0,
+    "overfull": [],
+    "underfull_count": 15,
+    "warnings": []
+  },
+  "reference_checks": "Final LaTeX log checked for undefined/multiply-defined labels and citations and rerun requests; remote URLs not fetched.",
+  "source_sha256": {
+    "paper/PAPER.tex": "4f59a02ecfd53a01121452a2699626dfd41a8b67fea0039607d85098d584a5a9",
+    "paper/diagrams/boundary_geometry.tex": "c3a35bf286425654ff97ee9f8d4c43c7c974232cc0c0fd00c221e58bd0e9f700",
+    "paper/diagrams/coupled_geometry.tex": "4acbb97c5abd254bbf465299670996087b15b1f5fb90c8f0a7936f0d1303de67",
+    "paper/figures/coupling_ablation.pdf": "391aa35f501251a9d56d213c53d5ec871891407d8c607e03be6f675d1205357e",
+    "paper/figures/gh200_amortization.pdf": "f63db29923bb14ffbc51801b5a02be20d30754d689f3ea3fafe5a84e4d375616",
+    "paper/figures/gh200_cost_breakdown.pdf": "6db4e62310a2b370c94c17146a8be58f6ea424dc6b043fbf5bc5ded77671e588",
+    "paper/figures/gh200_coverage_cost.pdf": "58dc86df935acee7e7b79bd01918097b9718198a983b3e3f32d380cb4225a014",
+    "paper/figures/gh200_kernel_ablation.pdf": "29cbaa3cf1d9af0d40b05ba8bb8940c796707031abe21d024e8c5abc2653e585",
+    "paper/figures/gh200_latency.pdf": "b2aa2b8fbdb1cea6abd6855e69035743d50081d39510abc75117bce28f5dce04",
+    "paper/figures/model_error_budget.pdf": "6505aaf9df90b6e8ea8dc548ac9793ef74744ce8d6637306c09872c63bfa19ec",
+    "paper/figures/model_score_radii.pdf": "71700fe87a27673cbc3ef29befa40202adf9a208e95ffab69c787edd4513923c",
+    "paper/figures/remainder_mechanism.pdf": "ad923f25d7f5e9df5feb04f74c5983fb2619aa02011b9221d5eeadc02ef8d51e",
+    "paper/figures/selective_refinement.pdf": "5a4d0a2e2060cc83147dfd6f1bf2ce9bca026a11fa21c7e54e05e939c8c3ace8",
+    "paper/icml2026.bst": "0ec3d5eb9b02efb7e0b44a32f3775882f42a743d0bdc618f34e6936309b98764",
+    "paper/icml2026.sty": "7cdcf90f6a59c5219e7f15c88f7ed09fcaf598dad91e6cdddc4dc3cb0e397a95",
+    "paper/references.bib": "5118ccefe97b5d0d3b1d59316337bbc118c0503d2ccf963e26ef1f88d9e4beef",
+    "paper/sections/discussion.tex": "d1038a016ec7f7a64fb65ce7c476074f44e342f446c82b34384e28d62129de92",
+    "paper/sections/execution.tex": "d14353fe25931f87a870353b1a58461a52f65c696402ffb04cbbeafde0070134",
+    "paper/sections/experiments.tex": "ce1406190cfbd054aba0595ec1497da45a438084cc0f952e57dc010d8918afd5",
+    "paper/sections/experiments_appendix.tex": "630f4b35899b003f7445d944b5596206f92af1352613e128f36bd369df7e375b",
+    "paper/sections/formalization.tex": "6159835ec198cc14ca11f2e53565501c32c57381cec47bf79eb6f0da506af448",
+    "paper/sections/introduction.tex": "965e8c372437401871f47aa189c344245eb2d4ac1d31b2ffa46bbf67eb4d50c4",
+    "paper/sections/theory.tex": "e6ea3688ba314560d7043fa70da7f53dfa0a2e310405bf8ecf09d53be900bf6b",
+    "paper/sections/theory_appendix.tex": "8f498cbcc01cc209834fe42908d379639d4c9e08ebf8c300c37b27b275e76487"
+  },
+  "vector_figure_inputs": [
+    "paper/figures/coupling_ablation.pdf",
+    "paper/figures/gh200_amortization.pdf",
+    "paper/figures/gh200_cost_breakdown.pdf",
+    "paper/figures/gh200_coverage_cost.pdf",
+    "paper/figures/gh200_kernel_ablation.pdf",
+    "paper/figures/gh200_latency.pdf",
+    "paper/figures/model_error_budget.pdf",
+    "paper/figures/model_score_radii.pdf",
+    "paper/figures/remainder_mechanism.pdf",
+    "paper/figures/selective_refinement.pdf"
+  ],
+  "recorded_pdf_matches": true,
+  "inspected_files": [
+    "build/paper/PAPER.fls",
+    "build/paper/PAPER.log",
+    "paper/PAPER.pdf",
+    "paper/PAPER.tex",
+    "paper/diagrams/boundary_geometry.tex",
+    "paper/diagrams/coupled_geometry.tex",
+    "paper/figures/coupling_ablation.pdf",
+    "paper/figures/gh200_amortization.pdf",
+    "paper/figures/gh200_cost_breakdown.pdf",
+    "paper/figures/gh200_coverage_cost.pdf",
+    "paper/figures/gh200_kernel_ablation.pdf",
+    "paper/figures/gh200_latency.pdf",
+    "paper/figures/model_error_budget.pdf",
+    "paper/figures/model_score_radii.pdf",
+    "paper/figures/remainder_mechanism.pdf",
+    "paper/figures/selective_refinement.pdf",
+    "paper/icml2026.bst",
+    "paper/icml2026.sty",
+    "paper/references.bib",
+    "paper/sections/discussion.tex",
+    "paper/sections/execution.tex",
+    "paper/sections/experiments.tex",
+    "paper/sections/experiments_appendix.tex",
+    "paper/sections/formalization.tex",
+    "paper/sections/introduction.tex",
+    "paper/sections/theory.tex",
+    "paper/sections/theory_appendix.tex"
+  ],
+  "failures": []
+}

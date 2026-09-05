@@ -1,0 +1,49 @@
+\section{Representation and Execution Cost}
+\label{sec:execution}
+
+For $B$ blocks, key dimension $d$, value dimension $h$, and retained rank $r$,
+the base representation stores
+\begin{equation}
+ B(2d+r^2+2rh+3h+1)
+ \label{eq:storage}
+\end{equation}
+scalars. Coupling adds $2Bh$ value extrema. These counts exclude original K/V,
+index maps, source identities, scratch, and allocations. Original K/V remains
+available for fallback.
+
+A block-scalar pass evaluates centroid scores, variance, radii, and mass
+terms once per query/block. A channel pass contracts the value moments, then
+a reduction tests the two boundaries. The arithmetic cost is
+$O(B(d+r^2+rh+h))$, versus $\Theta(N(d+h))$ for a direct scan. The current
+CPU builder scans K/V and constructs a temporary signed tensor in
+$O(N(d+h+r^2h))$ work. These are word-operation counts; they omit rational bit
+complexity and do not imply a speedup. Clustering would add a setup stage.
+
+\begin{proposition}[Reuse threshold]
+\label{prop:reuse}
+Let setup cost be $S\geq0$, dense-query cost $D>0$, full-output pass probability
+$p$, and expected screen/decision/return cost $C\geq0$. If rejection executes
+the full dense path, expected cost for $R>0$ reuses is
+\begin{equation}
+ T(R)=S+R\bigl[C+(1-p)D\bigr].
+ \label{eq:reuse}
+\end{equation}
+It is below $RD$ exactly when $pD>C$ and $R>S/(pD-C)$.
+\end{proposition}
+\begin{proof}
+Subtract $RD$ and rearrange $S<R(pD-C)$.
+\end{proof}
+
+This fixed-cost model makes the role of pass probability explicit. A
+heterogeneous scheduler needs its conditional costs. Our complete measured
+path is already slower than dense per query, so no finite reuse count
+amortizes its setup.
+
+The executor validates the supported domain and source identity, selects a
+candidate cell, tests its boundaries, and refines or falls back under a work
+cap. Exact-rational refinement intersects sound intervals; numerical CUDA
+correction supplies estimates. Python fingerprints bind refinement to ordered
+visible K/V, query, and shift. They do not implement concurrent cache epochs
+or a serving memory manager. The measured numerical kernels compare serial,
+shared-scalar, and parallel block reductions; only the last changes reduction
+order. The directed imported-box checker has a separate contract.

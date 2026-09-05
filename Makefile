@@ -25,5 +25,5 @@ lean:
 figures:
 	MPLBACKEND=Agg $(PYTHON) scripts/figures.py
 
-paper: figures
+paper:
 	bash scripts/build_paper.sh

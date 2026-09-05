@@ -4,7 +4,13 @@
 
 Sam Mausberg
 
-Research manuscript, version 0.2.0. September 5, 2026.
+Expanded mathematical companion, version 0.2.0. September 5, 2026.
+
+The canonical manuscript is the native [LaTeX source](PAPER.tex), typeset in
+official ICML 2026 preprint style: [read the PDF](PAPER.pdf) or
+[download the source archive](latex-source.zip). This companion preserves the
+expanded mathematical exposition and research references. See
+[paper build instructions](README.md) for the pdfLaTeX/BibTeX workflow.
 
 ## Abstract
 
