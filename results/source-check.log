@@ -1,1 +1,1 @@
-Static source checks passed: 25 theorem scripts and 25 audit entries. Lean NOT executed.
+Axiom audit passed: 64 declarations; dependencies limited to ['Classical.choice', 'Quot.sound', 'propext'].

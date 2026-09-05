@@ -1,0 +1,3711 @@
+{
+  "purpose": "One independent reproducibility confirmation, not best-number selection or tuning.",
+  "git_revision": "d2c3668a8e76d434ccdd49d06c69a6d1f7ed4b19",
+  "runtime_source_paths_clean_against_revision_before_run": true,
+  "runtime_sources_unchanged_during_run": true,
+  "source_sha256": {
+    "cmk/__init__.py": "45d1e660bd4384208896615cee327510095c80958be2b6c6d6d579224c59c6c6",
+    "cmk/export.py": "a741f8b81312af0e3a2972832157ee57cca9d2136dbbc8b092ecdde32c39ca60",
+    "cmk/rational.py": "2760db6a5dae5a673b95451c586b90b5151fedd6524990743f0d31cc18727e35",
+    "cmk/reference.py": "b9e94160ee0e37d8a0e4560d8c981c89099e5a58d5197d863afbe4f533afc7fd",
+    "kernels/CMakeLists.txt": "6fd35abe5b3d9d7672eff993a2277c4fe8890b0169d8a3c0dba0328f0112ebcf",
+    "kernels/benchmark_api.cu": "4e8d40a6b0a4c078c348dd32e2caeea383deaaaa9ca2bfb3b6b8e85f5e4ff3e2",
+    "kernels/directed.cuh": "d4d4924ac50ff1721ce5257a35265f7357e5d9b7f436a592b9f7fc6ad00fb5c9",
+    "kernels/fixture.hpp": "96cd44e36908ad6385aa486a9612bd643dff7a0d9916cc4ef5feeb5aaf20b443",
+    "kernels/host_check.cpp": "8d45ed738f84d04e06c0f8b5cbdcec88445eda2c507dc33ba2e98386f7f15f68",
+    "kernels/imported.hpp": "01a550a69b44aa1260273d876bed9f5d313881bdf9d8e815d603a635fd6d3506",
+    "kernels/imported_check.cpp": "001cabd8db5eb5e8f5e252e9781a736762b3e34ce19e7fb8b8fa9bc5ea8b2c02",
+    "kernels/imported_smoke.cu": "9f0655c3c66bd9e675fdd8e13aa19b00eba50fe724252d76e784594ccbe749cd",
+    "kernels/moments.cu": "a1f35f0e91ea58577b7545fa9969d840e7d393fa9fe853bc35aa1045d23b737d",
+    "kernels/moments.cuh": "313cfdad2715dc00544dd31c7536c655939fa6539027671a3e00f35f23f3d9bf",
+    "kernels/smoke.cu": "8cb523a0fa10a2fda298eef97b05d92dbea7da4536dd0791e928df43aca2a067",
+    "scripts/benchmark_gpu.py": "8bfc32d82e5a0a7a2aba08cb6d60533b5d51e458e1bde73205b16b165aea409b"
+  },
+  "library": {
+    "path": "build/gh200/libcmk_benchmark.so",
+    "sha256": "58f068168baef29ccd7601f4c141373b9dc4397ac3d1b62559ae0c39286c36fe",
+    "unchanged_during_run": true
+  },
+  "trace_inputs": {
+    "results/model_traces/gpu_prose_4096_layer0.npz": {
+      "sha256": "8057d704c714061db12d26114b541d3493b616ce2e77fbe071add81b056e73a3",
+      "arrays": {
+        "keys": {
+          "shape": [
+            4096,
+            64
+          ],
+          "dtype": "float32",
+          "sha256_contiguous_values": "3e322ccb87ccf25886bc198314594d84b1595236baddefe2ba9d29a2891ccd48"
+        },
+        "values": {
+          "shape": [
+            4096,
+            64
+          ],
+          "dtype": "float32",
+          "sha256_contiguous_values": "1bba3b67d7bdf97db1ce4b03e75a2d1f4839210653408df446e71e46b3fbdbe1"
+        },
+        "queries": {
+          "shape": [
+            7,
+            64
+          ],
+          "dtype": "float32",
+          "sha256_contiguous_values": "3cc09c6c3d7f7ba986ad1e3796470e14fb68b84969689b422719102640bacd10"
+        }
+      }
+    },
+    "results/model_traces/gpu_prose_4096_layer12.npz": {
+      "sha256": "64dc23cf2463571ea448d0321152cdd68de21f016efc14f5610956345109b15f",
+      "arrays": {
+        "keys": {
+          "shape": [
+            4096,
+            64
+          ],
+          "dtype": "float32",
+          "sha256_contiguous_values": "878cf62d465bcb3319dc2292c1dffb191c12fd1ed7660f38c0848638a5c30650"
+        },
+        "values": {
+          "shape": [
+            4096,
+            64
+          ],
+          "dtype": "float32",
+          "sha256_contiguous_values": "547c55924c1404a043dc8be465f69a12654014bfbc4b569af8f8507fa7cea6fc"
+        },
+        "queries": {
+          "shape": [
+            7,
+            64
+          ],
+          "dtype": "float32",
+          "sha256_contiguous_values": "1a35971dd9217dede9163e2cbbce2fee26ec58a8d30de2972fc03a2f3532297e"
+        }
+      }
+    },
+    "results/model_traces/gpu_prose_4096_layer23.npz": {
+      "sha256": "dc379707e840e156189980012f87e0961b39438b2522585db8aea86e2e978b72",
+      "arrays": {
+        "keys": {
+          "shape": [
+            4096,
+            64
+          ],
+          "dtype": "float32",
+          "sha256_contiguous_values": "59f795f2b00f88a7f09cf39967a1b329798605859cc0d07b407a4b22215d047d"
+        },
+        "values": {
+          "shape": [
+            4096,
+            64
+          ],
+          "dtype": "float32",
+          "sha256_contiguous_values": "f47feb4566f41ee18d87ff788e9d9929ed6a62e9d26530e82300bb9caca07653"
+        },
+        "queries": {
+          "shape": [
+            7,
+            64
+          ],
+          "dtype": "float32",
+          "sha256_contiguous_values": "d42033768f6b42146eb8f8d6f9afdfa34a2de3f70d01bf253f69e601f6441b21"
+        }
+      }
+    }
+  },
+  "command": [
+    "/home/ubuntu/contracted-moment-kernels/.venv/bin/python",
+    "scripts/benchmark_gpu.py",
+    "--repeats",
+    "7",
+    "--inner",
+    "20",
+    "--seed",
+    "902105",
+    "--output",
+    "results/gh200/reproduction.json",
+    "--trace",
+    "results/model_traces/gpu_prose_4096_layer0.npz",
+    "--trace",
+    "results/model_traces/gpu_prose_4096_layer12.npz",
+    "--trace",
+    "results/model_traces/gpu_prose_4096_layer23.npz"
+  ],
+  "cwd": "/home/ubuntu/contracted-moment-kernels",
+  "environment_overrides": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1"
+  },
+  "started_utc": "2026-09-05T17:15:34.545587+00:00",
+  "completed_utc": "2026-09-05T17:16:04.924707+00:00",
+  "elapsed_seconds": 30.379101974999685,
+  "exit_code": 0,
+  "original_measurement": {
+    "path": "results/gh200/benchmark.json",
+    "sha256": "23ae3987e0687c2335dd0a526c8ad34feb7bfa0c18286fa72992db7f27f1c136",
+    "unchanged": true,
+    "relationship": "Original measurement was taken during development before formatting and final host ABI dimension/pointer/mode guards. This run measures the committed d2c3668 source and its rebuilt CUDA library. Hot numerical device algorithms and the 66-case protocol are unchanged; existing paper claims continue to reference the original data. Documentation may be edited concurrently; all runtime sources and the library are checked immutable."
+  },
+  "reproduction_measurement": {
+    "path": "results/gh200/reproduction.json",
+    "sha256": "23731994f37b90453c5fdd683d147164707008323c7d7d28fc3112ebb33254f1"
+  },
+  "counts": {
+    "cases": 66,
+    "failed_cases": 0,
+    "numerical_false_screens_vs_binary64": 0,
+    "per_query_coverage_count_changes": 0,
+    "accepted_bf16_mismatches_vs_binary64": 0,
+    "accepted_bf16_mismatches_vs_flash": 1691,
+    "finite_break_even_cases": 0,
+    "complete_pipeline_faster_than_flash_cases": 0
+  },
+  "validation_regression_observed": false,
+  "latency_ratio_summary_reproduction_over_original": {
+    "graph_timings.dense_bf16_flash.gpu_ms": {
+      "minimum": 0.9939195699711629,
+      "p10": 0.9992722857968009,
+      "median": 1.0066540064948644,
+      "p90": 1.0557407754336317,
+      "maximum": 1.064249559151045
+    },
+    "graph_timings.screen_original.gpu_ms": {
+      "minimum": 0.9784990970516056,
+      "p10": 0.9961869190874286,
+      "median": 1.0021567064303478,
+      "p90": 1.0099429356658465,
+      "maximum": 1.018554753115267
+    },
+    "graph_timings.screen_shared.gpu_ms": {
+      "minimum": 0.989477079844022,
+      "p10": 0.994160879426568,
+      "median": 0.999670583279445,
+      "p90": 1.0048145069234937,
+      "maximum": 1.0151320174823728
+    },
+    "graph_timings.screen_parallel.gpu_ms": {
+      "minimum": 0.9892728426817038,
+      "p10": 0.9949477584203422,
+      "median": 1.0016567777173808,
+      "p90": 1.0060251363480361,
+      "maximum": 1.0141078508068258
+    },
+    "timings.screen_and_batch_fallback.wall_ms": {
+      "minimum": 0.8675776775658283,
+      "p10": 1.0163707663020438,
+      "median": 1.0754723451842902,
+      "p90": 1.1168238521022866,
+      "maximum": 1.6107061472066968
+    },
+    "timings.dense_bf16_flash.wall_ms": {
+      "minimum": 0.742017103136682,
+      "p10": 0.9933482503020081,
+      "median": 1.1116335110153988,
+      "p90": 1.1598661989854495,
+      "maximum": 1.8740663241435995
+    }
+  },
+  "comparison": [
+    {
+      "N": 1024,
+      "d": 64,
+      "h": 64,
+      "Q": 1,
+      "rank": 0,
+      "profile": "tight",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 2,
+      "numerical_coordinate_passes_reproduction": 2,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.009656000137329101,
+          "reproduction": 0.009651199728250504,
+          "reproduction_over_original": 0.9995028573932969
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.015675200521945952,
+          "reproduction": 0.015587200224399567,
+          "reproduction_over_original": 0.9943860177467472
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.015161600708961488,
+          "reproduction": 0.015164799988269806,
+          "reproduction_over_original": 1.000211011974905
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.013779200613498688,
+          "reproduction": 0.013820800185203552,
+          "reproduction_over_original": 1.0030190119783953
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.11116599999922983,
+          "reproduction": 0.1213244499922439,
+          "reproduction_over_original": 1.091380907769322
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.02863710000156061,
+          "reproduction": 0.031054700002641766,
+          "reproduction_over_original": 1.0844219561669795
+        }
+      },
+      "original_setup_ms": 2.5712579999890295,
+      "reproduction_setup_ms": 2.5358670009154594
+    },
+    {
+      "N": 1024,
+      "d": 64,
+      "h": 64,
+      "Q": 1,
+      "rank": 0,
+      "profile": "moderate",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 0,
+      "numerical_coordinate_passes_reproduction": 0,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.009614399820566177,
+          "reproduction": 0.009643200039863586,
+          "reproduction_over_original": 1.002995529605062
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.015600000321865082,
+          "reproduction": 0.01557919979095459,
+          "reproduction_over_original": 0.9986666326614534
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.015092800557613372,
+          "reproduction": 0.015167999267578124,
+          "reproduction_over_original": 1.0049824225582056
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.01377439945936203,
+          "reproduction": 0.013806399703025819,
+          "reproduction_over_original": 1.0023231679724547
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.1000458500016066,
+          "reproduction": 0.15721924996796588,
+          "reproduction_over_original": 1.5714719797516954
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.04369805000123961,
+          "reproduction": 0.049147699974128045,
+          "reproduction_over_original": 1.124711513963068
+        }
+      },
+      "original_setup_ms": 2.645883999775833,
+      "reproduction_setup_ms": 2.7188450012545218
+    },
+    {
+      "N": 1024,
+      "d": 64,
+      "h": 64,
+      "Q": 1,
+      "rank": 0,
+      "profile": "broad",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 0,
+      "numerical_coordinate_passes_reproduction": 0,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.009583999961614608,
+          "reproduction": 0.009641599655151368,
+          "reproduction_over_original": 1.0060099847420132
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.015614399313926696,
+          "reproduction": 0.015609599649906158,
+          "reproduction_over_original": 0.9996926129578192
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.015107199549674988,
+          "reproduction": 0.0151296004652977,
+          "reproduction_over_original": 1.001482797360891
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.01379680037498474,
+          "reproduction": 0.013804799318313599,
+          "reproduction_over_original": 1.000579767997757
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.14174550000234376,
+          "reproduction": 0.1542783999866515,
+          "reproduction_over_original": 1.0884183271010404
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.043693250006526796,
+          "reproduction": 0.04877970000052301,
+          "reproduction_over_original": 1.116412718056826
+        }
+      },
+      "original_setup_ms": 2.6007000001300185,
+      "reproduction_setup_ms": 2.6141700000152923
+    },
+    {
+      "N": 1024,
+      "d": 64,
+      "h": 64,
+      "Q": 1,
+      "rank": 4,
+      "profile": "tight",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 1,
+      "numerical_whole_output_passes_reproduction": 1,
+      "numerical_coordinate_passes_original": 64,
+      "numerical_coordinate_passes_reproduction": 64,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 4,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 4,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.00957920029759407,
+          "reproduction": 0.009612800180912017,
+          "reproduction_over_original": 1.0035075875098245
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.019350400567054747,
+          "reproduction": 0.019303999841213226,
+          "reproduction_over_original": 0.9976020793119642
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.018540799617767334,
+          "reproduction": 0.018512000143527985,
+          "reproduction_over_original": 0.9984466972928314
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.01732800006866455,
+          "reproduction": 0.017343999445438386,
+          "reproduction_over_original": 1.0009233250640834
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.12224925000055009,
+          "reproduction": 0.13928465000390133,
+          "reproduction_over_original": 1.1393497301887299
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.0445444500087433,
+          "reproduction": 0.04988529999536695,
+          "reproduction_over_original": 1.1198993361816194
+        }
+      },
+      "original_setup_ms": 3.071808000186138,
+      "reproduction_setup_ms": 3.069697000682936
+    },
+    {
+      "N": 1024,
+      "d": 64,
+      "h": 64,
+      "Q": 1,
+      "rank": 4,
+      "profile": "moderate",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 46,
+      "numerical_coordinate_passes_reproduction": 46,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.009622400254011154,
+          "reproduction": 0.009657599776983262,
+          "reproduction_over_original": 1.0036580813563056
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.019313600659370423,
+          "reproduction": 0.019351999461650848,
+          "reproduction_over_original": 1.0019881741865566
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.01847040057182312,
+          "reproduction": 0.018596799671649934,
+          "reproduction_over_original": 1.0068433328955322
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.017367999255657195,
+          "reproduction": 0.017366400361061095,
+          "reproduction_over_original": 0.9999079401966476
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.140809449999324,
+          "reproduction": 0.1537071999791806,
+          "reproduction_over_original": 1.0915971902448203
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.043429250001736364,
+          "reproduction": 0.049710949997461285,
+          "reproduction_over_original": 1.1446421477569557
+        }
+      },
+      "original_setup_ms": 2.9631679999511107,
+      "reproduction_setup_ms": 2.951680000478518
+    },
+    {
+      "N": 1024,
+      "d": 64,
+      "h": 64,
+      "Q": 1,
+      "rank": 4,
+      "profile": "broad",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 0,
+      "numerical_coordinate_passes_reproduction": 0,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.009644799679517747,
+          "reproduction": 0.009623999893665313,
+          "reproduction_over_original": 0.9978434196101962
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.01929599940776825,
+          "reproduction": 0.01934400051832199,
+          "reproduction_over_original": 1.0024876198189774
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.018508799374103546,
+          "reproduction": 0.018638400733470915,
+          "reproduction_over_original": 1.007002148369964
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.017360000312328337,
+          "reproduction": 0.017339199781417847,
+          "reproduction_over_original": 0.9988018127571278
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.13969584999813378,
+          "reproduction": 0.1531295999939175,
+          "reproduction_over_original": 1.0961642739992863
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.04346124999301537,
+          "reproduction": 0.04650290002246038,
+          "reproduction_over_original": 1.069985332449799
+        }
+      },
+      "original_setup_ms": 2.9760630000055244,
+      "reproduction_setup_ms": 3.053216000807879
+    },
+    {
+      "N": 1024,
+      "d": 64,
+      "h": 64,
+      "Q": 1,
+      "rank": 16,
+      "profile": "tight",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 1,
+      "numerical_whole_output_passes_reproduction": 1,
+      "numerical_coordinate_passes_original": 64,
+      "numerical_coordinate_passes_reproduction": 64,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 4,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 4,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.009616000205278396,
+          "reproduction": 0.009670399874448777,
+          "reproduction_over_original": 1.0056572034119258
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.03426240086555481,
+          "reproduction": 0.03458879888057709,
+          "reproduction_over_original": 1.009526419829803
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.03217119872570038,
+          "reproduction": 0.03236159980297089,
+          "reproduction_over_original": 1.0059183706175798
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.030995199084281923,
+          "reproduction": 0.031060799956321716,
+          "reproduction_over_original": 1.0021164849388904
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.08755615000382022,
+          "reproduction": 0.09302974999627622,
+          "reproduction_over_original": 1.0625153115140076
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.02397945000893742,
+          "reproduction": 0.026829050011656363,
+          "reproduction_over_original": 1.1188350859447096
+        }
+      },
+      "original_setup_ms": 43.44394800000373,
+      "reproduction_setup_ms": 43.81549499976245
+    },
+    {
+      "N": 1024,
+      "d": 64,
+      "h": 64,
+      "Q": 1,
+      "rank": 16,
+      "profile": "moderate",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 51,
+      "numerical_coordinate_passes_reproduction": 51,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.009545599669218063,
+          "reproduction": 0.009616000205278396,
+          "reproduction_over_original": 1.0073751821257868
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.03429119884967804,
+          "reproduction": 0.034569600224494935,
+          "reproduction_over_original": 1.008118741372599
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.03218879997730255,
+          "reproduction": 0.032287999987602234,
+          "reproduction_over_original": 1.0030818176002099
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.030924800038337707,
+          "reproduction": 0.031070399284362792,
+          "reproduction_over_original": 1.0047081709774868
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.10628274999362475,
+          "reproduction": 0.11409395001464873,
+          "reproduction_over_original": 1.0734945230669373
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.023685050007316022,
+          "reproduction": 0.02764350001598359,
+          "reproduction_over_original": 1.1671286320883787
+        }
+      },
+      "original_setup_ms": 43.317992999845956,
+      "reproduction_setup_ms": 46.49181100012356
+    },
+    {
+      "N": 1024,
+      "d": 64,
+      "h": 64,
+      "Q": 1,
+      "rank": 16,
+      "profile": "broad",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 0,
+      "numerical_coordinate_passes_reproduction": 0,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.00955360010266304,
+          "reproduction": 0.009622400254011154,
+          "reproduction_over_original": 1.0072014895545958
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.032620799541473386,
+          "reproduction": 0.03288159966468811,
+          "reproduction_over_original": 1.007994902849734
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.030752000212669373,
+          "reproduction": 0.030931198596954347,
+          "reproduction_over_original": 1.0058272106869701
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.029300799965858458,
+          "reproduction": 0.0295632004737854,
+          "reproduction_over_original": 1.0089554042289868
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.10466989999713405,
+          "reproduction": 0.11483319999570085,
+          "reproduction_over_original": 1.0970985928031372
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.022773050000068906,
+          "reproduction": 0.027158650027558906,
+          "reproduction_over_original": 1.1925785095749901
+        }
+      },
+      "original_setup_ms": 44.17592300001161,
+      "reproduction_setup_ms": 46.15372800071782
+    },
+    {
+      "N": 1024,
+      "d": 64,
+      "h": 64,
+      "Q": 32,
+      "rank": 0,
+      "profile": "tight",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 230,
+      "numerical_coordinate_passes_reproduction": 230,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.009769599884748459,
+          "reproduction": 0.00979200005531311,
+          "reproduction_over_original": 1.0022928442135712
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.016505600512027742,
+          "reproduction": 0.016598400473594666,
+          "reproduction_over_original": 1.005622331735177
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.016059200465679168,
+          "reproduction": 0.016011199355125426,
+          "reproduction_over_original": 0.997010990014333
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.017153599858283998,
+          "reproduction": 0.01709440052509308,
+          "reproduction_over_original": 0.9965488682445668
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.12896779999209684,
+          "reproduction": 0.11612280000008468,
+          "reproduction_over_original": 0.9004014956229438
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.0379812000005586,
+          "reproduction": 0.028182699998069438,
+          "reproduction_over_original": 0.742017103136682
+        }
+      },
+      "original_setup_ms": 2.4954190000698873,
+      "reproduction_setup_ms": 2.0995099994252087
+    },
+    {
+      "N": 1024,
+      "d": 64,
+      "h": 64,
+      "Q": 32,
+      "rank": 0,
+      "profile": "moderate",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 0,
+      "numerical_coordinate_passes_reproduction": 0,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.009743999689817429,
+          "reproduction": 0.009759999811649323,
+          "reproduction_over_original": 1.0016420486803397
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.016595199704170227,
+          "reproduction": 0.016518400609493257,
+          "reproduction_over_original": 0.9953722102748983
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.016100800037384032,
+          "reproduction": 0.016020800173282623,
+          "reproduction_over_original": 0.9950313112444313
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.01717599928379059,
+          "reproduction": 0.01711679995059967,
+          "reproduction_over_original": 0.9965533689066471
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.1341678500011767,
+          "reproduction": 0.1459439499740256,
+          "reproduction_over_original": 1.0877713995770641
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.040369999999256834,
+          "reproduction": 0.04639404996851226,
+          "reproduction_over_original": 1.1492209553967383
+        }
+      },
+      "original_setup_ms": 2.5931799996214977,
+      "reproduction_setup_ms": 2.6616910008669947
+    },
+    {
+      "N": 1024,
+      "d": 64,
+      "h": 64,
+      "Q": 32,
+      "rank": 0,
+      "profile": "broad",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 0,
+      "numerical_coordinate_passes_reproduction": 0,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.009839999675750732,
+          "reproduction": 0.009830400347709656,
+          "reproduction_over_original": 0.9990244585002648
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.016568000614643096,
+          "reproduction": 0.016683200001716615,
+          "reproduction_over_original": 1.0069531254707766
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.0160303995013237,
+          "reproduction": 0.016072000563144683,
+          "reproduction_over_original": 1.0025951356868896
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.017211200296878816,
+          "reproduction": 0.017052799463272095,
+          "reproduction_over_original": 0.9907966422518802
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.1308189999917886,
+          "reproduction": 0.14148465002108424,
+          "reproduction_over_original": 1.0815298238785278
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.03872199999932491,
+          "reproduction": 0.04342924999036768,
+          "reproduction_over_original": 1.1215652598296793
+        }
+      },
+      "original_setup_ms": 2.5312589998520707,
+      "reproduction_setup_ms": 2.5698510007714503
+    },
+    {
+      "N": 1024,
+      "d": 64,
+      "h": 64,
+      "Q": 32,
+      "rank": 4,
+      "profile": "tight",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 32,
+      "numerical_whole_output_passes_reproduction": 32,
+      "numerical_coordinate_passes_original": 2048,
+      "numerical_coordinate_passes_reproduction": 2048,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 151,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 151,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.009801600128412247,
+          "reproduction": 0.009814400225877762,
+          "reproduction_over_original": 1.001305919166036
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.020472000539302825,
+          "reproduction": 0.02035039961338043,
+          "reproduction_over_original": 0.9940601346854725
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.01987359970808029,
+          "reproduction": 0.019752000272274018,
+          "reproduction_over_original": 0.9938813583048655
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.020839999616146087,
+          "reproduction": 0.020713600516319274,
+          "reproduction_over_original": 0.9939347839656925
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.07941045000734448,
+          "reproduction": 0.12790689997927984,
+          "reproduction_over_original": 1.6107061472066968
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.023797049993845576,
+          "reproduction": 0.04459725000742765,
+          "reproduction_over_original": 1.8740663241435995
+        }
+      },
+      "original_setup_ms": 2.968798999745559,
+      "reproduction_setup_ms": 3.034528999705799
+    },
+    {
+      "N": 1024,
+      "d": 64,
+      "h": 64,
+      "Q": 32,
+      "rank": 4,
+      "profile": "moderate",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 1616,
+      "numerical_coordinate_passes_reproduction": 1616,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.009723199903964997,
+          "reproduction": 0.009775999933481216,
+          "reproduction_over_original": 1.0054303140980048
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.02046079933643341,
+          "reproduction": 0.02038719952106476,
+          "reproduction_over_original": 0.9964028866048456
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.019918400049209594,
+          "reproduction": 0.019708800315856933,
+          "reproduction_over_original": 0.989477079844022
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.02088160067796707,
+          "reproduction": 0.020657600462436677,
+          "reproduction_over_original": 0.9892728426817038
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.13048140000364583,
+          "reproduction": 0.1132027499807009,
+          "reproduction_over_original": 0.8675776775658283
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.0398803999928532,
+          "reproduction": 0.045998899986443575,
+          "reproduction_over_original": 1.1534212293429065
+        }
+      },
+      "original_setup_ms": 3.021183999862842,
+      "reproduction_setup_ms": 2.942973999779497
+    },
+    {
+      "N": 1024,
+      "d": 64,
+      "h": 64,
+      "Q": 32,
+      "rank": 4,
+      "profile": "broad",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 0,
+      "numerical_coordinate_passes_reproduction": 0,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.0098191998898983,
+          "reproduction": 0.009824000298976898,
+          "reproduction_over_original": 1.0004888798611318
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.020369599759578704,
+          "reproduction": 0.020422400534152986,
+          "reproduction_over_original": 1.0025921360850232
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.01985599994659424,
+          "reproduction": 0.01971520036458969,
+          "reproduction_over_original": 0.9929089654319475
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.020761600136756896,
+          "reproduction": 0.020656000077724456,
+          "reproduction_over_original": 0.9949136839965681
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.13239659999726427,
+          "reproduction": 0.14381430000867113,
+          "reproduction_over_original": 1.086238619508679
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.03926120000414812,
+          "reproduction": 0.04452205002962728,
+          "reproduction_over_original": 1.1339961596926056
+        }
+      },
+      "original_setup_ms": 2.907551000134845,
+      "reproduction_setup_ms": 2.9621099993164535
+    },
+    {
+      "N": 1024,
+      "d": 64,
+      "h": 64,
+      "Q": 32,
+      "rank": 16,
+      "profile": "tight",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 32,
+      "numerical_whole_output_passes_reproduction": 32,
+      "numerical_coordinate_passes_original": 2048,
+      "numerical_coordinate_passes_reproduction": 2048,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 151,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 151,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.009758400171995163,
+          "reproduction": 0.00979039967060089,
+          "reproduction_over_original": 1.0032791746640561
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.03574720025062561,
+          "reproduction": 0.03625440001487732,
+          "reproduction_over_original": 1.0141885171620633
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.03379839956760407,
+          "reproduction": 0.03367680013179779,
+          "reproduction_over_original": 0.9964022132005672
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.03482080101966858,
+          "reproduction": 0.03472639918327332,
+          "reproduction_over_original": 0.9972889240445119
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.0938330000053611,
+          "reproduction": 0.09863464997579285,
+          "reproduction_over_original": 1.0511722951430458
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.024769899994225852,
+          "reproduction": 0.027110649989481317,
+          "reproduction_over_original": 1.0944997757682156
+        }
+      },
+      "original_setup_ms": 42.436799999904906,
+      "reproduction_setup_ms": 43.629029999465274
+    },
+    {
+      "N": 1024,
+      "d": 64,
+      "h": 64,
+      "Q": 32,
+      "rank": 16,
+      "profile": "moderate",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 1699,
+      "numerical_coordinate_passes_reproduction": 1699,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.009747199714183807,
+          "reproduction": 0.009755200147628785,
+          "reproduction_over_original": 1.0008207930153863
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.035699200630187986,
+          "reproduction": 0.03613759875297547,
+          "reproduction_over_original": 1.012280334434625
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.03368319869041443,
+          "reproduction": 0.033744001388549806,
+          "reproduction_over_original": 1.0018051343251042
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.03487359881401062,
+          "reproduction": 0.03474240005016327,
+          "reproduction_over_original": 0.9962378771245529
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.10964914999931352,
+          "reproduction": 0.11665719998745772,
+          "reproduction_over_original": 1.063913400041752
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.024397050003699405,
+          "reproduction": 0.02726265001911088,
+          "reproduction_over_original": 1.1174568242872378
+        }
+      },
+      "original_setup_ms": 46.22388100028729,
+      "reproduction_setup_ms": 44.83160299969313
+    },
+    {
+      "N": 1024,
+      "d": 64,
+      "h": 64,
+      "Q": 32,
+      "rank": 16,
+      "profile": "broad",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 0,
+      "numerical_coordinate_passes_reproduction": 0,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.009752000123262406,
+          "reproduction": 0.009865599870681762,
+          "reproduction_over_original": 1.0116488664872323
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.033929601311683655,
+          "reproduction": 0.03446879982948303,
+          "reproduction_over_original": 1.0158916844570673
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.03243359923362732,
+          "reproduction": 0.03216640055179596,
+          "reproduction_over_original": 0.9917616703620631
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.033287999033927915,
+          "reproduction": 0.03333280086517334,
+          "reproduction_over_original": 1.0013458853804869
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.10993559999405988,
+          "reproduction": 0.11426360001678404,
+          "reproduction_over_original": 1.0393685032233235
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.025561849997757236,
+          "reproduction": 0.026795500025400543,
+          "reproduction_over_original": 1.0482613749690084
+        }
+      },
+      "original_setup_ms": 42.98749500026133,
+      "reproduction_setup_ms": 45.94371099938144
+    },
+    {
+      "N": 8192,
+      "d": 64,
+      "h": 64,
+      "Q": 1,
+      "rank": 0,
+      "profile": "tight",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 6,
+      "numerical_coordinate_passes_reproduction": 6,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.014588800072669984,
+          "reproduction": 0.015432000160217285,
+          "reproduction_over_original": 1.0577977683803423
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.03195520043373108,
+          "reproduction": 0.03211199939250946,
+          "reproduction_over_original": 1.0049068369670704
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.03186399936676025,
+          "reproduction": 0.03193280100822449,
+          "reproduction_over_original": 1.0021592280577312
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.01510079950094223,
+          "reproduction": 0.015084800124168397,
+          "reproduction_over_original": 0.9989404947219626
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.1054954999972324,
+          "reproduction": 0.11495319999994535,
+          "reproduction_over_original": 1.0896502694708408
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.023416249996444094,
+          "reproduction": 0.027408299956732662,
+          "reproduction_over_original": 1.1704820353769192
+        }
+      },
+      "original_setup_ms": 11.625819000300908,
+      "reproduction_setup_ms": 11.94418900013261
+    },
+    {
+      "N": 8192,
+      "d": 64,
+      "h": 64,
+      "Q": 1,
+      "rank": 0,
+      "profile": "moderate",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 0,
+      "numerical_coordinate_passes_reproduction": 0,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.014591999351978302,
+          "reproduction": 0.015433600544929505,
+          "reproduction_over_original": 1.0576755229116086
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.03200159966945648,
+          "reproduction": 0.03202239871025085,
+          "reproduction_over_original": 1.000649937534661
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.03192000091075897,
+          "reproduction": 0.031851199269294736,
+          "reproduction_over_original": 0.9978445601660041
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.015105600655078887,
+          "reproduction": 0.01515360027551651,
+          "reproduction_over_original": 1.0031776042233371
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.10411790000262044,
+          "reproduction": 0.11514194998198946,
+          "reproduction_over_original": 1.1058804487901845
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.025075450002987054,
+          "reproduction": 0.027328249962010887,
+          "reproduction_over_original": 1.0898408586388468
+        }
+      },
+      "original_setup_ms": 11.720315000047776,
+      "reproduction_setup_ms": 11.628985999777797
+    },
+    {
+      "N": 8192,
+      "d": 64,
+      "h": 64,
+      "Q": 1,
+      "rank": 0,
+      "profile": "broad",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 0,
+      "numerical_coordinate_passes_reproduction": 0,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.01451839953660965,
+          "reproduction": 0.015451200306415558,
+          "reproduction_over_original": 1.064249559151045
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.03196159899234772,
+          "reproduction": 0.0320576012134552,
+          "reproduction_over_original": 1.0030036739128874
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.03189919888973236,
+          "reproduction": 0.03188959956169128,
+          "reproduction_over_original": 0.999699073068441
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.015171200037002563,
+          "reproduction": 0.015124799311161041,
+          "reproduction_over_original": 0.9969415256717761
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.10414030000447383,
+          "reproduction": 0.12635974999284372,
+          "reproduction_over_original": 1.213360725746088
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.023912250003377267,
+          "reproduction": 0.03506914999888977,
+          "reproduction_over_original": 1.466576754338749
+        }
+      },
+      "original_setup_ms": 11.56210700014526,
+      "reproduction_setup_ms": 12.9756880005516
+    },
+    {
+      "N": 8192,
+      "d": 64,
+      "h": 64,
+      "Q": 1,
+      "rank": 4,
+      "profile": "tight",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 1,
+      "numerical_whole_output_passes_reproduction": 1,
+      "numerical_coordinate_passes_original": 64,
+      "numerical_coordinate_passes_reproduction": 64,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 10,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 10,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.014547200500965118,
+          "reproduction": 0.015433600544929505,
+          "reproduction_over_original": 1.0609326890012674
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.035692799091339114,
+          "reproduction": 0.035820800065994265,
+          "reproduction_over_original": 1.0035861848303798
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.03559519946575165,
+          "reproduction": 0.035519999265670774,
+          "reproduction_over_original": 0.9978873499457918
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.018721599876880646,
+          "reproduction": 0.01875839978456497,
+          "reproduction_over_original": 1.0019656390440097
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.08472090000850585,
+          "reproduction": 0.10219464998044714,
+          "reproduction_over_original": 1.206250759496027
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.02496824999980163,
+          "reproduction": 0.03273955003351148,
+          "reproduction_over_original": 1.311247285403326
+        }
+      },
+      "original_setup_ms": 13.540271999772813,
+      "reproduction_setup_ms": 15.342751000389399
+    },
+    {
+      "N": 8192,
+      "d": 64,
+      "h": 64,
+      "Q": 1,
+      "rank": 4,
+      "profile": "moderate",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 45,
+      "numerical_coordinate_passes_reproduction": 45,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.014612799882888794,
+          "reproduction": 0.015246400237083435,
+          "reproduction_over_original": 1.0433592712739856
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.03574239909648895,
+          "reproduction": 0.03578880131244659,
+          "reproduction_over_original": 1.0012982401050465
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.03556160032749176,
+          "reproduction": 0.035534399747848514,
+          "reproduction_over_original": 0.9992351137352438
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.018718400597572328,
+          "reproduction": 0.018796800076961516,
+          "reproduction_over_original": 1.0041883642237766
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.1056522999988374,
+          "reproduction": 0.11560765001377149,
+          "reproduction_over_original": 1.0942274802824323
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.024403450004228944,
+          "reproduction": 0.027403500007494586,
+          "reproduction_over_original": 1.122935486693306
+        }
+      },
+      "original_setup_ms": 13.446638000004896,
+      "reproduction_setup_ms": 13.61822199942253
+    },
+    {
+      "N": 8192,
+      "d": 64,
+      "h": 64,
+      "Q": 1,
+      "rank": 4,
+      "profile": "broad",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 0,
+      "numerical_coordinate_passes_reproduction": 0,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.014603200554847717,
+          "reproduction": 0.015432000160217285,
+          "reproduction_over_original": 1.0567546547249491
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.035734400153160095,
+          "reproduction": 0.035785600543022156,
+          "reproduction_over_original": 1.0014328039548057
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.035576000809669495,
+          "reproduction": 0.035543999075889586,
+          "reproduction_over_original": 0.9991004684885433
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.01876160055398941,
+          "reproduction": 0.018783999979496,
+          "reproduction_over_original": 1.0011938973672387
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.10532594999403955,
+          "reproduction": 0.11472440000943607,
+          "reproduction_over_original": 1.0892320460050764
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.02383225000812672,
+          "reproduction": 0.027321849984218716,
+          "reproduction_over_original": 1.1464234377745304
+        }
+      },
+      "original_setup_ms": 13.392397999723471,
+      "reproduction_setup_ms": 13.640589999340591
+    },
+    {
+      "N": 8192,
+      "d": 64,
+      "h": 64,
+      "Q": 1,
+      "rank": 16,
+      "profile": "tight",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 1,
+      "numerical_whole_output_passes_reproduction": 1,
+      "numerical_coordinate_passes_original": 64,
+      "numerical_coordinate_passes_reproduction": 64,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 10,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 10,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.014588800072669984,
+          "reproduction": 0.015387199819087982,
+          "reproduction_over_original": 1.0547268961423144
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.05135840177536011,
+          "reproduction": 0.05128480195999145,
+          "reproduction_over_original": 0.998566937193829
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.04966880083084106,
+          "reproduction": 0.04953919947147369,
+          "reproduction_over_original": 0.9973906887784797
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.03288640081882477,
+          "reproduction": 0.03274720013141632,
+          "reproduction_over_original": 0.995767226454019
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.09001055000226188,
+          "reproduction": 0.09624105000511918,
+          "reproduction_over_original": 1.0692196637249827
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.023665850005727407,
+          "reproduction": 0.027144300020154333,
+          "reproduction_over_original": 1.146981833045722
+        }
+      },
+      "original_setup_ms": 338.5939199999939,
+      "reproduction_setup_ms": 348.2704090001789
+    },
+    {
+      "N": 8192,
+      "d": 64,
+      "h": 64,
+      "Q": 1,
+      "rank": 16,
+      "profile": "moderate",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 50,
+      "numerical_coordinate_passes_reproduction": 50,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.01459839940071106,
+          "reproduction": 0.015488000214099884,
+          "reproduction_over_original": 1.0609382432258632
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.05124800205230713,
+          "reproduction": 0.05137119889259338,
+          "reproduction_over_original": 1.0024039345018856
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.04965600073337555,
+          "reproduction": 0.049534401297569274,
+          "reproduction_over_original": 0.9975511633234583
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.03285439908504486,
+          "reproduction": 0.0327567994594574,
+          "reproduction_over_original": 0.997029328543346
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.10896114999923157,
+          "reproduction": 0.11421079998399364,
+          "reproduction_over_original": 1.048179098557597
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.02413949999890974,
+          "reproduction": 0.027680300036081462,
+          "reproduction_over_original": 1.1466807530119365
+        }
+      },
+      "original_setup_ms": 339.905995999743,
+      "reproduction_setup_ms": 337.4905540003965
+    },
+    {
+      "N": 8192,
+      "d": 64,
+      "h": 64,
+      "Q": 1,
+      "rank": 16,
+      "profile": "broad",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 0,
+      "numerical_coordinate_passes_reproduction": 0,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.014577600359916686,
+          "reproduction": 0.015432000160217285,
+          "reproduction_over_original": 1.0586104557132667
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.049639999866485596,
+          "reproduction": 0.049675199389457705,
+          "reproduction_over_original": 1.0007090959521914
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.048187199234962466,
+          "reproduction": 0.048023998737335205,
+          "reproduction_over_original": 0.9966131981061715
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.031123200058937074,
+          "reproduction": 0.031206399202346802,
+          "reproduction_over_original": 1.0026732194392665
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.10701395000296543,
+          "reproduction": 0.1103915499697905,
+          "reproduction_over_original": 1.0315622399391058
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.0240514499978417,
+          "reproduction": 0.02666585000952182,
+          "reproduction_over_original": 1.1087003075454795
+        }
+      },
+      "original_setup_ms": 338.7087349999547,
+      "reproduction_setup_ms": 342.2044259996255
+    },
+    {
+      "N": 8192,
+      "d": 64,
+      "h": 64,
+      "Q": 32,
+      "rank": 0,
+      "profile": "tight",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 248,
+      "numerical_coordinate_passes_reproduction": 248,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.015479999780654907,
+          "reproduction": 0.015625600516796113,
+          "reproduction_over_original": 1.0094057324421388
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.038211199641227725,
+          "reproduction": 0.03781279921531677,
+          "reproduction_over_original": 0.9895737262987917
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.037028801441192624,
+          "reproduction": 0.037031999230384825,
+          "reproduction_over_original": 1.0000863595111842
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.024916799366474153,
+          "reproduction": 0.024928000569343568,
+          "reproduction_over_original": 1.000449544209297
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.10363149999648158,
+          "reproduction": 0.11404920001041319,
+          "reproduction_over_original": 1.1005263844900952
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.023598650000167254,
+          "reproduction": 0.027403449985285988,
+          "reproduction_over_original": 1.1612295612287893
+        }
+      },
+      "original_setup_ms": 11.531739000247399,
+      "reproduction_setup_ms": 11.739290999685181
+    },
+    {
+      "N": 8192,
+      "d": 64,
+      "h": 64,
+      "Q": 32,
+      "rank": 0,
+      "profile": "moderate",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 0,
+      "numerical_coordinate_passes_reproduction": 0,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.015494400262832641,
+          "reproduction": 0.015523199737071992,
+          "reproduction_over_original": 1.0018587020956489
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.038180801272392276,
+          "reproduction": 0.037801599502563475,
+          "reproduction_over_original": 0.9900682605604981
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.036801600456237794,
+          "reproduction": 0.036959999799728395,
+          "reproduction_over_original": 1.0043041427961525
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.024876800179481507,
+          "reproduction": 0.024967999756336214,
+          "reproduction_over_original": 1.0036660493390115
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.11396764999744846,
+          "reproduction": 0.11601080000218644,
+          "reproduction_over_original": 1.0179274557717364
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.029264299996611953,
+          "reproduction": 0.02775390003080247,
+          "reproduction_over_original": 0.9483876270409902
+        }
+      },
+      "original_setup_ms": 12.91098599972429,
+      "reproduction_setup_ms": 11.833689999548369
+    },
+    {
+      "N": 8192,
+      "d": 64,
+      "h": 64,
+      "Q": 32,
+      "rank": 0,
+      "profile": "broad",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 0,
+      "numerical_coordinate_passes_reproduction": 0,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.01544319987297058,
+          "reproduction": 0.015644800662994385,
+          "reproduction_over_original": 1.0130543405305954
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.03854719996452331,
+          "reproduction": 0.03771840035915375,
+          "reproduction_over_original": 0.9784990970516056
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.03678880035877228,
+          "reproduction": 0.03691680133342743,
+          "reproduction_over_original": 1.0034793462523066
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.02489279955625534,
+          "reproduction": 0.024953599274158477,
+          "reproduction_over_original": 1.002442462036692
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.10645390000263433,
+          "reproduction": 0.1151164000020799,
+          "reproduction_over_original": 1.0813732517007946
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.023974650002855924,
+          "reproduction": 0.02777470003820781,
+          "reproduction_over_original": 1.1585028367421095
+        }
+      },
+      "original_setup_ms": 11.499160999846936,
+      "reproduction_setup_ms": 11.707096999998612
+    },
+    {
+      "N": 8192,
+      "d": 64,
+      "h": 64,
+      "Q": 32,
+      "rank": 4,
+      "profile": "tight",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 32,
+      "numerical_whole_output_passes_reproduction": 32,
+      "numerical_coordinate_passes_original": 2048,
+      "numerical_coordinate_passes_reproduction": 2048,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 199,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 199,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.015520000457763672,
+          "reproduction": 0.01557759940624237,
+          "reproduction_over_original": 1.0037112723440602
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.04182080030441284,
+          "reproduction": 0.04189600050449371,
+          "reproduction_over_original": 1.0017981530610005
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.041044801473617554,
+          "reproduction": 0.04073599874973297,
+          "reproduction_over_original": 0.9924764473746311
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.028891199827194215,
+          "reproduction": 0.02894560098648071,
+          "reproduction_over_original": 1.0018829664261741
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.08925055000190696,
+          "reproduction": 0.09485859995947976,
+          "reproduction_over_original": 1.062834906423019
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.024013050006033154,
+          "reproduction": 0.02734585000325751,
+          "reproduction_over_original": 1.138791198801777
+        }
+      },
+      "original_setup_ms": 13.428173999955106,
+      "reproduction_setup_ms": 13.579565999862098
+    },
+    {
+      "N": 8192,
+      "d": 64,
+      "h": 64,
+      "Q": 32,
+      "rank": 4,
+      "profile": "moderate",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 1533,
+      "numerical_coordinate_passes_reproduction": 1533,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.01557919979095459,
+          "reproduction": 0.01552799940109253,
+          "reproduction_over_original": 0.9967135417384025
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.04169760048389435,
+          "reproduction": 0.041529598832130435,
+          "reproduction_over_original": 0.9959709515700117
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.04108799993991852,
+          "reproduction": 0.04070239961147308,
+          "reproduction_over_original": 0.9906152567900777
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.028862398862838746,
+          "reproduction": 0.029016000032424927,
+          "reproduction_over_original": 1.0053218434931945
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.1052779500014367,
+          "reproduction": 0.1128107500335318,
+          "reproduction_over_original": 1.0715515455229923
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.02433629999814002,
+          "reproduction": 0.027165050005351077,
+          "reproduction_over_original": 1.1162358290877106
+        }
+      },
+      "original_setup_ms": 13.580047999994349,
+      "reproduction_setup_ms": 13.563629000600486
+    },
+    {
+      "N": 8192,
+      "d": 64,
+      "h": 64,
+      "Q": 32,
+      "rank": 4,
+      "profile": "broad",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 0,
+      "numerical_coordinate_passes_reproduction": 0,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.015513600409030914,
+          "reproduction": 0.015564799308776855,
+          "reproduction_over_original": 1.0033002590240843
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.041396799683570865,
+          "reproduction": 0.041710400581359865,
+          "reproduction_over_original": 1.0075754865155302
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.04042559862136841,
+          "reproduction": 0.0405023992061615,
+          "reproduction_over_original": 1.0018998008047428
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.028406399488449096,
+          "reproduction": 0.028472000360488893,
+          "reproduction_over_original": 1.002309369480862
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.10422349999998914,
+          "reproduction": 0.11406840003473917,
+          "reproduction_over_original": 1.0944595032286486
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.024065900004188734,
+          "reproduction": 0.02765470003396331,
+          "reproduction_over_original": 1.149123865267866
+        }
+      },
+      "original_setup_ms": 13.576751999835324,
+      "reproduction_setup_ms": 13.687213999219239
+    },
+    {
+      "N": 8192,
+      "d": 64,
+      "h": 64,
+      "Q": 32,
+      "rank": 16,
+      "profile": "tight",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 32,
+      "numerical_whole_output_passes_reproduction": 32,
+      "numerical_coordinate_passes_original": 2048,
+      "numerical_coordinate_passes_reproduction": 2048,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 199,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 199,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.015526400506496429,
+          "reproduction": 0.015624000132083893,
+          "reproduction_over_original": 1.0062860432813534
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.056595200300216676,
+          "reproduction": 0.056657600402832034,
+          "reproduction_over_original": 1.001102568809446
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.053472000360488894,
+          "reproduction": 0.05329599976539612,
+          "reproduction_over_original": 0.9967085466429861
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.04158399999141693,
+          "reproduction": 0.0415120005607605,
+          "reproduction_over_original": 0.99826857852368
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.09930025000812748,
+          "reproduction": 0.10432264998598839,
+          "reproduction_over_original": 1.0505779187610287
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.025283449997459684,
+          "reproduction": 0.02629305004120397,
+          "reproduction_over_original": 1.0399312611153035
+        }
+      },
+      "original_setup_ms": 337.1195979998447,
+      "reproduction_setup_ms": 344.8278139994727
+    },
+    {
+      "N": 8192,
+      "d": 64,
+      "h": 64,
+      "Q": 32,
+      "rank": 16,
+      "profile": "moderate",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 1635,
+      "numerical_coordinate_passes_reproduction": 1635,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.015486399829387664,
+          "reproduction": 0.015612800419330598,
+          "reproduction_over_original": 1.0081620383908125
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.057145601511001586,
+          "reproduction": 0.05708479881286621,
+          "reproduction_over_original": 0.9989360038825793
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.053699201345443724,
+          "reproduction": 0.05371040105819702,
+          "reproduction_over_original": 1.0002085638607778
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.041547200083732604,
+          "reproduction": 0.04156000018119812,
+          "reproduction_over_original": 1.00030808568182
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.1179388499963352,
+          "reproduction": 0.12260290000085661,
+          "reproduction_over_original": 1.0395463412155226
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.02485945000216816,
+          "reproduction": 0.027309100005368236,
+          "reproduction_over_original": 1.0985399919542238
+        }
+      },
+      "original_setup_ms": 341.2212119999367,
+      "reproduction_setup_ms": 342.4163330000738
+    },
+    {
+      "N": 8192,
+      "d": 64,
+      "h": 64,
+      "Q": 32,
+      "rank": 16,
+      "profile": "broad",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 0,
+      "numerical_coordinate_passes_reproduction": 0,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.015537600219249725,
+          "reproduction": 0.015671999752521516,
+          "reproduction_over_original": 1.0086499543929108
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.05489439964294433,
+          "reproduction": 0.05512160062789917,
+          "reproduction_over_original": 1.004138873663482
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.05176640152931213,
+          "reproduction": 0.0517408013343811,
+          "reproduction_over_original": 0.9995054669790687
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.04003680050373078,
+          "reproduction": 0.039950400590896606,
+          "reproduction_over_original": 0.9978419875777507
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.11584285000481032,
+          "reproduction": 0.12115644999539654,
+          "reproduction_over_original": 1.0458690371513268
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.023889850001523882,
+          "reproduction": 0.026286649972462328,
+          "reproduction_over_original": 1.100327125150872
+        }
+      },
+      "original_setup_ms": 332.55017600004066,
+      "reproduction_setup_ms": 340.8011479996276
+    },
+    {
+      "N": 32768,
+      "d": 64,
+      "h": 64,
+      "Q": 1,
+      "rank": 0,
+      "profile": "tight",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 0,
+      "numerical_coordinate_passes_reproduction": 0,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.03129599988460541,
+          "reproduction": 0.03289119899272919,
+          "reproduction_over_original": 1.050971341833001
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.11480799913406373,
+          "reproduction": 0.11499040126800537,
+          "reproduction_over_original": 1.0015887580596945
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.11463040113449097,
+          "reproduction": 0.11478240489959717,
+          "reproduction_over_original": 1.0013260336141356
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.01643040031194687,
+          "reproduction": 0.016577599942684172,
+          "reproduction_over_original": 1.0089589801795804
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.10570515000836167,
+          "reproduction": 0.11523160001161159,
+          "reproduction_over_original": 1.0901228559109593
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.03620194999029991,
+          "reproduction": 0.03553960000317602,
+          "reproduction_over_original": 0.9817040245815112
+        }
+      },
+      "original_setup_ms": 44.59464700016724,
+      "reproduction_setup_ms": 44.321327000034216
+    },
+    {
+      "N": 32768,
+      "d": 64,
+      "h": 64,
+      "Q": 1,
+      "rank": 0,
+      "profile": "moderate",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 0,
+      "numerical_coordinate_passes_reproduction": 0,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.031327998638153075,
+          "reproduction": 0.03287520110607147,
+          "reproduction_over_original": 1.049387210647862
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.11485600471496582,
+          "reproduction": 0.11510560512542725,
+          "reproduction_over_original": 1.0021731594362946
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.11460640430450439,
+          "reproduction": 0.11486079692840576,
+          "reproduction_over_original": 1.0022197068780332
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.016545599699020384,
+          "reproduction": 0.016582399606704712,
+          "reproduction_over_original": 1.0022241507321434
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.1064699500034294,
+          "reproduction": 0.11394194998501916,
+          "reproduction_over_original": 1.0701794260385122
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.036013199996887124,
+          "reproduction": 0.03559394999683718,
+          "reproduction_over_original": 0.9883584352380188
+        }
+      },
+      "original_setup_ms": 44.942428000013024,
+      "reproduction_setup_ms": 43.804263999845716
+    },
+    {
+      "N": 32768,
+      "d": 64,
+      "h": 64,
+      "Q": 1,
+      "rank": 0,
+      "profile": "broad",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 0,
+      "numerical_coordinate_passes_reproduction": 0,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.031409600377082826,
+          "reproduction": 0.032924801111221313,
+          "reproduction_over_original": 1.048240051320233
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.11483360528945923,
+          "reproduction": 0.11495519876480102,
+          "reproduction_over_original": 1.0010588666534965
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.11463359594345093,
+          "reproduction": 0.11472959518432617,
+          "reproduction_over_original": 1.0008374442072165
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.016475200653076172,
+          "reproduction": 0.01655520051717758,
+          "reproduction_over_original": 1.0048557747966773
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.10492749999002626,
+          "reproduction": 0.11361554998075007,
+          "reproduction_over_original": 1.0828005050301364
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.036378000004333444,
+          "reproduction": 0.03572999999050808,
+          "reproduction_over_original": 0.9821870357428067
+        }
+      },
+      "original_setup_ms": 44.12184300008448,
+      "reproduction_setup_ms": 44.29150000032678
+    },
+    {
+      "N": 32768,
+      "d": 64,
+      "h": 64,
+      "Q": 1,
+      "rank": 4,
+      "profile": "tight",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 1,
+      "numerical_whole_output_passes_reproduction": 1,
+      "numerical_coordinate_passes_original": 64,
+      "numerical_coordinate_passes_reproduction": 64,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 2,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 2,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.03130080103874207,
+          "reproduction": 0.032836800813674925,
+          "reproduction_over_original": 1.0490722193669004
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.11864960193634033,
+          "reproduction": 0.11876000165939331,
+          "reproduction_over_original": 1.0009304685498415
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.1181439995765686,
+          "reproduction": 0.11815680265426635,
+          "reproduction_over_original": 1.000108368412646
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.02008959949016571,
+          "reproduction": 0.020177599787712098,
+          "reproduction_over_original": 1.0043803908380287
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.08310964999509451,
+          "reproduction": 0.09361059996990662,
+          "reproduction_over_original": 1.1263505498510933
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.035616349998690566,
+          "reproduction": 0.03633794999586826,
+          "reproduction_over_original": 1.0202603578750833
+        }
+      },
+      "original_setup_ms": 51.50499199976366,
+      "reproduction_setup_ms": 51.42511099984404
+    },
+    {
+      "N": 32768,
+      "d": 64,
+      "h": 64,
+      "Q": 1,
+      "rank": 4,
+      "profile": "moderate",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 53,
+      "numerical_coordinate_passes_reproduction": 53,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.03130080103874207,
+          "reproduction": 0.032846400141716005,
+          "reproduction_over_original": 1.0493788993150972
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.11868959665298462,
+          "reproduction": 0.11875519752502442,
+          "reproduction_over_original": 1.0005527095372275
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.11810719966888428,
+          "reproduction": 0.11820000410079956,
+          "reproduction_over_original": 1.0007857643918021
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.020131200551986694,
+          "reproduction": 0.020160000026226043,
+          "reproduction_over_original": 1.0014305890085877
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.10371790000363035,
+          "reproduction": 0.11570040001060988,
+          "reproduction_over_original": 1.1155297205840085
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.03573960000267107,
+          "reproduction": 0.03621795003709849,
+          "reproduction_over_original": 1.0133843141610894
+        }
+      },
+      "original_setup_ms": 52.19683999985136,
+      "reproduction_setup_ms": 51.3952879991848
+    },
+    {
+      "N": 32768,
+      "d": 64,
+      "h": 64,
+      "Q": 1,
+      "rank": 4,
+      "profile": "broad",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 0,
+      "numerical_coordinate_passes_reproduction": 0,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.03134079873561859,
+          "reproduction": 0.03283360004425049,
+          "reproduction_over_original": 1.047631246453695
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.11817599534988403,
+          "reproduction": 0.11816799640655518,
+          "reproduction_over_original": 0.9999323132984396
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.11813280582427979,
+          "reproduction": 0.11811679601669312,
+          "reproduction_over_original": 0.9998644761929172
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.020099200308322906,
+          "reproduction": 0.020022399723529816,
+          "reproduction_over_original": 0.9961789233593892
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.10705075000032593,
+          "reproduction": 0.11352275000717782,
+          "reproduction_over_original": 1.0604573065282792
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.03584520000003977,
+          "reproduction": 0.03624040000431705,
+          "reproduction_over_original": 1.0110251861972273
+        }
+      },
+      "original_setup_ms": 51.574849000189715,
+      "reproduction_setup_ms": 51.39806999977736
+    },
+    {
+      "N": 32768,
+      "d": 64,
+      "h": 64,
+      "Q": 1,
+      "rank": 16,
+      "profile": "tight",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 1,
+      "numerical_whole_output_passes_reproduction": 1,
+      "numerical_coordinate_passes_original": 64,
+      "numerical_coordinate_passes_reproduction": 64,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 2,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 2,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.031672000885009766,
+          "reproduction": 0.03189440071582794,
+          "reproduction_over_original": 1.0070219697083753
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.13427200317382812,
+          "reproduction": 0.13423680067062377,
+          "reproduction_over_original": 0.9997378269306165
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.1326640009880066,
+          "reproduction": 0.1325487971305847,
+          "reproduction_over_original": 0.9991316117668402
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.034406399726867674,
+          "reproduction": 0.03442080020904541,
+          "reproduction_over_original": 1.000418540803224
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.09206494999034476,
+          "reproduction": 0.09908105002978118,
+          "reproduction_over_original": 1.076208155657199
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.036185999999815976,
+          "reproduction": 0.03595554999265005,
+          "reproduction_over_original": 0.9936315147524706
+        }
+      },
+      "original_setup_ms": 1353.1138680004915,
+      "reproduction_setup_ms": 1360.3875040007551
+    },
+    {
+      "N": 32768,
+      "d": 64,
+      "h": 64,
+      "Q": 1,
+      "rank": 16,
+      "profile": "moderate",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 56,
+      "numerical_coordinate_passes_reproduction": 56,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.0316783994436264,
+          "reproduction": 0.03185279965400696,
+          "reproduction_over_original": 1.0055053352897743
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.1342911958694458,
+          "reproduction": 0.1341264009475708,
+          "reproduction_over_original": 0.9987728538657501
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.13267040252685547,
+          "reproduction": 0.1324895977973938,
+          "reproduction_over_original": 0.9986371886568667
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.03440800011157989,
+          "reproduction": 0.03448159992694855,
+          "reproduction_over_original": 1.002139032060276
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.11686685000995567,
+          "reproduction": 0.11833724997813988,
+          "reproduction_over_original": 1.0125818396582003
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.03622919999770602,
+          "reproduction": 0.03597794998313475,
+          "reproduction_over_original": 0.9930649858515458
+        }
+      },
+      "original_setup_ms": 1358.59478999987,
+      "reproduction_setup_ms": 1346.8191399997522
+    },
+    {
+      "N": 32768,
+      "d": 64,
+      "h": 64,
+      "Q": 1,
+      "rank": 16,
+      "profile": "broad",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 0,
+      "numerical_coordinate_passes_reproduction": 0,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.031681600213050845,
+          "reproduction": 0.03187359869480133,
+          "reproduction_over_original": 1.006060252021973
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.13265440464019776,
+          "reproduction": 0.13262079954147338,
+          "reproduction_over_original": 0.9997466718212974
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.13130559921264648,
+          "reproduction": 0.13107839822769166,
+          "reproduction_over_original": 0.9982696778635702
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.0329263985157013,
+          "reproduction": 0.032995200157165526,
+          "reproduction_over_original": 1.0020895586692065
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.11540760000343653,
+          "reproduction": 0.11799799999607785,
+          "reproduction_over_original": 1.0224456620930007
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.03664519999801996,
+          "reproduction": 0.0361475500085362,
+          "reproduction_over_original": 0.9864197769554908
+        }
+      },
+      "original_setup_ms": 1353.2857739999145,
+      "reproduction_setup_ms": 1347.3709209993103
+    },
+    {
+      "N": 32768,
+      "d": 64,
+      "h": 64,
+      "Q": 32,
+      "rank": 0,
+      "profile": "tight",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 206,
+      "numerical_coordinate_passes_reproduction": 206,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.034041601419448855,
+          "reproduction": 0.03403840065002441,
+          "reproduction_over_original": 0.999905974769371
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.13528319597244262,
+          "reproduction": 0.1350767970085144,
+          "reproduction_over_original": 0.998474319279312
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.13492640256881713,
+          "reproduction": 0.13489600419998168,
+          "reproduction_over_original": 0.999774704073801
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.052339202165603636,
+          "reproduction": 0.05255680084228516,
+          "reproduction_over_original": 1.0041574702646983
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.1367438499983109,
+          "reproduction": 0.13871824999114324,
+          "reproduction_over_original": 1.014438674886342
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.03751240000156031,
+          "reproduction": 0.03805159999501484,
+          "reproduction_over_original": 1.014373913517453
+        }
+      },
+      "original_setup_ms": 44.83407300017461,
+      "reproduction_setup_ms": 43.55831000066246
+    },
+    {
+      "N": 32768,
+      "d": 64,
+      "h": 64,
+      "Q": 32,
+      "rank": 0,
+      "profile": "moderate",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 0,
+      "numerical_coordinate_passes_reproduction": 0,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.034001600742340085,
+          "reproduction": 0.03405599892139435,
+          "reproduction_over_original": 1.0015998711197889
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.1352336049079895,
+          "reproduction": 0.13488320112228394,
+          "reproduction_over_original": 0.9974089000589464
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.13502240180969238,
+          "reproduction": 0.13483200073242188,
+          "reproduction_over_original": 0.9985898556482585
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.0522816002368927,
+          "reproduction": 0.05270400047302246,
+          "reproduction_over_original": 1.0080793287545873
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.13492140000153086,
+          "reproduction": 0.138247799986857,
+          "reproduction_over_original": 1.0246543542039173
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.03765479999628951,
+          "reproduction": 0.0382260000151291,
+          "reproduction_over_original": 1.0151693812978924
+        }
+      },
+      "original_setup_ms": 44.812729999875955,
+      "reproduction_setup_ms": 44.03745000035997
+    },
+    {
+      "N": 32768,
+      "d": 64,
+      "h": 64,
+      "Q": 32,
+      "rank": 0,
+      "profile": "broad",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 0,
+      "numerical_coordinate_passes_reproduction": 0,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.03410080075263977,
+          "reproduction": 0.03407680094242096,
+          "reproduction_over_original": 0.9992962097754565
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.13530880212783813,
+          "reproduction": 0.13559839725494385,
+          "reproduction_over_original": 1.002140253424401
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.13510080575942993,
+          "reproduction": 0.13487679958343507,
+          "reproduction_over_original": 0.9983419330866632
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.05244160294532776,
+          "reproduction": 0.052724802494049074,
+          "reproduction_over_original": 1.0054002839885836
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.1351982500068516,
+          "reproduction": 0.13867180000488588,
+          "reproduction_over_original": 1.0256922704092564
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.03765799999655428,
+          "reproduction": 0.03802920000453014,
+          "reproduction_over_original": 1.0098571354827612
+        }
+      },
+      "original_setup_ms": 44.417909999992844,
+      "reproduction_setup_ms": 44.06404299970745
+    },
+    {
+      "N": 32768,
+      "d": 64,
+      "h": 64,
+      "Q": 32,
+      "rank": 4,
+      "profile": "tight",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 32,
+      "numerical_whole_output_passes_reproduction": 32,
+      "numerical_coordinate_passes_original": 2048,
+      "numerical_coordinate_passes_reproduction": 2048,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 91,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 91,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.03420799970626831,
+          "reproduction": 0.03400000035762787,
+          "reproduction_over_original": 0.9939195699711629
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.1432752013206482,
+          "reproduction": 0.14332000017166138,
+          "reproduction_over_original": 1.000312676936415
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.14751839637756348,
+          "reproduction": 0.14746559858322145,
+          "reproduction_over_original": 0.9996420934904492
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.06489440202713012,
+          "reproduction": 0.0654367983341217,
+          "reproduction_over_original": 1.0083581370665042
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.1232877000006738,
+          "reproduction": 0.1289436999741156,
+          "reproduction_over_original": 1.045876433524276
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.03736515000127838,
+          "reproduction": 0.03805799997280701,
+          "reproduction_over_original": 1.0185426787127825
+        }
+      },
+      "original_setup_ms": 50.96914699993249,
+      "reproduction_setup_ms": 51.460631999361794
+    },
+    {
+      "N": 32768,
+      "d": 64,
+      "h": 64,
+      "Q": 32,
+      "rank": 4,
+      "profile": "moderate",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 1668,
+      "numerical_coordinate_passes_reproduction": 1668,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.03405919969081879,
+          "reproduction": 0.03403359949588776,
+          "reproduction_over_original": 0.9992483618181454
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.1429903984069824,
+          "reproduction": 0.1434015989303589,
+          "reproduction_over_original": 1.0028757212229462
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.1473520040512085,
+          "reproduction": 0.14739359617233277,
+          "reproduction_over_original": 1.000282263694967
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.06486080288887024,
+          "reproduction": 0.06540480256080627,
+          "reproduction_over_original": 1.0083871868325174
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.14839355000049181,
+          "reproduction": 0.15093594997779292,
+          "reproduction_over_original": 1.0171328199729213
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.03743240000630976,
+          "reproduction": 0.038120399995023035,
+          "reproduction_over_original": 1.0183797990136165
+        }
+      },
+      "original_setup_ms": 51.099196999985,
+      "reproduction_setup_ms": 51.26251699948625
+    },
+    {
+      "N": 32768,
+      "d": 64,
+      "h": 64,
+      "Q": 32,
+      "rank": 4,
+      "profile": "broad",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 0,
+      "numerical_coordinate_passes_reproduction": 0,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.03409120142459869,
+          "reproduction": 0.03407520055770874,
+          "reproduction_over_original": 0.9995306452626687
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.14297120571136473,
+          "reproduction": 0.14337600469589235,
+          "reproduction_over_original": 1.0028313322428353
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.14567359685897827,
+          "reproduction": 0.14576640129089355,
+          "reproduction_over_original": 1.0006370710541672
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.06305919885635376,
+          "reproduction": 0.06338559985160827,
+          "reproduction_over_original": 1.005176104377698
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.1454447500009337,
+          "reproduction": 0.14957595003579627,
+          "reproduction_over_original": 1.0284039130655183
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.0374243999999635,
+          "reproduction": 0.03809159998127143,
+          "reproduction_over_original": 1.017827940629872
+        }
+      },
+      "original_setup_ms": 51.11314899977515,
+      "reproduction_setup_ms": 51.159413001187204
+    },
+    {
+      "N": 32768,
+      "d": 64,
+      "h": 64,
+      "Q": 32,
+      "rank": 16,
+      "profile": "tight",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 32,
+      "numerical_whole_output_passes_reproduction": 32,
+      "numerical_coordinate_passes_original": 2048,
+      "numerical_coordinate_passes_reproduction": 2048,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 91,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 91,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.03405919969081879,
+          "reproduction": 0.03402400016784668,
+          "reproduction_over_original": 0.9989665193753334
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.18049919605255127,
+          "reproduction": 0.18019360303878784,
+          "reproduction_over_original": 0.9983069563718474
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.1958143949508667,
+          "reproduction": 0.1955135941505432,
+          "reproduction_over_original": 0.9984638473570905
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.11340800523757935,
+          "reproduction": 0.11356799602508545,
+          "reproduction_over_original": 1.0014107539161008
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.17435859999750392,
+          "reproduction": 0.17674585001259402,
+          "reproduction_over_original": 1.013691610365788
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.03756520000024466,
+          "reproduction": 0.03804840002885612,
+          "reproduction_over_original": 1.0128629696796054
+        }
+      },
+      "original_setup_ms": 1356.6136169999936,
+      "reproduction_setup_ms": 1349.0207609984282
+    },
+    {
+      "N": 32768,
+      "d": 64,
+      "h": 64,
+      "Q": 32,
+      "rank": 16,
+      "profile": "moderate",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 1745,
+      "numerical_coordinate_passes_reproduction": 1745,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.03399359881877899,
+          "reproduction": 0.03395200073719025,
+          "reproduction_over_original": 0.9987762966254177
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.18010560274124146,
+          "reproduction": 0.1808575987815857,
+          "reproduction_over_original": 1.0041753062031313
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.19564640522003174,
+          "reproduction": 0.19561920166015626,
+          "reproduction_over_original": 0.9998609554832102
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.11333919763565063,
+          "reproduction": 0.11360479593276977,
+          "reproduction_over_original": 1.0023433931301768
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.19888530000571336,
+          "reproduction": 0.19966449999628821,
+          "reproduction_over_original": 1.003917836011774
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.037451599996529694,
+          "reproduction": 0.03805480000664829,
+          "reproduction_over_original": 1.016106121238465
+        }
+      },
+      "original_setup_ms": 1367.7255740001328,
+      "reproduction_setup_ms": 1378.179817000273
+    },
+    {
+      "N": 32768,
+      "d": 64,
+      "h": 64,
+      "Q": 32,
+      "rank": 16,
+      "profile": "broad",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 0,
+      "numerical_coordinate_passes_reproduction": 0,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.03402880132198334,
+          "reproduction": 0.03402239978313446,
+          "reproduction_over_original": 0.9998118788026559
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.17796000242233276,
+          "reproduction": 0.17848960161209107,
+          "reproduction_over_original": 1.0029759450581568
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.18988800048828125,
+          "reproduction": 0.1897279977798462,
+          "reproduction_over_original": 0.999157383784001
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.1072816014289856,
+          "reproduction": 0.10760480165481567,
+          "reproduction_over_original": 1.0030126342404015
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.19229965000704397,
+          "reproduction": 0.19530119998307782,
+          "reproduction_over_original": 1.0156087126311666
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.03745320000234642,
+          "reproduction": 0.038198799984456855,
+          "reproduction_over_original": 1.0199075107617968
+        }
+      },
+      "original_setup_ms": 1354.594716000065,
+      "reproduction_setup_ms": 1338.0740559996411
+    },
+    {
+      "N": 8192,
+      "d": 64,
+      "h": 64,
+      "Q": 32,
+      "rank": 4,
+      "profile": "centered",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 6,
+      "numerical_whole_output_passes_reproduction": 6,
+      "numerical_coordinate_passes_original": 1986,
+      "numerical_coordinate_passes_reproduction": 1986,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 626,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 626,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.015489600598812103,
+          "reproduction": 0.01573439985513687,
+          "reproduction_over_original": 1.0158041038413568
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.041649600863456725,
+          "reproduction": 0.042422398924827576,
+          "reproduction_over_original": 1.018554753115267
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.040612798929214475,
+          "reproduction": 0.0410975992679596,
+          "reproduction_over_original": 1.0119371319270583
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.02887200117111206,
+          "reproduction": 0.02906399965286255,
+          "reproduction_over_original": 1.0066499887074885
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.1049563500032491,
+          "reproduction": 0.11512119999679271,
+          "reproduction_over_original": 1.0968483564189202
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.024318650002896902,
+          "reproduction": 0.027176300000064657,
+          "reproduction_over_original": 1.1175085786763388
+        }
+      },
+      "original_setup_ms": 13.481325999691762,
+      "reproduction_setup_ms": 13.597613999991154
+    },
+    {
+      "N": 8192,
+      "d": 64,
+      "h": 64,
+      "Q": 32,
+      "rank": 4,
+      "profile": "midpoint",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 0,
+      "numerical_coordinate_passes_reproduction": 0,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.015505599975585937,
+          "reproduction": 0.015585599839687348,
+          "reproduction_over_original": 1.005159417515438
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.0401775985956192,
+          "reproduction": 0.040443199872970584,
+          "reproduction_over_original": 1.0066106807433817
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.038960000872612,
+          "reproduction": 0.03912639915943146,
+          "reproduction_over_original": 1.0042710031594593
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.02730880081653595,
+          "reproduction": 0.027422401309013366,
+          "reproduction_over_original": 1.0041598491724553
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.10336110000253029,
+          "reproduction": 0.11455479998403462,
+          "reproduction_over_original": 1.1082970283910514
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.024291449994962022,
+          "reproduction": 0.02633949998198659,
+          "reproduction_over_original": 1.0843115576653237
+        }
+      },
+      "original_setup_ms": 13.376910000033604,
+      "reproduction_setup_ms": 13.133960000232037
+    },
+    {
+      "N": 1024,
+      "d": 64,
+      "h": 64,
+      "Q": 32,
+      "rank": 64,
+      "profile": "tight",
+      "trace": null,
+      "status": "ok",
+      "numerical_whole_output_passes_original": 32,
+      "numerical_whole_output_passes_reproduction": 32,
+      "numerical_coordinate_passes_original": 2048,
+      "numerical_coordinate_passes_reproduction": 2048,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 151,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 151,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.00971520021557808,
+          "reproduction": 0.009756799787282944,
+          "reproduction_over_original": 1.0042819057540533
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.24888319969177247,
+          "reproduction": 0.25151040554046633,
+          "reproduction_over_original": 1.0105559790775251
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.22193920612335205,
+          "reproduction": 0.22529759407043456,
+          "reproduction_over_original": 1.0151320174823728
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.2229680061340332,
+          "reproduction": 0.22611360549926757,
+          "reproduction_over_original": 1.0141078508068258
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.28565264999542705,
+          "reproduction": 0.29333904999475635,
+          "reproduction_over_original": 1.0269082047705573
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.024611499998172803,
+          "reproduction": 0.02690270002858597,
+          "reproduction_over_original": 1.0930946927486447
+        }
+      },
+      "original_setup_ms": 530.1721050000197,
+      "reproduction_setup_ms": 602.4373429991101
+    },
+    {
+      "N": 4096,
+      "d": 64,
+      "h": 64,
+      "Q": 7,
+      "rank": 0,
+      "profile": "trained_trace",
+      "trace": "results/model_traces/gpu_prose_4096_layer0.npz",
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 0,
+      "numerical_coordinate_passes_reproduction": 0,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.011803200095891952,
+          "reproduction": 0.012134400010108948,
+          "reproduction_over_original": 1.028060179572171
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.023651200532913207,
+          "reproduction": 0.02377600073814392,
+          "reproduction_over_original": 1.0052766964221136
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.023150399327278137,
+          "reproduction": 0.02311519980430603,
+          "reproduction_over_original": 0.9984795284748876
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.014867199957370758,
+          "reproduction": 0.014918400347232819,
+          "reproduction_over_original": 1.0034438488759732
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.10334030000649364,
+          "reproduction": 0.11388440002519928,
+          "reproduction_over_original": 1.1020327986085108
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.02443390000053114,
+          "reproduction": 0.027611500036073267,
+          "reproduction_over_original": 1.1300488270588425
+        }
+      },
+      "original_setup_ms": 6.113762000040879,
+      "reproduction_setup_ms": 6.286497000473901
+    },
+    {
+      "N": 4096,
+      "d": 64,
+      "h": 64,
+      "Q": 7,
+      "rank": 4,
+      "profile": "trained_trace",
+      "trace": "results/model_traces/gpu_prose_4096_layer0.npz",
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 0,
+      "numerical_coordinate_passes_reproduction": 0,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.011828800290822982,
+          "reproduction": 0.012132800370454788,
+          "reproduction_over_original": 1.0256999925738584
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.027368000149726866,
+          "reproduction": 0.027566400170326234,
+          "reproduction_over_original": 1.0072493430105944
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.026675200462341307,
+          "reproduction": 0.026519998908042908,
+          "reproduction_over_original": 0.9941818036375207
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.018492799997329713,
+          "reproduction": 0.018400000035762788,
+          "reproduction_over_original": 0.9949818328441163
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.1041739500010408,
+          "reproduction": 0.1119595500313153,
+          "reproduction_over_original": 1.0747365347113815
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.023886650001259113,
+          "reproduction": 0.027643499970508856,
+          "reproduction_over_original": 1.1572782273383548
+        }
+      },
+      "original_setup_ms": 7.1102510000855546,
+      "reproduction_setup_ms": 7.060681999973895
+    },
+    {
+      "N": 4096,
+      "d": 64,
+      "h": 64,
+      "Q": 7,
+      "rank": 16,
+      "profile": "trained_trace",
+      "trace": "results/model_traces/gpu_prose_4096_layer0.npz",
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 0,
+      "numerical_coordinate_passes_reproduction": 0,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.011790399998426437,
+          "reproduction": 0.01210239976644516,
+          "reproduction_over_original": 1.026462186869009
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.0410863995552063,
+          "reproduction": 0.041294398903846743,
+          "reproduction_over_original": 1.0050624866352906
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.03927519917488098,
+          "reproduction": 0.03933759927749634,
+          "reproduction_over_original": 1.00158879150014
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.03102400004863739,
+          "reproduction": 0.031040000915527343,
+          "reproduction_over_original": 1.0005157576993575
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.1082219499949133,
+          "reproduction": 0.11318839997329633,
+          "reproduction_over_original": 1.0458913370034126
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.024478649993397994,
+          "reproduction": 0.02780189997793059,
+          "reproduction_over_original": 1.1357611627041888
+        }
+      },
+      "original_setup_ms": 165.89829800022926,
+      "reproduction_setup_ms": 165.3906179999467
+    },
+    {
+      "N": 4096,
+      "d": 64,
+      "h": 64,
+      "Q": 7,
+      "rank": 0,
+      "profile": "trained_trace",
+      "trace": "results/model_traces/gpu_prose_4096_layer12.npz",
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 0,
+      "numerical_coordinate_passes_reproduction": 0,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.011787199974060058,
+          "reproduction": 0.012206400185823441,
+          "reproduction_over_original": 1.0355640196726883
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.023643200099468232,
+          "reproduction": 0.023856000602245332,
+          "reproduction_over_original": 1.0090004949364653
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.023148800432682037,
+          "reproduction": 0.023119999468326567,
+          "reproduction_over_original": 0.998755833398831
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.014856000244617463,
+          "reproduction": 0.014867199957370758,
+          "reproduction_over_original": 1.0007538847986592
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.1041323499975988,
+          "reproduction": 0.11365235000084795,
+          "reproduction_over_original": 1.091422118135898
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.025333049995879264,
+          "reproduction": 0.027958700002272963,
+          "reproduction_over_original": 1.1036452384067765
+        }
+      },
+      "original_setup_ms": 6.005631000107314,
+      "reproduction_setup_ms": 6.260193000343861
+    },
+    {
+      "N": 4096,
+      "d": 64,
+      "h": 64,
+      "Q": 7,
+      "rank": 4,
+      "profile": "trained_trace",
+      "trace": "results/model_traces/gpu_prose_4096_layer12.npz",
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 0,
+      "numerical_coordinate_passes_reproduction": 0,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.011841599643230439,
+          "reproduction": 0.012153600156307221,
+          "reproduction_over_original": 1.026347834961229
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.02731040120124817,
+          "reproduction": 0.027432000637054442,
+          "reproduction_over_original": 1.0044524954031329
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.02662239968776703,
+          "reproduction": 0.026471999287605286,
+          "reproduction_over_original": 0.9943506069353
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.01847680062055588,
+          "reproduction": 0.018334400653839112,
+          "reproduction_over_original": 0.9922930398156516
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.10346349999963422,
+          "reproduction": 0.11568439999791735,
+          "reproduction_over_original": 1.118117983620565
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.025283449997459684,
+          "reproduction": 0.027905900014957297,
+          "reproduction_over_original": 1.1037220006668829
+        }
+      },
+      "original_setup_ms": 6.984040999896024,
+      "reproduction_setup_ms": 7.096968999576347
+    },
+    {
+      "N": 4096,
+      "d": 64,
+      "h": 64,
+      "Q": 7,
+      "rank": 16,
+      "profile": "trained_trace",
+      "trace": "results/model_traces/gpu_prose_4096_layer12.npz",
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 0,
+      "numerical_coordinate_passes_reproduction": 0,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.011814399808645248,
+          "reproduction": 0.012135999649763108,
+          "reproduction_over_original": 1.0272210054109163
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.04108319878578186,
+          "reproduction": 0.04127680063247681,
+          "reproduction_over_original": 1.0047124336083089
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.03925440013408661,
+          "reproduction": 0.03943679928779602,
+          "reproduction_over_original": 1.0046465912887819
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.031031998991966247,
+          "reproduction": 0.031092798709869383,
+          "reproduction_over_original": 1.0019592588256683
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.10647794999840698,
+          "reproduction": 0.1152811999872938,
+          "reproduction_over_original": 1.0826767418889875
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.024344249993646372,
+          "reproduction": 0.027414650003265706,
+          "reproduction_over_original": 1.1261242392113406
+        }
+      },
+      "original_setup_ms": 166.5046099999472,
+      "reproduction_setup_ms": 169.22947300099622
+    },
+    {
+      "N": 4096,
+      "d": 64,
+      "h": 64,
+      "Q": 7,
+      "rank": 0,
+      "profile": "trained_trace",
+      "trace": "results/model_traces/gpu_prose_4096_layer23.npz",
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 0,
+      "numerical_coordinate_passes_reproduction": 0,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.011851199716329575,
+          "reproduction": 0.01210559979081154,
+          "reproduction_over_original": 1.0214661874385114
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.023633599281311035,
+          "reproduction": 0.02388159930706024,
+          "reproduction_over_original": 1.0104935360372858
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.023207999765872955,
+          "reproduction": 0.023071999847888946,
+          "reproduction_over_original": 0.9941399552156152
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.014945599436759948,
+          "reproduction": 0.014852799475193024,
+          "reproduction_over_original": 0.9937908170254667
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.10434194999788815,
+          "reproduction": 0.1148075999935827,
+          "reproduction_over_original": 1.1003014606867743
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.024107450008159503,
+          "reproduction": 0.027360300009604543,
+          "reproduction_over_original": 1.13493131792637
+        }
+      },
+      "original_setup_ms": 6.054911999854085,
+      "reproduction_setup_ms": 6.202239998856385
+    },
+    {
+      "N": 4096,
+      "d": 64,
+      "h": 64,
+      "Q": 7,
+      "rank": 4,
+      "profile": "trained_trace",
+      "trace": "results/model_traces/gpu_prose_4096_layer23.npz",
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 0,
+      "numerical_coordinate_passes_reproduction": 0,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.011823999881744384,
+          "reproduction": 0.012142399698495865,
+          "reproduction_over_original": 1.0269282662327386
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.02733759880065918,
+          "reproduction": 0.027620801329612733,
+          "reproduction_over_original": 1.0103594515018899
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.026649600267410277,
+          "reproduction": 0.026547199487686156,
+          "reproduction_over_original": 0.9961575116063055
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.01850239932537079,
+          "reproduction": 0.01838880032300949,
+          "reproduction_over_original": 0.9938603096623513
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.10497869999426257,
+          "reproduction": 0.11463959999673534,
+          "reproduction_over_original": 1.0920272398400892
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.024789049996343238,
+          "reproduction": 0.027629050009636558,
+          "reproduction_over_original": 1.1145667144853177
+        }
+      },
+      "original_setup_ms": 6.99380200012456,
+      "reproduction_setup_ms": 7.115561998944031
+    },
+    {
+      "N": 4096,
+      "d": 64,
+      "h": 64,
+      "Q": 7,
+      "rank": 16,
+      "profile": "trained_trace",
+      "trace": "results/model_traces/gpu_prose_4096_layer23.npz",
+      "status": "ok",
+      "numerical_whole_output_passes_original": 0,
+      "numerical_whole_output_passes_reproduction": 0,
+      "numerical_coordinate_passes_original": 0,
+      "numerical_coordinate_passes_reproduction": 0,
+      "accepted_bf16_mismatches_vs_binary64_original": 0,
+      "accepted_bf16_mismatches_vs_binary64_reproduction": 0,
+      "accepted_bf16_mismatches_vs_flash_original": 0,
+      "accepted_bf16_mismatches_vs_flash_reproduction": 0,
+      "per_query_coverage_count_changed": 0,
+      "measurements": {
+        "graph_timings.dense_bf16_flash.gpu_ms": {
+          "original": 0.01178240031003952,
+          "reproduction": 0.012121599912643433,
+          "reproduction_over_original": 1.0287886673070248
+        },
+        "graph_timings.screen_original.gpu_ms": {
+          "original": 0.04106239974498749,
+          "reproduction": 0.041388800740242,
+          "reproduction_over_original": 1.0079489020924637
+        },
+        "graph_timings.screen_shared.gpu_ms": {
+          "original": 0.03930880129337311,
+          "reproduction": 0.03938240110874176,
+          "reproduction_over_original": 1.0018723495234403
+        },
+        "graph_timings.screen_parallel.gpu_ms": {
+          "original": 0.03105599880218506,
+          "reproduction": 0.031044799089431762,
+          "reproduction_over_original": 0.9996393703894493
+        },
+        "timings.screen_and_batch_fallback.wall_ms": {
+          "original": 0.10755795000250146,
+          "reproduction": 0.114054000005126,
+          "reproduction_over_original": 1.0603958145583239
+        },
+        "timings.dense_bf16_flash.wall_ms": {
+          "original": 0.023585849999108177,
+          "reproduction": 0.026715450030678767,
+          "reproduction_over_original": 1.1326897284468833
+        }
+      },
+      "original_setup_ms": 169.5068160001938,
+      "reproduction_setup_ms": 171.3936249998369
+    }
+  ],
+  "interpretation": "No functional or material device-latency regression observed. Parallel-reduction graph case medians stayed within -1.08%/+1.42% of the original. Eager host-wall times were noisier for both methods; all samples and the slower results are retained. Every complete pipeline remains slower than the dense baseline and no finite setup amortization appears. No further sweep or tuning was performed."
+}

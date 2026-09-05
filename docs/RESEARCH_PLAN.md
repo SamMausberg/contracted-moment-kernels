@@ -9,7 +9,7 @@ execution costs.
 |---|---|---|
 | Which information makes the boundary decision possible? | Box extrema, value-range coupling, exact rational oracle, strict-improvement example. | Separate a better representation from a faster implementation. |
 | Why does a screen fail? | Score radii, discarded-coordinate inflation, quadratic and Taylor terms, distance to the observation boundary. | Attribute rejection to an identifiable mathematical term. |
-| Does refining one block help? | Fixed-cell residual margins after each intersection, original-token fraction, broad-block controls. | Measure localization of uncertainty and its limits. |
+| Does refining one block help? | Fixed-cell residual margins after each intersection, correction-token fraction with validation reads accounted separately, broad-block controls. | Measure localization of uncertainty and its limits. |
 | Where does compression stop helping? | Rank and block-size sweeps, summary bytes, retained original K/V. | Explain the tradeoff between storage and bound width. |
 | Does GPU execution repay its overhead? | Dense fused and binary64 baselines, shared-scalar ablation, setup, transfers, screening, fallback, raw timing samples. | Determine the measured reuse and coverage needed to break even. |
 | Does the synthetic mechanism survive real activations? | Post-RoPE traces from pinned public model weights across layers and heads. | Report scope and failures before inferring model-wide usefulness. |

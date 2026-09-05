@@ -1,0 +1,111 @@
+[
+  {
+    "figure": "boundary_geometry",
+    "description": "Analytic two-block example: centers 0 and 2, masses in [1,2], centered numerators zero. No measured data.",
+    "sources": []
+  },
+  {
+    "figure": "coupled_geometry",
+    "description": "Analytic block: Z in [1,3], M in [-3,3], centered values in [-1/4,1/2]. Polygon support establishes both strict signs.",
+    "sources": []
+  },
+  {
+    "figure": "remainder_mechanism",
+    "description": "Analytic coefficients, evaluated numerically for visualization. The BF16 guide is a unit-scale reference, not a universal acceptance threshold.",
+    "sources": []
+  },
+  {
+    "figure": "selective_refinement",
+    "description": "Numerical CPU mechanism experiment. Correction tokens exclude full-source validation/fingerprinting reads. CPU timings include those reads; the counter is not memory traffic or speedup.",
+    "sources": [
+      {
+        "path": "results/experiments.json",
+        "sha256": "26cfc30c262c862a0d6e0048b21ef650cc12ef47204d384f1505a729b7f059e3"
+      }
+    ]
+  },
+  {
+    "figure": "coupling_ablation",
+    "description": "All 149 initial exact-rational coordinates. Zero box-width cases are included in counts but omitted from the width ratio CDF. Four added accepts include three explained by a global hull and one prescribed mass-weighted outlier witness.",
+    "sources": [
+      {
+        "path": "results/certification/coupling.json",
+        "sha256": "ec6cc7aed0a50647986789f8ed7cbdf7d7539d48220097bb519fc3626c9799a0"
+      }
+    ]
+  },
+  {
+    "figure": "gh200_latency",
+    "description": "Actual GH200 wall-clock medians and 10th\u201390th sample quantiles, tight synthetic rank 4 inputs. Shared-KV batches are not independent request batches. Setup plotted separately.",
+    "sources": [
+      {
+        "path": "results/gh200/benchmark.json",
+        "sha256": "23ae3987e0687c2335dd0a526c8ad34feb7bfa0c18286fa72992db7f27f1c136"
+      }
+    ]
+  },
+  {
+    "figure": "gh200_coverage_cost",
+    "description": "N=8192, Q=32, r=4 profile controls. A single failed coordinate sends this simple scheduler's complete batch to dense attention.",
+    "sources": [
+      {
+        "path": "results/gh200/benchmark.json",
+        "sha256": "23ae3987e0687c2335dd0a526c8ad34feb7bfa0c18286fa72992db7f27f1c136"
+      }
+    ]
+  },
+  {
+    "figure": "gh200_cost_breakdown",
+    "description": "Isolated phase times diagnose bottlenecks; their sum is not substituted for measured end-to-end latency. Setup includes construction, upload, and allocation.",
+    "sources": [
+      {
+        "path": "results/gh200/benchmark.json",
+        "sha256": "23ae3987e0687c2335dd0a526c8ad34feb7bfa0c18286fa72992db7f27f1c136"
+      }
+    ]
+  },
+  {
+    "figure": "gh200_amortization",
+    "description": "Left: derived amortization from measured setup and steady-state costs, no modeled speedup. Right: matched fixed-input CUDA graphs, excluding construction and fallback; not serving throughput.",
+    "sources": [
+      {
+        "path": "results/gh200/benchmark.json",
+        "sha256": "23ae3987e0687c2335dd0a526c8ad34feb7bfa0c18286fa72992db7f27f1c136"
+      }
+    ]
+  },
+  {
+    "figure": "gh200_kernel_ablation",
+    "description": "Matched three-variant kernel ablation. Sharing scalar work barely changes the serial-reduction bottleneck; parallel block reduction changes it. Every small-N regression is retained.",
+    "sources": [
+      {
+        "path": "results/gh200/benchmark.json",
+        "sha256": "23ae3987e0687c2335dd0a526c8ad34feb7bfa0c18286fa72992db7f27f1c136"
+      }
+    ]
+  },
+  {
+    "figure": "model_score_radii",
+    "description": "Qwen2.5-0.5B actual post-RoPE arrays. Left: all 24 layers and 14 heads at rank 8. Right: full rank in layers 0, 12, 23; scan-derived radii are diagnostic and cost token reads.",
+    "sources": [
+      {
+        "path": "results/model_traces/diagnostics.json",
+        "sha256": "39a130c158d0916724720af005c12e2447a073fed753309a341125267b6baaa1"
+      },
+      {
+        "path": "results/model_traces/manifest.json",
+        "sha256": "06cfc029079d515e0596f5b56f91613a4318e029a47f07cd5f161c60edc5ac5f"
+      }
+    ]
+  },
+  {
+    "figure": "model_error_budget",
+    "description": "Maximum-channel centered-numerator terms divided by true shifted mass, versus minimum-channel BF16 margin. Box plots show quartiles and 1.5 IQR whiskers; extreme values remain in JSON. Terms diagnose scale and are not added as an exact output error decomposition.",
+    "sources": [
+      {
+        "path": "results/model_traces/diagnostics.json",
+        "sha256": "39a130c158d0916724720af005c12e2447a073fed753309a341125267b6baaa1"
+      }
+    ]
+  }
+]

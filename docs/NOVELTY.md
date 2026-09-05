@@ -1,9 +1,8 @@
 # Novelty audit
 
 **Status: originality and priority are not established.** This is a scoped
-primary-literature review conducted September 4, 2026, not proof that no prior
-construction is equivalent. A different name is not a novelty argument. No
-patentability or freedom-to-operate conclusion is offered.
+primary-literature review conducted September 5, 2026, not proof that no prior
+construction is equivalent. A different name is not a novelty argument. The comparison concerns scientific overlap and the evidence for this implementation.
 
 ## Closest overlaps
 
@@ -27,11 +26,30 @@ here. Our tests compare no implementation against these papers. The algebraic
 box extremizers in our paper are elementary and should not be presented as a
 new general theorem of interval analysis.
 
+## What was checked in this update
+
+The comparison was refreshed against the primary arXiv records and full-text
+sections on September 5, 2026. Multipole Attention v2 describes clustered exact
+and approximate contributions. COBS v1 Sections 5.2–5.4 use covariance for mass
+selection, including low-rank and query-subspace compression. SPLA v1 Section
+3.1 derives second-order selection and adds a residual linear branch. LOCKS v1
+Appendix A.5 discusses moment-only summaries on broad, peaky pages. Those
+methods do not become new through our use of another name.
+
+The narrower study here joins a strict consumer-boundary certificate to signed
+value moments and a block mass/value polygon. The exact box converse identifies
+which ambiguity is caused by discarded dependence; the rational ablation shows
+that most added accepts have a simple global-hull explanation. The GH200
+ablation identifies the serial reduction bottleneck, while actual post-RoPE
+traces expose radius inflation. These are concrete mathematical and empirical
+contributions to evaluate, rather than a claim that no equivalent construction
+exists. No implementation from the comparison papers was reproduced here.
+
 ## Defensible description
 
 "An experimental combination of boundary-residual certificates, projected
-signed-moment attention envelopes, and selective refinement, with draft Lean
-formalization and CPU validation artifacts."
+signed-moment attention envelopes, and selective refinement, with a built and audited real-arithmetic Lean proof chain, exact-rational
+validation, value-range coupling, and GH200 implementation measurements."
 
 The exact combined construction might be independently useful; this review
 does not establish that it is unprecedented. Before making a publication
@@ -44,5 +62,7 @@ compilers, and adaptive-precision numerical predicates.
 It does not introduce clustering, polynomial attention, numerical certificates,
 local fallback, low-rank summaries, or Lean-verified inference as general ideas.
 It does not establish a new unconditional sublinear algorithm for arbitrary
-dense attention, a universal dense-GEMM improvement, or measured GH200 speedup.
-It does not establish a completed Lean verification or a verified CUDA program.
+dense attention, a universal dense-GEMM improvement, or complete-path GH200 speedup. A favorable fixed-input resident screening
+stage is faster than the measured dense backend, with the full path slower.
+The 64-theorem Lean chain is built and audited for its explicit real-arithmetic
+statements. It does not formally verify the Python or CUDA implementations.

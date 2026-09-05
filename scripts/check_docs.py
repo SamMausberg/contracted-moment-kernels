@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def main():
     parser = MarkdownIt("commonmark").enable("table")
-    paths = [ROOT / "README.md", ROOT / "paper" / "PAPER.md"]
+    paths = [ROOT / "README.md", *sorted((ROOT / "paper").rglob("*.md"))]
     paths += sorted((ROOT / "docs").glob("*.md"))
     paths += sorted((ROOT / "results").rglob("*.md"))
     checked = 0

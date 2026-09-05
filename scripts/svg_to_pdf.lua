@@ -7,6 +7,21 @@ function Image(image)
   return image
 end
 
+-- A downloaded PDF should retain working links to the repository's evidence.
+function Link(link)
+  if FORMAT:match("latex") and not link.target:match("^%a[%w+.-]*:")
+      and not link.target:match("^#") then
+    local target = link.target
+    if target:match("^%.%./") then
+      target = target:gsub("^%.%./", "")
+    else
+      target = "paper/" .. target
+    end
+    link.target = "https://github.com/SamMausberg/contracted-moment-kernels/blob/main/" .. target
+  end
+  return link
+end
+
 -- Keep each scientific figure with its explanatory caption; avoid duplicate
 -- automatic captions and floating images separated from the manuscript text.
 function Pandoc(document)

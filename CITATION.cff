@@ -1,15 +1,15 @@
 cff-version: 1.2.0
 message: "Cite this research prototype with its exact commit and verification status."
-title: "Boundary certificates for contracted moment reductions"
+title: "When moment summaries can certify attention"
 authors:
   - family-names: Mausberg
     given-names: Sam
 type: software
-version: 0.1.0
-date-released: 2026-09-04
+version: 0.2.0
+date-released: 2026-09-05
 license: Apache-2.0
 abstract: >-
-  Research prototype for boundary-residual certificates, projected signed-moment
-  attention envelopes, and selective refinement. Includes CPU validation
-  artifacts, uncompiled Lean proof source, and untested CUDA drafts. Novelty,
-  complete formal verification, and GPU acceleration are not established.
+  Boundary certificates for positive normalized reductions, projected signed
+  moments, and value-range coupling. Includes 64 built and audited Lean theorems,
+  exact-rational validation, post-RoPE model diagnostics, and measured GH200
+  kernel and complete-path experiments with setup, fallback, and failures.

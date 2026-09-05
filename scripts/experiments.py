@@ -148,6 +148,7 @@ def suite():
         counts["after_refinement_certified"] += sum(c is not None for c in after)
     return dict(
         status="synthetic_CPU_only; fast gates are not roundoff certified",
+        adaptive_counter_scope="selected correction tokens only; excludes full-source validation and fingerprint reads, which CPU timings include",
         seed=100406,
         environment=dict(
             python=sys.version,

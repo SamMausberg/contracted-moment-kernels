@@ -1,53 +1,38 @@
 # Recorded validation
 
-**These are authoring-environment CPU results. No Lean build, CUDA build, GPU benchmark, or remote CI run occurred.**
+The September 5, 2026 results were produced on the repository's GH200. The
+paper distinguishes the proved real-arithmetic contract, exact-rational
+implementation checks, and numerical GPU screens.
 
-| Check | Recorded result |
-|---|---|
-| pytest | 10 test groups passed, including 500 randomized numerical cases and 30 rational attention cases. |
-| Outward conversion | 1,000 randomized exact-rational endpoint cases plus edge cases passed. |
-| Host numerical core | 48 coordinates, maximum scaled envelope difference 2.82991e-16 versus NumPy. |
-| Imported interval checker | 160 output rows; 74 accepted by both the rational and conservative host checkers; no false host certificates. |
-| Lean | Not executed: `lake` is unavailable; attempted check exited 127. |
-| CUDA | No compiler/GPU run; draft source only. |
+| Evidence | Recorded outcome | Artifact |
+| --- | --- | --- |
+| Lean build and complete axiom audit | 64 theorems; only `propext`, `Classical.choice`, `Quot.sound` | [Build](lean-build.log), [audit](lean-axioms.log), [source hashes](lean-verification.json) |
+| Python tests | 46 passed after formatting | [Log](pytest.log) |
+| Ruff / clang-format | Formatting and lint checks pass | [Log](lint.log) |
+| Rational coupling | 61/149 initial accepts versus 57/149 boxes; 0 observed false certificates | [Data](certification/coupling.json), [interpretation](certification/validation.md) |
+| Imported CUDA checker | 74/160 accepted, matching rational decisions; 13 controls rejected | [Result](gh200/final_imported_check.json) |
+| Numerical CUDA paths | CPU comparison, three evaluator variants, correction, and four ABI rejection controls pass | [Result](gh200/final_numerical_check.json) |
+| CUDA memory checking | No errors on final numerical and imported fixtures | [Numerical](gh200/final_memcheck_numerical.log), [imported](gh200/final_memcheck_imported.log) |
+| GH200 performance | 66 configurations; complete screened path slower than dense in all cases | [Raw samples](gh200/benchmark.json) |
+| Same-machine reproduction | 66 cases pass again; unchanged coverage; complete path still slower | [Second run](gh200/reproduction.json), [source and input provenance](gh200/provenance.json) |
+| Model diagnostics | 2,016 rank-eight and 252 full-rank head instances; zero numerical passes | [Data](model_traces/diagnostics.json), [capture manifest](model_traces/manifest.json) |
 
-## Synthetic ablation
+The optimized resident screening stage is faster in one favorable long-context
+single-query case. That is a different measurement from the complete path,
+which includes its host decision and fallback. Setup, uploads, allocation,
+graph capture, scratch, failed controls, and all raw timing samples are retained.
+The source data reused across ranks/configurations are not independent trials.
 
-`N=8192, d=16, h=8, B=16, Q=24`. One BLAS thread. Blocks and coordinate structure are supplied by the synthetic generator, not discovered from model traces.
+The scalar-only GPU sweep and initial absolute-tolerance parity failures remain
+in [the GPU artifacts](../docs/GH200.md). The historical authoring environment's
+failed Lean attempt remains in `lean-attempt.log`; its original status is archived
+in [authoring-verification.json](historical/authoring-verification.json). Both predate the successful
+GH200 build. A built real-attention theorem does not specify bitwise equality to
+FlashAttention or verify the deployed Python/CUDA arithmetic.
 
-| Case, rank 4 | Initial full-output numerical passes | Mean original-token fraction scanned by adaptive refinement |
-|---|---:|---:|
-| tight | 24/24 | 0.0000 |
-| mixed_one_broad_block | 0/24 | 0.0625 |
-| broad_negative_control | 0/24 | 1.0000 |
-
-Summary scalar arrays: 72,832 bytes at full rank; 17,536 bytes at rank 4 (4.1533x smaller). This excludes original K/V, fallback indices, scratch, and allocations.
-
-**The recorded Python screening paths are slower than dense NumPy in every configuration.** The exact-fraction candidate rounding is intentionally conservative and expensive. Fewer read tokens and smaller summaries do not establish wall-clock speedup. Construction and full fallback are included in the machine-readable measurements.
-
-The mathematical sharp-tail coefficient is smaller than the older bound by the factors below. These are coefficient ratios, not speedups or acceptance rates.
-
-| Radius | Old coefficient / new coefficient |
-|---:|---:|
-| 0.1 | 1.077681 |
-| 1 | 2.075514 |
-| 2 | 4.123836 |
-| 4 | 14.000148 |
-| 8 | 86.523373 |
-
-## Reproduction
-
-```sh
-OPENBLAS_NUM_THREADS=1 python -m pytest -q
-OPENBLAS_NUM_THREADS=1 python scripts/experiments.py
-python scripts/make_fixture.py /tmp/cmk-fixture.bin
-python scripts/make_imported_fixture.py /tmp/cmk-imported.txt
-cmake -S kernels -B build/host -DCMAKE_BUILD_TYPE=Release
-cmake --build build/host -j
-build/host/cmk_host_check /tmp/cmk-fixture.bin
-build/host/cmk_imported_check /tmp/cmk-imported.txt
-```
-
-[Experiment data](experiments.json), [host parity](host-check.json), [imported checker](imported-check.json), [pytest log](pytest.log), [verification scope](verification.json).
-
-A future passing Lean CI run verifies only the explicit theorem statements in the source, not the unformalized analytic and implementation bridges. The recorded JSON is a historical authoring record, not an automatic statement about later commits.
+See [reproduction commands](../docs/REPRODUCING.md) and the
+[12-figure index](../paper/figures/README.md). CPU synthetic refinement is in
+[experiments.json](experiments.json); it reports actual CPU costs and selected
+correction tokens. The counter excludes full-source validation/fingerprint reads
+and is not total memory traffic or GPU performance. The current evidence index
+and artifact hashes are in [verification.json](verification.json).

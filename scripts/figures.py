@@ -32,10 +32,10 @@ COLORS = {
 plt.rcParams.update(
     {
         "font.family": "DejaVu Sans",
-        "font.size": 10,
-        "axes.titlesize": 12,
-        "axes.labelsize": 10,
-        "legend.fontsize": 9,
+        "font.size": 12,
+        "axes.titlesize": 13,
+        "axes.labelsize": 12,
+        "legend.fontsize": 11,
         "axes.spines.top": False,
         "axes.spines.right": False,
         "axes.grid": True,
@@ -53,11 +53,16 @@ MANIFEST = []
 def save(fig, name, sources, explanation):
     OUT.mkdir(parents=True, exist_ok=True)
     for extension in ["svg", "pdf", "png"]:
+        output = OUT / f"{name}.{extension}"
         fig.savefig(
-            OUT / f"{name}.{extension}",
+            output,
             bbox_inches="tight",
             metadata={"Creator": "scripts/figures.py"} if extension in ["svg", "pdf"] else None,
         )
+        if extension == "svg":
+            output.write_text(
+                "\n".join(line.rstrip() for line in output.read_text().splitlines()) + "\n"
+            )
     MANIFEST.append(
         {
             "figure": name,
@@ -218,7 +223,7 @@ def cpu_refinement():
         [r["adaptive_mean_scanned_fraction"] for r in rows],
         0.34,
         color=COLORS["orange"],
-        label="Original tokens scanned",
+        label="Tokens in correction blocks",
     )
     ax[0].set(
         xticks=x,
@@ -233,7 +238,7 @@ def cpu_refinement():
         ax[1].scatter(np.arange(len(fractions)), fractions, s=20, label=labels[i], alpha=0.8)
     ax[1].set(
         xlabel="Query index",
-        ylabel="Scanned token fraction",
+        ylabel="Correction-token fraction",
         title="Every query is retained, including failures",
         ylim=(-0.05, 1.08),
     )
@@ -242,7 +247,7 @@ def cpu_refinement():
         fig,
         "selective_refinement",
         ["results/experiments.json"],
-        "Numerical CPU mechanism experiment. Scanned tokens are not wall-clock speedup or certified interval work.",
+        "Numerical CPU mechanism experiment. Correction tokens exclude full-source validation/fingerprinting reads. CPU timings include those reads; the counter is not memory traffic or speedup.",
     )
 
 
@@ -284,13 +289,13 @@ def coupling_figure():
         "30 strict improvements\n119 unchanged\n1 added accept beyond global hull",
         transform=ax[1].transAxes,
         bbox={"facecolor": "white", "alpha": 0.8, "edgecolor": "none"},
-        fontsize=9,
+        fontsize=11,
     )
     save(
         fig,
         "coupling_ablation",
         ["results/certification/coupling.json"],
-        "All149 initial exact-rational coordinates. Zero box-width cases are included in counts but omitted from the width ratio CDF. Four added accepts include three explained by a global hull and one prescribed mass-weighted outlier witness.",
+        "All 149 initial exact-rational coordinates. Zero box-width cases are included in counts but omitted from the width ratio CDF. Four added accepts include three explained by a global hull and one prescribed mass-weighted outlier witness.",
     )
 
 
@@ -300,7 +305,7 @@ def gpu_figures():
         return
     data = json.loads(path.read_text())
     rows = [r for r in data["cases"] if r.get("status") == "ok"]
-    fig, axes = plt.subplots(1, 2, figsize=(10.4, 3.8), layout="constrained")
+    fig, axes = plt.subplots(1, 2, figsize=(10.4, 4.2), layout="constrained")
     for ax, Q in zip(axes, [1, 32]):
         selected = sorted(
             [r for r in rows if r.get("profile") == "tight" and r["rank"] == 4 and r["Q"] == Q],
@@ -327,12 +332,13 @@ def gpu_figures():
             ylabel="Measured batch latency (µs)",
             title="One decode query" if Q == 1 else "32 queries sharing K/V",
         )
-    axes[0].legend(loc="upper left")
+    handles, labels = axes[0].get_legend_handles_labels()
+    fig.legend(handles, labels, loc="outside lower center", ncol=3)
     save(
         fig,
         "gh200_latency",
         ["results/gh200/benchmark.json"],
-        "Actual GH200 wall-clock medians and 10th–90th sample quantiles, tight synthetic rank4 inputs. Shared-KV batches are not independent request batches. Setup plotted separately.",
+        "Actual GH200 wall-clock medians and 10th–90th sample quantiles, tight synthetic rank 4 inputs. Shared-KV batches are not independent request batches. Setup plotted separately.",
     )
 
     chosen = [
@@ -381,7 +387,7 @@ def gpu_figures():
             fig,
             "gh200_coverage_cost",
             ["results/gh200/benchmark.json"],
-            "N8192,Q32,r4 profile controls. A single failed coordinate sends this simple scheduler's complete batch to dense attention.",
+            "N=8192, Q=32, r=4 profile controls. A single failed coordinate sends this simple scheduler's complete batch to dense attention.",
         )
 
     selected = sorted(
@@ -533,7 +539,7 @@ def trace_figures():
     b = np.array([r["rho_max"] for r in full])
     ax[1].scatter(a, b, alpha=0.45, s=15, color=COLORS["blue"])
     t = np.geomspace(min(a.min(), b.min()) * 0.8, max(a.max(), b.max()) * 1.1, 100)
-    ax[1].plot(t, t, color=COLORS["green"], ls="--", label="Exact query radius")
+    ax[1].plot(t, t, color=COLORS["green"], ls="--", label="Equality line")
     ax[1].set(
         xscale="log",
         yscale="log",
@@ -546,7 +552,7 @@ def trace_figures():
         fig,
         "model_score_radii",
         ["results/model_traces/diagnostics.json", "results/model_traces/manifest.json"],
-        "Qwen2.5-0.5B actual post-RoPE arrays. Left: all 24 layers and14 heads at rank8. Right: full rank in layers0,12,23; scan-derived radii are diagnostic and cost token reads.",
+        "Qwen2.5-0.5B actual post-RoPE arrays. Left: all 24 layers and 14 heads at rank 8. Right: full rank in layers 0, 12, 23; scan-derived radii are diagnostic and cost token reads.",
     )
 
     fig, ax = plt.subplots(1, 2, figsize=(10.4, 3.8), layout="constrained")
@@ -586,12 +592,12 @@ def trace_figures():
             xlim=(0.5, 4.5),
         )
         if not values[2]:
-            axis.text(3, axis.get_ylim()[0] + 1, "exactly zero", ha="center", fontsize=8)
+            axis.text(3, axis.get_ylim()[0] + 1, "exactly zero", ha="center", fontsize=11)
     save(
         fig,
         "model_error_budget",
         ["results/model_traces/diagnostics.json"],
-        "Maximum-channel centered-numerator terms divided by true shifted mass, versus minimum-channel BF16 margin. Box plots show quartiles and1.5 IQR whiskers; extreme values remain in JSON. Terms diagnose scale and are not added as an exact output error decomposition.",
+        "Maximum-channel centered-numerator terms divided by true shifted mass, versus minimum-channel BF16 margin. Box plots show quartiles and 1.5 IQR whiskers; extreme values remain in JSON. Terms diagnose scale and are not added as an exact output error decomposition.",
     )
 
 

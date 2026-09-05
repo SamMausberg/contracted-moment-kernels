@@ -1,61 +1,151 @@
 {
-  "authored_date": "2026-09-04",
-  "authored_timezone": "America/Vancouver",
-  "recorded_utc": "2026-09-05T04:10:06.820851+00:00",
-  "status": "research_prototype_partial_verification",
-  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
-  "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
-  "compiler": "g++ (Debian 14.2.0-19) 14.2.0",
-  "pytest": {
-    "executed": true,
-    "test_groups": 10,
-    "passed": 10
-  },
-  "numerical_randomized_cases": 500,
-  "rational_randomized_attention_cases": 30,
-  "outward_export_randomized_cases": 1000,
-  "host_numerical": {
-    "host_core_pass": true,
-    "max_scaled_difference": 2.82991e-16,
-    "numerical_pass_coordinates": 48,
-    "coordinates": 48
-  },
-  "host_imported_intervals": {
-    "imported_checker_pass": true,
-    "rows": 160,
-    "host_certified_rows": 74,
-    "rational_certified_rows": 74
-  },
+  "schema_version": 2,
+  "recorded_utc": "2026-09-05T17:44:21.982932+00:00",
+  "release": "0.2.0",
+  "status": "validated research manuscript with explicitly scoped implementation gaps",
+  "runtime_revision": "d2c3668a8e76d434ccdd49d06c69a6d1f7ed4b19",
+  "scope": "Lean proves the real-attention witness-to-observation chain. Python rational checking and directed CUDA imported-box checking are separately tested implementations. The numerical summary path is not an outward interval implementation. No complete-path GPU speedup is established.",
   "lean": {
-    "executed": false,
-    "attempt_exit_code": 127,
-    "reason": "Lean/Lake absent; compiler download unavailable",
-    "draft_theorem_count": 25,
-    "intentional_proof_holes": 0,
-    "machine_checked_claim": false,
-    "analytic_attention_instantiation_complete": false,
+    "executed": true,
+    "built_theorems": 64,
+    "axiom_audit_pass": true,
+    "allowed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "current_source_hashes_match": true,
+    "manifest": "results/lean-verification.json",
     "floating_implementation_verified": false
   },
-  "cuda": {
-    "compiled": false,
-    "executed": false,
-    "device_measured": null
+  "pytest": {
+    "executed": true,
+    "passed": 46,
+    "failed": 0,
+    "skipped": 0,
+    "recorded_timestamp": "2026-09-05T16:58:28.566027+00:00",
+    "runtime_and_test_sources_unchanged_since_validated_revision": true
   },
-  "github": {
-    "remote_repository_created": false,
-    "reason": "No repository-creation action exposed by connected GitHub tools",
-    "remote_ci_executed": false,
-    "publication_helper": "scripts/publish.sh",
-    "default_visibility": "private"
+  "formatting": {
+    "ruff": "0.16.6",
+    "clang_format": "14",
+    "lint_pass": true,
+    "markdown_check": "Markdown checks passed: 11 documents, 74 local links."
   },
-  "novelty": {
-    "guaranteed": false,
-    "primary_literature_review": "docs/NOVELTY.md"
+  "cuda_imported": {
+    "gpu_imported_pass": true,
+    "rational_rows": 160,
+    "rational_certified_rows": 74,
+    "gpu_certified_rows": 74,
+    "rejection_controls": 13,
+    "false_certificates": 0
   },
-  "performance": {
-    "gpu_speedup_established": false,
-    "cpu_screening_speedup_established": false,
-    "synthetic_summary_scalar_byte_reduction": 4.153284671532846
+  "cuda_numerical": {
+    "gpu_smoke_pass": true,
+    "max_scaled_difference": 2.82991e-16,
+    "numerical_pass_coordinates": 48,
+    "shared_max_scaled_difference": 0,
+    "parallel_candidate_max_difference": 2.22045e-16,
+    "abi_rejection_controls": 4,
+    "all_block_correction_max_absolute_error": 8.88178e-16
   },
-  "scope": "The ordinary proofs, rational arithmetic tests, and host checks are not an end-to-end Lean-certified GPU implementation."
+  "cuda_final_memcheck_errors": 0,
+  "coupling": {
+    "cases": 53,
+    "initial_coordinates": 149,
+    "box_accepted": 57,
+    "coupled_accepted": 61,
+    "global_value_hull_accepted": 50,
+    "strict_width_improvements": 30,
+    "no_width_change": 119,
+    "gains_beyond_global_value_hull": 1,
+    "false_certifications": 0,
+    "failed_high_precision_coverage": 0,
+    "notes": "Coverage asserted for every saved case/stage. This does not prove all inputs. Midpoint refusals and broad failures retained."
+  },
+  "gpu_measurements": {
+    "benchmark": {
+      "cases": 66,
+      "all_cases_pass": true,
+      "numerical_false_screens_vs_binary64": 0,
+      "accepted_bf16_mismatches_vs_binary64": 0,
+      "accepted_bf16_mismatches_vs_flash": 1691,
+      "complete_path_faster_cases": 0,
+      "finite_break_even_cases": 0
+    },
+    "reproduction": {
+      "cases": 66,
+      "all_cases_pass": true,
+      "numerical_false_screens_vs_binary64": 0,
+      "accepted_bf16_mismatches_vs_binary64": 0,
+      "accepted_bf16_mismatches_vs_flash": 1691,
+      "complete_path_faster_cases": 0,
+      "finite_break_even_cases": 0
+    }
+  },
+  "gpu_reproduction": {
+    "runtime_inputs_and_library_unchanged": true,
+    "original_measurement_preserved": true,
+    "provenance": "results/gh200/provenance.json"
+  },
+  "model_trace_summary": {
+    "8": {
+      "head_instances": 2016,
+      "numerically_accepted_coordinates": 0,
+      "whole_output_passes": 0
+    },
+    "64": {
+      "head_instances": 252,
+      "numerically_accepted_coordinates": 0,
+      "whole_output_passes": 0
+    }
+  },
+  "model_trace_scope": "One pinned public model, six deterministic original probe prefixes, actual post-RoPE final-position arguments; numerical activation diagnostics, not model accuracy or production coverage.",
+  "paper": {
+    "markdown": "paper/PAPER.md",
+    "pdf": "paper/PAPER.pdf",
+    "figures": 12,
+    "formats": [
+      "svg",
+      "pdf",
+      "png"
+    ],
+    "figure_source_hashes_match": true,
+    "each_caption_appears_once": true,
+    "visual_review": "All 12 figure layouts inspected; representative PDF pages inspected for math, captions, tables, and clipping."
+  },
+  "previous_runtime_ci": {
+    "revision": "d2c3668a8e76d434ccdd49d06c69a6d1f7ed4b19",
+    "conclusion": "success",
+    "url": "https://github.com/SamMausberg/contracted-moment-kernels/actions/runs/33980336872"
+  },
+  "historical_authoring_status": "results/historical/authoring-verification.json",
+  "artifact_sha256": {
+    "results/pytest.log": "df619a305ade5eb9646d4a0c3cb9f9ec694a8f49f3fd524e0cf567e096ba9edf",
+    "results/pytest.xml": "c33d931c31e28342ba4a9a5b2a508dc8f925e45d6961871916e72f837ce65bf1",
+    "results/lint.log": "55c48a6f12b633bf5753b0dfd1b4f65e7fa3a6b06a61640838932a43ab133d8b",
+    "results/source-check.log": "de56225880caa6f3949259a148aea4232343566ac0c314f6061d2fd0fc31a4eb",
+    "results/docs-check.log": "45b3a63d8e5181ff9b6bb46ec6fe903027b567f5f387512ddda76db62db586ce",
+    "results/lean-build.log": "d527dc75a5f2afff47d868f8074f5b99d2eaeabdc442effac6526087034c2fef",
+    "results/lean-axioms.log": "e6a3b7a83467dd8ed377f61300a64ad0e69848867203e8d689b63b39337f5fb2",
+    "results/lean-verification.json": "3e6218bc157fccb6cd1d18efabc07eb0439b220024bd7ec6378ef158e5927f41",
+    "results/certification/coupling.json": "ec6cc7aed0a50647986789f8ed7cbdf7d7539d48220097bb519fc3626c9799a0",
+    "results/certification/validation.md": "60b362d2352c22b1073e941af0997a90d264e0aa67ee1fde039570fb8d76f6b9",
+    "results/gh200/benchmark.json": "23ae3987e0687c2335dd0a526c8ad34feb7bfa0c18286fa72992db7f27f1c136",
+    "results/gh200/reproduction.json": "23731994f37b90453c5fdd683d147164707008323c7d7d28fc3112ebb33254f1",
+    "results/gh200/provenance.json": "d32faa86c185ca7c759a775cbc0e7e5fb5ff937cf2beb93521fd05fb100da7a5",
+    "results/gh200/final_imported_check.json": "33b0b39560a4bd47a262973daa48501f7f30518794f8299c30de1ea61b446b91",
+    "results/gh200/final_numerical_check.json": "17385a1dc4849cca6631325256aa2f1b61928bbd6208230adc0f276777c293b2",
+    "results/gh200/final_memcheck_numerical.log": "60933cf146adc21b83765ea497ba2611124c508b1ba207fabebef74648e28b53",
+    "results/gh200/final_memcheck_imported.log": "f7a4b18da17f5a76ec1946ef0d2ea27746135f7baa689750e0ad583b6b2a53bb",
+    "results/gh200/validation_failures.json": "61d8bcf85a5883b8bb5ac4b394ac66b79a528c5665c8fc6577f6e4aeb8be33c5",
+    "results/model_traces/manifest.json": "06cfc029079d515e0596f5b56f91613a4318e029a47f07cd5f161c60edc5ac5f",
+    "results/model_traces/diagnostics.json": "39a130c158d0916724720af005c12e2447a073fed753309a341125267b6baaa1",
+    "results/experiments.json": "26cfc30c262c862a0d6e0048b21ef650cc12ef47204d384f1505a729b7f059e3",
+    "results/environment/final.json": "d16882e32f2c4a722946e54ae38410a435cd6e7bfa81ca3c16c3b6ba7963cd5a",
+    "paper/figures/manifest.json": "f5af0b4de3512c4666c72c6aa3d750c7bf784eb4df765b05317335235ed3b445",
+    "paper/PAPER.md": "575842954173f42d2b11df8665168c35cdf8d692eb79ca944b8cce21b9bb8f4c",
+    "paper/PAPER.pdf": "cff6faa7ed7c076aeac7351303dd38f01e16c0cab4762fec7ebbd843266fba11",
+    "results/paper-build.log": "866e2eee1cfe941170017afb25436e50c6d9d736564d15ff5284ccfdad3e9b55"
+  }
 }
