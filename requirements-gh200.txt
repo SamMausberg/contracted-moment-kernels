@@ -1,0 +1,10 @@
+# Reproduction environment, Python 3.10 / aarch64 / CUDA 12.8.
+# PyTorch 2.7.0 with CUDA 12.8 is inherited from the GH200 machine image.
+numpy==1.26.4
+pytest==9.1.1
+mpmath==1.4.1
+matplotlib==3.10.9
+markdown-it-py==4.2.0
+mdit-py-plugins==0.6.1
+transformers==4.51.3
+accelerate==1.6.0
