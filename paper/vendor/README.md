@@ -7,4 +7,7 @@ The upstream authorship notices remain in both files.
 
 The manuscript uses the style's `preprint` option. Its author footnote points
 to the public repository; no institutional affiliation or submission status is
-inferred. The conference's page geometry, fonts, and spacing are retained.
+inferred. The conference's page geometry and fonts are retained. Its example
+explicitly permits single-column appendices; the manuscript uses that option
+to keep supporting figures with their explanations. Paragraphs use natural
+vertical spacing, and dedicated figure pages align their contents at the top.

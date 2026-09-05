@@ -133,17 +133,23 @@ complete path is slower than dense, so no finite reuse count repays setup
 under these costs. \Cref{sec:gh200-costs} retains the footprint exclusions,
 phase measurements, and amortization results.
 
+\begin{samepage}
 Across all 66 configurations, accepted numerical coordinates have zero observed
 BF16 mismatches against binary64 attention but 1,691 against the fused BF16
 baseline. Repeated configurations make these aggregate counts dependent.
 Real-attention rounding and fused intermediate arithmetic are different
 targets; the binary64 comparison is itself numerical, and the summary path is
 not outward interval metadata for the directed checker.
+\par
+\end{samepage}
 
 
+\begin{samepage}
 A second run at committed implementation \texttt{d2c3668} reproduces all
 66 cases with unchanged coverage and mismatch counts. Parallel-screen graph
 medians change by $-1.08\%$ to $+1.42\%$, with median ratio $1.002$; every
 complete path remains slower than dense. Figures and tables retain the first
 sweep. \Cref{sec:gh200-reproduction} provides provenance, host-wall variation,
 and the retained failed parity checks.
+\par
+\end{samepage}

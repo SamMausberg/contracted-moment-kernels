@@ -4,10 +4,7 @@
 Partition a finite, nonempty visible input into nonempty blocks
 $b=1,\ldots,B$. A positive normalized reduction has coordinates
 \begin{equation}
- \begin{gathered}
- y_j=\frac{N_j}{Z},\qquad N_j=\sum_b n_{bj},\\
- Z=\sum_b z_b>0.
- \end{gathered}
+ y_j=N_j/Z,\quad N_j=\sum_b n_{bj},\quad Z=\sum_b z_b>0.
  \label{eq:normalized-reduction}
 \end{equation}
 For fixed centers $\nu_{bj}$, write $m_{bj}=n_{bj}-\nu_{bj}z_b$ and assume
@@ -32,12 +29,20 @@ monotonicity theorem are not supplied.
 \subsection{Exact Certificates for Independent Boxes}
 
 At a boundary $c$, define
-\begin{align}
- \mathcal L_j(c)&=\sum_b\Bigl[m^-_{bj}\notag\\
- &\qquad+\min\{(\nu_{bj}-c)l_b,(\nu_{bj}-c)u_b\}\Bigr],\label{eq:lower-residual}\\
- \mathcal U_j(c)&=\sum_b\Bigl[m^+_{bj}\notag\\
- &\qquad+\max\{(\nu_{bj}-c)l_b,(\nu_{bj}-c)u_b\}\Bigr].\label{eq:upper-residual}
-\end{align}
+\begin{equation}
+ \begin{split}
+ \mathcal L_j(c)&=\sum_b m^-_{bj}\\
+ &\quad+\sum_b\min\{(\nu_{bj}-c)l_b,(\nu_{bj}-c)u_b\},
+ \end{split}
+ \label{eq:lower-residual}
+\end{equation}
+\begin{equation}
+ \begin{split}
+ \mathcal U_j(c)&=\sum_b m^+_{bj}\\
+ &\quad+\sum_b\max\{(\nu_{bj}-c)l_b,(\nu_{bj}-c)u_b\}.
+ \end{split}
+ \label{eq:upper-residual}
+\end{equation}
 
 \begin{theorem}[Boundary certificate]\label{thm:boundary-certificate}
 Under \cref{eq:normalized-reduction,eq:block-boxes},
@@ -130,7 +135,8 @@ multiply each value inequality by its weight and sum. Retain this dependence
 by defining the nonempty compact polygon
 \begin{equation}
  P_{bj}=\left\{(z,m):\begin{aligned}
- &l_b\le z\le u_b,\quad m^-_{bj}\le m\le m^+_{bj},\\
+ &l_b\le z\le u_b,\\
+ &m^-_{bj}\le m\le m^+_{bj},\\
  &p_{bj}z\le m\le q_{bj}z
  \end{aligned}\right\}.
  \label{eq:coupled-polygon}
@@ -279,32 +285,42 @@ Choose any common finite shift $s$ and define the actual quantities
 \end{equation}
 The factor $e^{-s}$ cancels from \cref{eq:attention}; all following bounds and
 residuals concern these shifted quantities. Set
-\begin{gather}
- a_b=q^T\mu_b,\qquad w_b=n_b e^{a_b-s},\notag\\
- \sigma_b^2=u^T\Sigma_bu,\qquad A_b=1+\sigma_b^2/2,\notag\\
- \tau_b=\kappa(\rho_b)\sigma_b^2,
- \label{eq:moment-scalars}\\
- \widetilde l_b=w_b\max\{1,A_b-\tau_b\},\notag\\
- \widetilde u_b=w_b(A_b+\tau_b),\label{eq:projected-mass}\\
- \widehat m_{bj}=w_b\left[(C_b^Tu)_j+\tfrac12u^TD_{bj}u\right],\notag\\
- \beta_{bj}=w_b\left[\tfrac12\eta_{bj}\|u\|_2^2+\tau_bR_{bj}\right].
+\begin{equation}
+ \begin{aligned}
+ a_b&=q^T\mu_b, & w_b&=n_b e^{a_b-s},\\
+ \sigma_b^2&=u^T\Sigma_bu, & A_b&=1+\sigma_b^2/2,\\
+ \tau_b&=\kappa(\rho_b)\sigma_b^2.
+ \end{aligned}
+ \label{eq:moment-scalars}
+\end{equation}
+\begin{equation}
+ \begin{aligned}
+ \widetilde l_b&=w_b\max\{1,A_b-\tau_b\},\\
+ \widetilde u_b&=w_b(A_b+\tau_b),
+ \end{aligned}
+ \label{eq:projected-mass}
+\end{equation}
+\begin{equation}
+ \begin{aligned}
+ \widehat m_{bj}&=w_b\left[(C_b^Tu)_j+\tfrac12u^TD_{bj}u\right],\\
+ \beta_{bj}&=w_b\left[\tfrac12\eta_{bj}\|u\|_2^2+\tau_bR_{bj}\right].
+ \end{aligned}
  \label{eq:projected-numerator}
-\end{gather}
+\end{equation}
 Here $n_b$ is the block cardinality.
 
+\begin{samepage}
 \begin{theorem}[Full-score block enclosures]\label{thm:full-score-enclosures}
 Under the centering, radius, symmetry, and row-sum conditions above, sound
 bounds for \cref{eq:shifted-blocks} are
 \begin{gather}
  l_b=e^{-\epsilon_b}\widetilde l_b,\qquad
  u_b=e^{\epsilon_b}\widetilde u_b,\label{eq:full-mass}\\
- \begin{aligned}
- m^\pm_{bj}&=\widehat m_{bj}\\
- &\quad\pm\left[\beta_{bj}+(e^{\epsilon_b}-1)\widetilde u_bR_{bj}\right].
- \end{aligned}
+ m^\pm_{bj}=\widehat m_{bj}\pm\left[\beta_{bj}+(e^{\epsilon_b}-1)\widetilde u_bR_{bj}\right].
  \label{eq:full-numerator}
 \end{gather}
 \end{theorem}
+\end{samepage}
 The proof is given in \cref{app:full-score-enclosures}.
 
 Combining \cref{thm:full-score-enclosures,thm:boundary-certificate} certifies

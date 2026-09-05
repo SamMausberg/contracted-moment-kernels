@@ -25,14 +25,26 @@
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
 \usepackage{subcaption}
-\usepackage{xurl}
+\usepackage{url}
+\usepackage{float}
+\usepackage{balance}
+\usepackage{placeins}
 \usepackage[hyperfootnotes=false]{hyperref}
 \usepackage[preprint]{icml2026}
 \usepackage[capitalize,noabbrev]{cleveref}
+% Keep URL hostnames intact while allowing breaks in long revision hashes.
+\def\UrlBreaks{\do\/\do\-\do\_\do0\do1\do2\do3\do4\do5\do6\do7\do8\do9}
 
 % The supplied author has no stated institutional affiliation or contact email.
 % Retain the preprint notice and use the repository as the artifact contact.
 \makeatletter
+% Top-align dedicated figure pages and use a fixed gap between their floats.
+\setlength{\@fptop}{0pt}
+\setlength{\@fpsep}{12pt}
+\setlength{\@fpbot}{0pt plus 1fil}
+\setlength{\@dblfptop}{0pt}
+\setlength{\@dblfpsep}{12pt}
+\setlength{\@dblfpbot}{0pt plus 1fil}
 \renewcommand{\printAffiliationsAndNotice}[1]{%
   \global\icml@noticeprintedtrue
   {\let\thefootnote\relax\footnotetext{\hspace*{-\footnotesep}%
@@ -67,6 +79,11 @@
 \icmltitlerunning{When Moment Summaries Can Certify Attention}
 
 \begin{document}
+% Keep natural paragraph spacing and avoid words split across figure-heavy pages.
+\raggedbottom
+\brokenpenalty=10000
+\clubpenalty=10000
+\widowpenalty=10000
 \twocolumn[
 \icmltitle{When Moment Summaries Can Certify Attention}
 \begin{icmlauthorlist}
@@ -103,11 +120,14 @@ bound inflation and decision/fallback overhead.
 
 \clearpage
 \appendix
+\onecolumn
 \input{sections/theory_appendix}
 \input{sections/formalization}
 \input{sections/experiments_appendix}
 
 \clearpage
+\twocolumn
+\balance
 \bibliographystyle{icml2026}
 \bibliography{references}
 \end{document}

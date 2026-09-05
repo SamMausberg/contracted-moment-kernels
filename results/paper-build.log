@@ -1,2 +1,2 @@
-Paper checks passed: 15 US Letter pages, 12 unique figure captions, all 27 fonts embedded, no overfull boxes or extracted text outside pages. Underfull boxes (informational): 15.
+Paper checks passed: 17 US Letter pages, 12 unique figure captions, all 28 fonts embedded, no overfull boxes or extracted text outside pages. Underfull boxes (informational): 5.
 Built paper/PAPER.pdf and paper/latex-source.zip from native LaTeX.

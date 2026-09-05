@@ -3,7 +3,8 @@
 [Read the PDF](PAPER.pdf) · [Edit PAPER.tex](PAPER.tex) ·
 [Download the source archive](latex-source.zip) · [Mathematical companion](PAPER.md)
 
-The paper uses the official ICML 2026 two-column style in `preprint` mode.
+The paper uses the official ICML 2026 style in `preprint` mode: a two-column
+main text, a single-column appendix, and balanced two-column references.
 `PAPER.tex` controls the title, abstract, section order, appendix, and bibliography.
 Edit prose and proofs in `sections/`, geometric drawings in `diagrams/`, and
 references in `references.bib`. The twelve figures include two native TikZ
@@ -30,6 +31,10 @@ Auxiliary files go in `build/paper/` during a repository build.
 references, captions, font embedding, page dimensions, and text bounds.
 The result includes hashes of the native sources and imported figure PDFs;
 visual review remains necessary for graphical overlap and reading order.
+The plot generator also checks that legends stay outside data panels and axis
+labels fit the exported canvas. It draws at the paper's 6.75-inch width with
+8.5-point axis and legend text; [figure-layout results](../results/figure-layout.json)
+record the geometry checks and export hashes.
 
 The upstream style files are unchanged; [their provenance](vendor/README.md)
 records the official download and hashes. The preprint author footnote links

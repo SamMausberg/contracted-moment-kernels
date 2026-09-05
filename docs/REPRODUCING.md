@@ -63,7 +63,8 @@ as GPU latency evidence.
 ## Paper and figures
 
 The canonical manuscript is [paper/PAPER.tex](../paper/PAPER.tex), using the
-official ICML 2026 two-column style in `preprint` mode. Edit its native prose
+official ICML 2026 style in `preprint` mode: two-column main text, permitted
+single-column appendices, and two-column references. Edit its native prose
 and proofs in `paper/sections/`, the two TikZ drawings in `paper/diagrams/`,
 and references in `paper/references.bib`. The
 [Markdown companion](../paper/PAPER.md) retains the expanded mathematical
@@ -88,6 +89,13 @@ two drawings directly from TikZ. The figure manifest records plot data hashes
 and labels analytic examples; the companion's geometric SVG exports remain
 available. The [figure index](../paper/figures/README.md) describes each figure.
 
+Plots are drawn at their physical manuscript width of 6.75 inches, with 8.5pt
+axis and legend text. Legends sit outside the data panels. The generator rejects
+legend/data-panel overlaps and axis decorations extending beyond the canvas;
+[results/figure-layout.json](../results/figure-layout.json) records these geometry
+checks, dimensions, legend font sizes, and export hashes. This uses the existing
+Matplotlib environment; the paper build uses the TeX packages listed above.
+
 The build runs
 `python3 scripts/check_paper.py --output results/paper-layout.json`.
 This checker uses Poppler's `pdftotext`, `pdfinfo`, and `pdffonts`, together with
@@ -96,8 +104,11 @@ fonts, page dimensions, and extracted text bounds. Its report records source
 and imported-figure hashes. Visual review is still needed for graphical overlap
 and reading order; these checks do not validate scientific claims or proofs.
 
-The research GitHub workflow runs Ruff, clang-format, Python tests, documentation/source
-checks, host C++ fixtures, and the Lean build/audit. GPU evidence comes from this
-GH200's saved runs; the hosted CPU workflow does not claim GPU validation.
+The [Research checks workflow](../.github/workflows/verify.yml) runs Ruff,
+clang-format, Python tests, documentation/source checks, host C++ fixtures, and
+the Lean build/audit. Its "Check rendered figure layout" step runs
+`MPLBACKEND=Agg python scripts/figures.py` to regenerate plots from saved data and
+check legend placement. It does not rerun benchmarks. GPU evidence comes from
+this GH200's saved runs; the hosted CPU workflow does not claim GPU validation.
 The separate manuscript workflow installs LaTeX, builds and checks the paper,
 and uploads the PDF, source archive, layout report, and final LaTeX log.

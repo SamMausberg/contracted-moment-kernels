@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "recorded_utc": "2026-09-05T18:21:09.019042+00:00",
+  "recorded_utc": "2026-09-05T18:47:08.004848+00:00",
   "release": "0.2.0",
   "status": "validated research manuscript with explicitly scoped implementation gaps",
   "runtime_revision": "d2c3668a8e76d434ccdd49d06c69a6d1f7ed4b19",
@@ -30,7 +30,7 @@
     "ruff": "0.16.6",
     "clang_format": "14",
     "lint_pass": true,
-    "markdown_check": "Markdown checks passed: 13 documents, 106 local links."
+    "markdown_check": "Markdown checks passed: 13 documents, 113 local links."
   },
   "cuda_imported": {
     "gpu_imported_pass": true,
@@ -108,32 +108,35 @@
     "source_archive": "paper/latex-source.zip",
     "style": "Official ICML 2026 preprint; unmodified upstream style and bibliography files.",
     "style_provenance": "paper/vendor/provenance.json",
-    "page_count": 15,
+    "page_count": 17,
     "pagination": {
       "appendix_start_page": 8,
-      "references_start_page": 15,
+      "references_start_page": 17,
       "main_pages_before_appendix": 7,
-      "appendix_pages_including_references": 8,
-      "appendix_pages_before_references": 7
+      "appendix_pages_including_references": 10,
+      "appendix_pages_before_references": 9
     },
     "figures": 12,
     "tikz_drawings": 2,
     "imported_vector_plots": 10,
     "figure_source_hashes_match": true,
     "each_caption_appears_once": true,
-    "visual_review": "All 15 native-PDF pages inspected, including equations, TikZ drawings, plots, tables, and references; no visible clipping or overlap. Added explanatory text beneath the otherwise empty remainder-growth subsection and re-inspected the affected pages.",
+    "visual_review": "All 17 rendered pages inspected for equation tags, labels, legends, float order, clipping, and spacing. The final visual pass corrected overlaps and placement issues missed in the earlier review; results/paper-visual-review.json records the resolved findings and current PDF hash.",
     "scientific_editorial_review": "Independent comparison against the mathematical companion preserved counts, costs, failures, proof premises, and formal scope. Corrected the positive-total-mass qualification and separated CPU query timings from construction costs.",
     "layout_report": "results/paper-layout.json",
     "standalone_source_build": "results/paper-source-build.json",
     "standalone_source_build_pass": true,
     "text_within_page_bounds": true,
-    "embedded_fonts": 27,
+    "embedded_fonts": 28,
     "overfull_boxes": 0,
     "unresolved_references": [],
     "native_latex_build_pass": true,
     "local_runtime_or_lean_rerun_for_typesetting": false,
-    "hosted_build_and_layout_checks_pass": true,
-    "hosted_build_record": "results/paper-ci.json"
+    "hosted_build_and_layout_checks_pass": null,
+    "hosted_build_record": "results/paper-ci.json",
+    "visual_review_record": "results/paper-visual-review.json",
+    "figure_layout_report": "results/figure-layout.json",
+    "hosted_validation_status": "Awaiting CI for the visual-layout revision."
   },
   "previous_runtime_ci": {
     "revision": "d2c3668a8e76d434ccdd49d06c69a6d1f7ed4b19",
@@ -146,7 +149,7 @@
     "results/pytest.xml": "c33d931c31e28342ba4a9a5b2a508dc8f925e45d6961871916e72f837ce65bf1",
     "results/lint.log": "1522fccc37528dff00f632ebc95fbc054d40d1a0d9a856ab6b6131aef22b09ca",
     "results/source-check.log": "de56225880caa6f3949259a148aea4232343566ac0c314f6061d2fd0fc31a4eb",
-    "results/docs-check.log": "ba11efd0d4881ac03af3ccd38a97e672d7fe02f5102f52d87f7f3e1f51f049e8",
+    "results/docs-check.log": "77aae39f004dc9fca3d97a32f11dc3694ad0a2fce2d60c0459d701bc38fe01c5",
     "results/lean-build.log": "d527dc75a5f2afff47d868f8074f5b99d2eaeabdc442effac6526087034c2fef",
     "results/lean-axioms.log": "e6a3b7a83467dd8ed377f61300a64ad0e69848867203e8d689b63b39337f5fb2",
     "results/lean-verification.json": "3e6218bc157fccb6cd1d18efabc07eb0439b220024bd7ec6378ef158e5927f41",
@@ -166,34 +169,40 @@
     "results/environment/final.json": "d16882e32f2c4a722946e54ae38410a435cd6e7bfa81ca3c16c3b6ba7963cd5a",
     "paper/figures/manifest.json": "f5af0b4de3512c4666c72c6aa3d750c7bf784eb4df765b05317335235ed3b445",
     "paper/PAPER.md": "870b043f04b9d6c2483a5a60ba5c906f36201e754517ce0823af94bbcda0e27d",
-    "paper/PAPER.pdf": "420b1634fd0d72403e9a5b258a46c65225f85da952d7baf28f0bdd9bc49f6c1e",
-    "results/paper-build.log": "915b4a7d96309ac0c13faca8483e923b4a592cfebfde10bbe6861b712e60d20b",
+    "paper/PAPER.pdf": "04526cb0e5d62e87bc82db6795b589aa4f1ec4cfe960a1e1871d2e0ed13002e2",
+    "results/paper-build.log": "1a04ff00be95cca33896ef68a43b55c6af7e1616113d733b5f52218657337d37",
     "results/ci.json": "7d1463a4819048a8164cf2131be66a5cdb7b5197dc5d96587526e7f64858fe86",
-    "results/paper-layout.json": "7b8047b470118370238802911215d2990a4518243b4298412d97931b728a401d",
-    "results/paper-source-build.json": "b7c8d9201630b17fa2b645bf2d91569e5df1b7441d79a9824373cc363868a413",
-    "results/paper-source-build.log": "ba330a48881ff4230b3c8ffc6794610cfc207ccec2d3612c248a936208ce0d58",
-    "paper/PAPER.tex": "4f59a02ecfd53a01121452a2699626dfd41a8b67fea0039607d85098d584a5a9",
-    "paper/latex-source.zip": "e6be7d00375bebef582883337dd76422b6e19df7d8b97286a7379440a0ffabb7",
+    "results/paper-layout.json": "286a83f9dfa3ccb33eb3b4661f72bf18660130e55ccc2c0245b4e4f2d6a09bf2",
+    "results/paper-source-build.json": "62a76386232d0d051b5580dc82c42ab127ad62bbb82bcef2fc02d0098e1c9de2",
+    "results/paper-source-build.log": "2e89adadd3320f200cd7e0e35719f60482df09f99d689f66f88a0e06a2f3e501",
+    "paper/PAPER.tex": "4ea41e2357cbf983928b4a4edca95d1fc9cef8508d712707fc81ddac47e87c1e",
+    "paper/latex-source.zip": "5773dbbe5f3d645868bd7cf3c30c5a5616a4adeeef368336d0575b27f671a58e",
     "paper/references.bib": "5118ccefe97b5d0d3b1d59316337bbc118c0503d2ccf963e26ef1f88d9e4beef",
     "paper/vendor/provenance.json": "240f9516c152a88065bc2fc2d6d366bdc89230dc36c8be184fcb62d6e70910f6",
     "scripts/build_paper.sh": "dd6de487b5ce4206734e41de25e5849e7b8e63331ef69f91ef3fd3babee1d405",
     "scripts/check_paper.py": "d11216fce81332790236c9e53f3b568a09c6ddeb7a6650587590deeca9a06d28",
     ".github/workflows/paper.yml": "7e92b4b65400a4b16d202e0b629a274d6af121767df7ddc7d7f45b50f8592e14",
-    "results/paper-ci.json": "cdf3c40748437c28c1fab3a7c6d5fdb368dbab9b55a9430a2d75cc8d5b38a5d9"
+    "results/paper-ci.json": "cdf3c40748437c28c1fab3a7c6d5fdb368dbab9b55a9430a2d75cc8d5b38a5d9",
+    "results/figure-layout.json": "6a849cb26b79e46743f805264b1bf1156263cb70525ddbe482657ca448c79a47",
+    "results/paper-visual-review.json": "91e1db29434d16604bd87cab218fee9c506ccce1b87c3911dcdb8b4a5c137479",
+    "scripts/figures.py": "c4ce8654924855e2ac8e770057e75c898fb6a4a78333d0d59c617ac1d0839c88",
+    ".github/workflows/verify.yml": "6c9c5831b471b1450aaf3fedd937560398d811db527ac29914e2fc97a57027d8"
   },
   "current_implementation_ci": {
     "revision": "633de89adead4fbde6d3fd1621ff0cc61d9bd3c7",
     "conclusion": "success",
     "url": "https://github.com/SamMausberg/contracted-moment-kernels/actions/runs/33983577514",
     "record": "results/ci.json",
-    "runtime_tests_and_research_workflow_unchanged": true,
-    "paper_pipeline_validated_separately": true
+    "runtime_tests_and_research_workflow_unchanged": false,
+    "paper_pipeline_validated_separately": true,
+    "runtime_and_test_sources_unchanged": true,
+    "research_workflow_change": "Adds generation-time legend and canvas checks; awaiting the first CI run with this step."
   },
   "paper_ci": {
     "revision": "633de89adead4fbde6d3fd1621ff0cc61d9bd3c7",
     "url": "https://github.com/SamMausberg/contracted-moment-kernels/actions/runs/33983577522",
     "conclusion": "success",
     "record": "results/paper-ci.json",
-    "manuscript_and_pipeline_unchanged_since_validated_revision": true
+    "manuscript_and_pipeline_unchanged_since_validated_revision": false
   }
 }

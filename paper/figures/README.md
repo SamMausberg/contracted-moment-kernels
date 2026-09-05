@@ -13,6 +13,15 @@ drawings. Data sources and hashes are recorded in [manifest.json](manifest.json)
 and packages the editable drawings and plots in
 [latex-source.zip](../latex-source.zip), without rerunning experiments.
 
+The official ICML layout uses two-column main text and permitted single-column
+appendices. Imported plots are generated at 6.75 inches wide with 8.5pt axis and
+legend text; legends sit outside the data panels. The generator rejects legend
+overlaps with data panels and axis decorations outside the canvas, recording
+geometry and export hashes in [figure-layout.json](../../results/figure-layout.json).
+The [Research checks workflow](../../.github/workflows/verify.yml) regenerates
+plots and checks this placement from saved data using the existing Matplotlib
+environment, without rerunning benchmarks. The numbered figure mapping remains:
+
 | PDF figure | Source | Question |
 | --- | --- | --- |
 | 1: Coupled geometry | [TikZ](../diagrams/coupled_geometry.tex) | Which impossible box corners do value bounds exclude? |

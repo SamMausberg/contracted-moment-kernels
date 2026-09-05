@@ -1,0 +1,170 @@
+[
+  {
+    "figure": "boundary_geometry",
+    "width_inches": 6.75,
+    "height_inches": 2.8,
+    "legend_count": 1,
+    "legend_data_panel_overlaps": [],
+    "axis_decorations_inside_canvas": true,
+    "minimum_legend_font_points": 8.5,
+    "export_sha256": {
+      "paper/figures/boundary_geometry.svg": "a862e67465ae34d48c2e3f35c4d6b8a38ef5ac4072fe71d8e364ebae05b4aab7",
+      "paper/figures/boundary_geometry.pdf": "53572d76f993c717f688f0b2ef8a2eb99f9511a1ae6a798be293610b02fe7ced",
+      "paper/figures/boundary_geometry.png": "f7a30370b31da64dd5879f4b45a4c9b3efb263465a57b338096985eeb9b104ad"
+    }
+  },
+  {
+    "figure": "coupled_geometry",
+    "width_inches": 6.75,
+    "height_inches": 3.0,
+    "legend_count": 1,
+    "legend_data_panel_overlaps": [],
+    "axis_decorations_inside_canvas": true,
+    "minimum_legend_font_points": 8.5,
+    "export_sha256": {
+      "paper/figures/coupled_geometry.svg": "eab163ec615eb7bb5219945c67fbe43e02d16aaa26b1e9094d51fb3d2dcc7bb8",
+      "paper/figures/coupled_geometry.pdf": "0617e90ea0f60bb467b98ddfee9aa2151ca8af28a372856df74e8a9ee8852088",
+      "paper/figures/coupled_geometry.png": "a5a012c29e708457041135fc268d3309a7b37621afcd96017142ef2d5d2f5c01"
+    }
+  },
+  {
+    "figure": "remainder_mechanism",
+    "width_inches": 6.75,
+    "height_inches": 2.8,
+    "legend_count": 2,
+    "legend_data_panel_overlaps": [],
+    "axis_decorations_inside_canvas": true,
+    "minimum_legend_font_points": 8.5,
+    "export_sha256": {
+      "paper/figures/remainder_mechanism.svg": "1dbffd8c1b0b23b102a6db4b1d6de89c07f884a8c1717b4ebe2307063ab9abf8",
+      "paper/figures/remainder_mechanism.pdf": "be353d38225bbd3aa0e636573c6021850800f0d151b6260ae27da66b096b121e",
+      "paper/figures/remainder_mechanism.png": "6eb0e16918e05f0ea9c2938c69cd26e89787aeeb846a5d6c860defaf68709bbc"
+    }
+  },
+  {
+    "figure": "selective_refinement",
+    "width_inches": 6.75,
+    "height_inches": 3.1,
+    "legend_count": 2,
+    "legend_data_panel_overlaps": [],
+    "axis_decorations_inside_canvas": true,
+    "minimum_legend_font_points": 8.5,
+    "export_sha256": {
+      "paper/figures/selective_refinement.svg": "7352fa3cdf166a782d865f84602c6b3bc674dff527c628fabeac1d529ad6a6e9",
+      "paper/figures/selective_refinement.pdf": "7b2db41a717b9510e7516555a9ed12629208193185202353d11647eee52ce8dc",
+      "paper/figures/selective_refinement.png": "ec21ade503aa2ab0440329606d07549836653edf2a546eaf09e021bb198e7dbd"
+    }
+  },
+  {
+    "figure": "coupling_ablation",
+    "width_inches": 6.75,
+    "height_inches": 2.4,
+    "legend_count": 0,
+    "legend_data_panel_overlaps": [],
+    "axis_decorations_inside_canvas": true,
+    "minimum_legend_font_points": null,
+    "export_sha256": {
+      "paper/figures/coupling_ablation.svg": "b15cefd96d62cf080a5372353366a27c0d893d946105be6446f8626b51a36bb2",
+      "paper/figures/coupling_ablation.pdf": "0d81c84f98772aef94ac9f1d2535a63f34de951e348db130c00a0adcf4d344b8",
+      "paper/figures/coupling_ablation.png": "bc81d57e278fbd52dd22b1c8714024d18edcca7f445248e70584b40e46838c1f"
+    }
+  },
+  {
+    "figure": "gh200_latency",
+    "width_inches": 6.75,
+    "height_inches": 3.1,
+    "legend_count": 1,
+    "legend_data_panel_overlaps": [],
+    "axis_decorations_inside_canvas": true,
+    "minimum_legend_font_points": 8.5,
+    "export_sha256": {
+      "paper/figures/gh200_latency.svg": "09a655f9de3a22a8273ada5440a2b13206dc125863baa8cf40eab951173615ba",
+      "paper/figures/gh200_latency.pdf": "2722cfbf12796035e3185afd9a94d520dd94e3ad5a0835156abf5693e088544a",
+      "paper/figures/gh200_latency.png": "9edafdc56d5a8b34750081d8e50c864da649e5eda9390e8ad960f85e7cdf0cd1"
+    }
+  },
+  {
+    "figure": "gh200_coverage_cost",
+    "width_inches": 6.75,
+    "height_inches": 2.8,
+    "legend_count": 1,
+    "legend_data_panel_overlaps": [],
+    "axis_decorations_inside_canvas": true,
+    "minimum_legend_font_points": 8.5,
+    "export_sha256": {
+      "paper/figures/gh200_coverage_cost.svg": "614d9d6e76ea901c03b24fb0a89c35fd3cfe0880064ad02ac3bef028f3788cd7",
+      "paper/figures/gh200_coverage_cost.pdf": "5a43058bfbe9b1a909e1f8b82675950113bb8a8d26505b447e2bcb19d317a54a",
+      "paper/figures/gh200_coverage_cost.png": "a324d3f4133c98fd7035dafdf55dfe67bfd31e77157289e277afca38adc824c2"
+    }
+  },
+  {
+    "figure": "gh200_cost_breakdown",
+    "width_inches": 6.75,
+    "height_inches": 2.55,
+    "legend_count": 2,
+    "legend_data_panel_overlaps": [],
+    "axis_decorations_inside_canvas": true,
+    "minimum_legend_font_points": 8.5,
+    "export_sha256": {
+      "paper/figures/gh200_cost_breakdown.svg": "83c407c89ce4e36240bb8ef5db2a185c27cd0985152add1fd94bbe3b53e82fac",
+      "paper/figures/gh200_cost_breakdown.pdf": "09c438c5d002623a7ec9482def1d7050c452940ad852a3ce50eb561d8f36deb0",
+      "paper/figures/gh200_cost_breakdown.png": "476981bf27a3c875cf324bd29e968dbd1d96036cf28acae66d4cfe4dff081061"
+    }
+  },
+  {
+    "figure": "gh200_amortization",
+    "width_inches": 6.75,
+    "height_inches": 2.55,
+    "legend_count": 2,
+    "legend_data_panel_overlaps": [],
+    "axis_decorations_inside_canvas": true,
+    "minimum_legend_font_points": 8.5,
+    "export_sha256": {
+      "paper/figures/gh200_amortization.svg": "778cdfa9f8babbff8233352adeb5607ed8b0e60cd2886693849a4cf6b70cc1d8",
+      "paper/figures/gh200_amortization.pdf": "b537337593950b29cfd863c555a370ed78c4f386944376313532415afe3497d8",
+      "paper/figures/gh200_amortization.png": "7b4a288188861d7d08071b15c12f478bac4edde6e1abf704f25c5acc721bd709"
+    }
+  },
+  {
+    "figure": "gh200_kernel_ablation",
+    "width_inches": 6.75,
+    "height_inches": 2.5,
+    "legend_count": 1,
+    "legend_data_panel_overlaps": [],
+    "axis_decorations_inside_canvas": true,
+    "minimum_legend_font_points": 8.5,
+    "export_sha256": {
+      "paper/figures/gh200_kernel_ablation.svg": "48598e8596aecc26d0a1394e7ef307fa28ba43e9236bffc54f7ed5f7b6a034c0",
+      "paper/figures/gh200_kernel_ablation.pdf": "d8c431ce921444d2bb3ff9a762170fd934a8f79757011160638639b7011db818",
+      "paper/figures/gh200_kernel_ablation.png": "d4f4104e9fa6702be01178482ac732178a5a38a310434a171a7253600e8d3ca1"
+    }
+  },
+  {
+    "figure": "model_score_radii",
+    "width_inches": 6.75,
+    "height_inches": 3.1,
+    "legend_count": 1,
+    "legend_data_panel_overlaps": [],
+    "axis_decorations_inside_canvas": true,
+    "minimum_legend_font_points": 8.5,
+    "export_sha256": {
+      "paper/figures/model_score_radii.svg": "dc7abb65d986d9c8cb6ebe15663f1cc04883681dacbd905f98466356462eb2c3",
+      "paper/figures/model_score_radii.pdf": "00e40aabab9cc6a9560f4e11b985e969c8a6dfcc79c6c7228b9eb9c8c8fa8a3d",
+      "paper/figures/model_score_radii.png": "28977c955d2a169306a6d02b963b05043c375fa323b2fd207c9c3bf499002416"
+    }
+  },
+  {
+    "figure": "model_error_budget",
+    "width_inches": 6.75,
+    "height_inches": 2.4,
+    "legend_count": 0,
+    "legend_data_panel_overlaps": [],
+    "axis_decorations_inside_canvas": true,
+    "minimum_legend_font_points": null,
+    "export_sha256": {
+      "paper/figures/model_error_budget.svg": "7e4d34ca57b04d47a36b2d0f8a26e2e22bd26cb5f9cee8fc4533df600b9e4bef",
+      "paper/figures/model_error_budget.pdf": "152069c809ba1d73380b5ba09098173afe961db1545cab8cb481b9de67d431bd",
+      "paper/figures/model_error_budget.png": "b94c71a11dcdddcf9af18ef4225e00545703936c0dc2788d80499295703678fd"
+    }
+  }
+]

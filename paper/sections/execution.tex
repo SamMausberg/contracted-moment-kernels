@@ -28,7 +28,10 @@ the full dense path, expected cost for $R>0$ reuses is
  T(R)=S+R\bigl[C+(1-p)D\bigr].
  \label{eq:reuse}
 \end{equation}
-It is below $RD$ exactly when $pD>C$ and $R>S/(pD-C)$.
+It is below $RD$ exactly when both conditions hold:
+\begin{equation*}
+ pD>C,\qquad R>\frac{S}{pD-C}.
+\end{equation*}
 \end{proposition}
 \begin{proof}
 Subtract $RD$ and rearrange $S<R(pD-C)$.

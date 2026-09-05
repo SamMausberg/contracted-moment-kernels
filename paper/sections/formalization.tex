@@ -1,3 +1,4 @@
+\FloatBarrier
 \section{Formalization and General Consumers}
 \label{app:formalization}
 
@@ -16,7 +17,7 @@ It does not assume the Taylor remainder or the final enclosure.
 Lean uses finite sums where the manuscript
 uses means: for a block of size $n$, its $H$, $D$, and $\eta$ are multiplied by $n$.
 
-\begin{table*}[t]
+\begin{table}[!htbp]
 \centering
 \caption{Key declarations in the built Lean proof chain. The complete audit covers 64 theorems.}
 \label{tab:formalization}
@@ -33,10 +34,13 @@ Declaration & Established property \\
 \code{full_attention_observation} & Strict cell membership for the real exponential quotient. \\
 \code{observation_cell_iff} & Necessary-and-sufficient strict signs over the independent box. \\
 \code{centered_value_mass_coupling} & Positive-weight value-range/mass dependence. \\
+\code{gated_residual_identity} & Exact smooth-gate residual identity. \\
+\code{gated_remainder_bound} & Smooth-gate error bound under a Taylor witness. \\
 \bottomrule
 \end{tabularx}
-\end{table*}
+\end{table}
 
+\FloatBarrier
 \paragraph{Executable bridges.}
 The rational exponential, interval conversion, BF16 cell construction,
 polygon support optimizer, and runtime identity validation are not extracted
@@ -47,6 +51,7 @@ signed zero, infinities, NaNs, and midpoint ties, is not formalized.
 The numerical summary path cannot discharge the directed checker's sound-input
 premise. These are implementation obligations beyond the real theorem.
 
+\FloatBarrier
 \subsection{Other Observation Contracts}
 If a consumer is constant on a set containing the output, its value is fixed
 (\code{constant_consumer}). For monotone rounding $Q$,
@@ -56,25 +61,30 @@ state transitions implies equality of repeated execution
 (\code{transition_composition}); this theorem does not prove an executor's
 transition-equality premise.
 
+\FloatBarrier
 \subsection{Smooth Gates}
 The residual certificate applies to any positive normalized weights with
 sound block envelopes. Signed unnormalized contractions instead sum intervals.
 For a smooth gate, let
 $p=\phi(t+\alpha)$, $p_0=\phi(t)$, and $p_1=\phi'(t)$. Then
-\begin{align}
- &p(s+\gamma)-(p_0s+p_1\alpha s+p_0\gamma)\nonumber\\
- &\qquad=p_1\alpha\gamma+(p-p_0-p_1\alpha)(s+\gamma).
+\begin{equation}
+ \begin{split}
+ &p(s+\gamma)-(p_0s+p_1\alpha s+p_0\gamma)\\
+ &\quad=p_1\alpha\gamma+(p-p_0-p_1\alpha)(s+\gamma).
+ \end{split}
  \label{eq:gate-identity}
-\end{align}
+\end{equation}
 If $|\alpha|\leq\rho_g$, $|\gamma|\leq\rho_u$, and
 $|p-p_0-p_1\alpha|\leq M\rho_g^2/2$, then
 \begin{equation}
  |\mathrm{error}|\leq |p_1|\rho_g\rho_u
        +\tfrac12M\rho_g^2(|s|+\rho_u).
 \end{equation}
-Lean proves \code{gated_residual_identity} and \code{gated_remainder_bound}.
+Lean proves the identity and bound; \cref{tab:formalization} lists their declarations.
 A curvature witness for a concrete gate remains a separate obligation.
 For SwiGLU, absolute downstream weights multiply these nonnegative radii
 before summation. Contracted coefficients may save an intermediate while
 requiring more storage than the original weights; no feed-forward speedup
 is established here.
+
+\FloatBarrier

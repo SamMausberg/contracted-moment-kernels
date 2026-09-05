@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-09-05T18:46:52.836929+00:00",
+  "scope": "Visual publication review of rendered PDF pages and plot exports; scientific and formal evidence is recorded separately.",
+  "baseline_revision": "838eaca0b3dcd530074eb3c5b95cf2e05a8598c4",
+  "pdf": "paper/PAPER.pdf",
+  "pdf_sha256": "04526cb0e5d62e87bc82db6795b589aa4f1ec4cfe960a1e1871d2e0ed13002e2",
+  "page_count": 17,
+  "reviewed_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+  ],
+  "review_method": "Rendered every page using Poppler and inspected at readable resolution. Independent Astra reviewers checked main pages 1\u20137 and appendix/references pages 8\u201317; the primary reviewer rechecked the final category-label and numeric-tick changes on pages 6 and 16.",
+  "findings_resolved": [
+    {
+      "issue": "Legends covered CPU bars and the summary-upload curve.",
+      "change": "Place all Matplotlib legends below data panels and reserve space at the manuscript width.",
+      "final_pages": [
+        7,
+        10,
+        13,
+        14,
+        15,
+        16
+      ]
+    },
+    {
+      "issue": "Small or crowded category, tick, and panel labels.",
+      "change": "Render plots at 6.75 inches with 8.5-point labels; wrap categories, align rotated labels, show measured context lengths, and use integer head/layer ticks.",
+      "final_pages": [
+        6,
+        7,
+        13,
+        14,
+        15,
+        16
+      ]
+    },
+    {
+      "issue": "Equation tags dropped below long displays or sat beside awkward continuations.",
+      "change": "Use aligned and split displays, redistribute sums, and keep related theorem statements and equations together.",
+      "final_pages": [
+        2,
+        3,
+        5,
+        10,
+        12
+      ]
+    },
+    {
+      "issue": "TikZ endpoint strokes near zero obscured the strict-sign interpretation.",
+      "change": "Use precise interval caps and thin endpoint strokes; align curve labels and panel headings.",
+      "final_pages": [
+        4,
+        9
+      ]
+    },
+    {
+      "issue": "Stretched paragraph spacing, floats before their topic, and text fragments across figure pages.",
+      "change": "Use natural paragraph spacing, a single-column appendix, topic barriers, and intact short blocks beside related figures.",
+      "final_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ]
+    },
+    {
+      "issue": "Uneven reference columns and excessive breaks inside hostnames.",
+      "change": "Balance the bibliography and allow URL breaks at separators and revision digits.",
+      "final_pages": [
+        17
+      ]
+    }
+  ],
+  "no_remaining_actionable_issues_observed": true,
+  "mechanical_checks": {
+    "paper_layout": "results/paper-layout.json",
+    "figure_layout": "results/figure-layout.json",
+    "all_12_export_sets_bound_by_sha256": true,
+    "legend_data_panel_intersections": 0,
+    "plot_axis_decorations_inside_canvas": true,
+    "overfull_boxes": 0,
+    "unresolved_references": [],
+    "embedded_fonts": 28
+  },
+  "preserved_source_paths": [
+    "cmk",
+    "kernels",
+    "lean",
+    "tests",
+    "results/certification",
+    "results/gh200",
+    "results/model_traces",
+    "results/experiments.json",
+    "paper/PAPER.md",
+    "paper/figures/manifest.json",
+    "paper/icml2026.sty",
+    "paper/icml2026.bst"
+  ],
+  "limitations": "Visual judgment complements the geometric checks; page bounds alone cannot detect every overlap or reading-order issue."
+}

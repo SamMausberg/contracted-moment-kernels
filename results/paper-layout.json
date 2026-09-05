@@ -3,18 +3,18 @@
   "passed": true,
   "scope": "Mechanical PDF/layout checks only; no scientific or formal verification claims.",
   "pdf": "paper/PAPER.pdf",
-  "pdf_sha256": "420b1634fd0d72403e9a5b258a46c65225f85da952d7baf28f0bdd9bc49f6c1e",
+  "pdf_sha256": "04526cb0e5d62e87bc82db6795b589aa4f1ec4cfe960a1e1871d2e0ed13002e2",
   "log": "build/paper/PAPER.log",
-  "log_sha256": "daf09a5c6e37627de390d9128ede118cc2776277df64436b5e7beba183e6b2c4",
+  "log_sha256": "f3214741f750bdb27f5c9d2f3253b492f4fdef1209c4ac9f3c66fae00fb0a71b",
   "recorder": "build/paper/PAPER.fls",
-  "recorder_sha256": "bcd35358cddcad55089bd1ab3b0f85f3400151ede842c03dddd62f22cab6af39",
-  "page_count": 15,
+  "recorder_sha256": "4bf83eea276ea9ed4e82209e08516e9aaaf7d084a1c6dff007aba1d6ba6465c8",
+  "page_count": 17,
   "pagination": {
     "appendix_start_page": 8,
-    "references_start_page": 15,
+    "references_start_page": 17,
     "main_pages_before_appendix": 7,
-    "appendix_pages_including_references": 8,
-    "appendix_pages_before_references": 7
+    "appendix_pages_including_references": 10,
+    "appendix_pages_before_references": 9
   },
   "page_dimensions": [
     {
@@ -91,6 +91,16 @@
       "page": 15,
       "width_pt": 612.0,
       "height_pt": 792.0
+    },
+    {
+      "page": 16,
+      "width_pt": 612.0,
+      "height_pt": 792.0
+    },
+    {
+      "page": 17,
+      "width_pt": 612.0,
+      "height_pt": 792.0
     }
   ],
   "font_checks": {
@@ -153,7 +163,7 @@
         "unicode_map": true
       },
       {
-        "name": "LKLKWT+CMEX10",
+        "name": "BZWGCG+CMEX10",
         "type": "Type 1",
         "encoding": "Builtin",
         "embedded": true,
@@ -281,6 +291,14 @@
         "unicode_map": true
       },
       {
+        "name": "GCWXDV+DejaVuSans-Oblique",
+        "type": "CID TrueType",
+        "encoding": "Identity-H",
+        "embedded": true,
+        "subset": true,
+        "unicode_map": true
+      },
+      {
         "name": "BMQQDV+DejaVuSans",
         "type": "CID TrueType",
         "encoding": "Identity-H",
@@ -316,7 +334,7 @@
   },
   "text_bounds": {
     "all_inside_page": true,
-    "word_count": 8706,
+    "word_count": 8691,
     "tolerance_pt": 0.1,
     "violations": []
   },
@@ -347,27 +365,27 @@
     },
     {
       "number": 7,
-      "page": 12
+      "page": 13
     },
     {
       "number": 8,
-      "page": 12
+      "page": 13
     },
     {
       "number": 9,
-      "page": 13
+      "page": 14
     },
     {
       "number": 10,
-      "page": 13
+      "page": 15
     },
     {
       "number": 11,
-      "page": 14
+      "page": 16
     },
     {
       "number": 12,
-      "page": 14
+      "page": 16
     }
   ],
   "latex": {
@@ -375,35 +393,35 @@
     "unresolved_references": [],
     "overfull_count": 0,
     "overfull": [],
-    "underfull_count": 15,
+    "underfull_count": 5,
     "warnings": []
   },
   "reference_checks": "Final LaTeX log checked for undefined/multiply-defined labels and citations and rerun requests; remote URLs not fetched.",
   "source_sha256": {
-    "paper/PAPER.tex": "4f59a02ecfd53a01121452a2699626dfd41a8b67fea0039607d85098d584a5a9",
-    "paper/diagrams/boundary_geometry.tex": "c3a35bf286425654ff97ee9f8d4c43c7c974232cc0c0fd00c221e58bd0e9f700",
-    "paper/diagrams/coupled_geometry.tex": "4acbb97c5abd254bbf465299670996087b15b1f5fb90c8f0a7936f0d1303de67",
-    "paper/figures/coupling_ablation.pdf": "391aa35f501251a9d56d213c53d5ec871891407d8c607e03be6f675d1205357e",
-    "paper/figures/gh200_amortization.pdf": "f63db29923bb14ffbc51801b5a02be20d30754d689f3ea3fafe5a84e4d375616",
-    "paper/figures/gh200_cost_breakdown.pdf": "6db4e62310a2b370c94c17146a8be58f6ea424dc6b043fbf5bc5ded77671e588",
-    "paper/figures/gh200_coverage_cost.pdf": "58dc86df935acee7e7b79bd01918097b9718198a983b3e3f32d380cb4225a014",
-    "paper/figures/gh200_kernel_ablation.pdf": "29cbaa3cf1d9af0d40b05ba8bb8940c796707031abe21d024e8c5abc2653e585",
-    "paper/figures/gh200_latency.pdf": "b2aa2b8fbdb1cea6abd6855e69035743d50081d39510abc75117bce28f5dce04",
-    "paper/figures/model_error_budget.pdf": "6505aaf9df90b6e8ea8dc548ac9793ef74744ce8d6637306c09872c63bfa19ec",
-    "paper/figures/model_score_radii.pdf": "71700fe87a27673cbc3ef29befa40202adf9a208e95ffab69c787edd4513923c",
-    "paper/figures/remainder_mechanism.pdf": "ad923f25d7f5e9df5feb04f74c5983fb2619aa02011b9221d5eeadc02ef8d51e",
-    "paper/figures/selective_refinement.pdf": "5a4d0a2e2060cc83147dfd6f1bf2ce9bca026a11fa21c7e54e05e939c8c3ace8",
+    "paper/PAPER.tex": "4ea41e2357cbf983928b4a4edca95d1fc9cef8508d712707fc81ddac47e87c1e",
+    "paper/diagrams/boundary_geometry.tex": "9a974260076a5333381ed39a700126d61da6cf77b7cfc6af23ae0277b3d0bad5",
+    "paper/diagrams/coupled_geometry.tex": "94e1e6b4d25ce1021e0e59172ae1200dc2650c3cb34d805c95bdad25b87e8010",
+    "paper/figures/coupling_ablation.pdf": "0d81c84f98772aef94ac9f1d2535a63f34de951e348db130c00a0adcf4d344b8",
+    "paper/figures/gh200_amortization.pdf": "b537337593950b29cfd863c555a370ed78c4f386944376313532415afe3497d8",
+    "paper/figures/gh200_cost_breakdown.pdf": "09c438c5d002623a7ec9482def1d7050c452940ad852a3ce50eb561d8f36deb0",
+    "paper/figures/gh200_coverage_cost.pdf": "5a43058bfbe9b1a909e1f8b82675950113bb8a8d26505b447e2bcb19d317a54a",
+    "paper/figures/gh200_kernel_ablation.pdf": "d8c431ce921444d2bb3ff9a762170fd934a8f79757011160638639b7011db818",
+    "paper/figures/gh200_latency.pdf": "2722cfbf12796035e3185afd9a94d520dd94e3ad5a0835156abf5693e088544a",
+    "paper/figures/model_error_budget.pdf": "152069c809ba1d73380b5ba09098173afe961db1545cab8cb481b9de67d431bd",
+    "paper/figures/model_score_radii.pdf": "00e40aabab9cc6a9560f4e11b985e969c8a6dfcc79c6c7228b9eb9c8c8fa8a3d",
+    "paper/figures/remainder_mechanism.pdf": "be353d38225bbd3aa0e636573c6021850800f0d151b6260ae27da66b096b121e",
+    "paper/figures/selective_refinement.pdf": "7b2db41a717b9510e7516555a9ed12629208193185202353d11647eee52ce8dc",
     "paper/icml2026.bst": "0ec3d5eb9b02efb7e0b44a32f3775882f42a743d0bdc618f34e6936309b98764",
     "paper/icml2026.sty": "7cdcf90f6a59c5219e7f15c88f7ed09fcaf598dad91e6cdddc4dc3cb0e397a95",
     "paper/references.bib": "5118ccefe97b5d0d3b1d59316337bbc118c0503d2ccf963e26ef1f88d9e4beef",
     "paper/sections/discussion.tex": "d1038a016ec7f7a64fb65ce7c476074f44e342f446c82b34384e28d62129de92",
-    "paper/sections/execution.tex": "d14353fe25931f87a870353b1a58461a52f65c696402ffb04cbbeafde0070134",
-    "paper/sections/experiments.tex": "ce1406190cfbd054aba0595ec1497da45a438084cc0f952e57dc010d8918afd5",
-    "paper/sections/experiments_appendix.tex": "630f4b35899b003f7445d944b5596206f92af1352613e128f36bd369df7e375b",
-    "paper/sections/formalization.tex": "6159835ec198cc14ca11f2e53565501c32c57381cec47bf79eb6f0da506af448",
+    "paper/sections/execution.tex": "66a30255129a2e18fe8e86a1eab6fe922451605cd5ee96a2cc0ecd18f19e6831",
+    "paper/sections/experiments.tex": "391bd0ae0136fea151e78063a9e3f091b6c2de6eb78d108935ac9f7974432408",
+    "paper/sections/experiments_appendix.tex": "e46eb44427c1153f1e6ffedaca714b5588cbbc66e37051462537e94aecbce56b",
+    "paper/sections/formalization.tex": "f72963065b6dcee00d1bb0b6c684f3c111c40b23304eb4a0a208a690e8ecad23",
     "paper/sections/introduction.tex": "965e8c372437401871f47aa189c344245eb2d4ac1d31b2ffa46bbf67eb4d50c4",
-    "paper/sections/theory.tex": "e6ea3688ba314560d7043fa70da7f53dfa0a2e310405bf8ecf09d53be900bf6b",
-    "paper/sections/theory_appendix.tex": "8f498cbcc01cc209834fe42908d379639d4c9e08ebf8c300c37b27b275e76487"
+    "paper/sections/theory.tex": "dbb3d918253a7b5a63a87d53fefb16b287f9854e58ba193f87f7ff0db7d6d954",
+    "paper/sections/theory_appendix.tex": "a98c0d4240b2d554666060e9e0d7ac0c7d7b8d83c295ad692c9e5cf00cafb250"
   },
   "vector_figure_inputs": [
     "paper/figures/coupling_ablation.pdf",

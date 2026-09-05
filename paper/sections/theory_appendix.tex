@@ -1,6 +1,8 @@
+\FloatBarrier
 \section{Supporting Certificate and Moment Proofs}
 \label{sec:theory-proofs}
 
+\FloatBarrier
 \subsection{Box Optimality}
 \label{app:box-optimality}
 \begin{proof}[Proof of \cref{thm:box-optimality}]
@@ -11,6 +13,7 @@ endpoints and $m_{bj}=m^+_{bj}$ attain the maximum. The matching inequalities
 are \cref{eq:residual-enclosure}.
 \end{proof}
 
+\FloatBarrier
 \subsection{The Row-Sum Quadratic Bound}
 \label{app:quadratic-witness}
 \begin{proof}[Proof of \cref{lem:quadratic-witness}]
@@ -24,6 +27,7 @@ The inequality $|u_a u_k|\le(u_a^2+u_k^2)/2$ and symmetry give
 No numerical eigendecomposition is needed.
 \end{proof}
 
+\FloatBarrier
 \subsection{The Sharp Exponential Majorant}
 \label{app:sharp-remainder}
 \begin{proof}[Proof of \cref{lem:sharp-remainder}]
@@ -43,6 +47,7 @@ $\kappa(\rho)$. Substituting $n=m+3$ and using $(m+3)!\ge6m!$ gives
 For $\rho>0$, terms with $m\ge1$ make the inequality strict.
 \end{proof}
 
+\FloatBarrier
 \subsection{Full-Score Enclosure from Signed Moments}
 \label{app:full-score-enclosures}
 \begin{proof}[Proof of \cref{thm:full-score-enclosures}]
@@ -76,6 +81,7 @@ at most
 Adding this perturbation proves \cref{eq:full-numerator}.
 \end{proof}
 
+\FloatBarrier
 \subsection{Exact Polygon Support}
 \label{app:polygon-support}
 The rational optimizer enumerates polygon vertices. Candidate masses are
@@ -89,7 +95,7 @@ A linear objective attains its extrema at these vertices. Empty candidate
 sets indicate inconsistent metadata and are rejected. The number of rational
 operations is constant per block/channel; their bit cost is not.
 
-
+\FloatBarrier
 \subsection{Boundary Geometry}
 \label{app:boundary-geometry}
 \begin{example}\label{ex:boundary-geometry}
@@ -100,15 +106,16 @@ This is a strict improvement in this example, not a dominance claim over
 every correlated certificate.
 \end{example}
 
-\begin{figure*}[!t]
+\begin{figure}[!htbp]
  \centering
  \input{diagrams/boundary_geometry.tex}
  \caption{Boundary residuals for \cref{ex:boundary-geometry}. The attained
  output range is closed; the certified open cell is illustrative, not a BF16
  rounding cell.}
  \label{fig:boundary-geometry}
-\end{figure*}
+\end{figure}
 
+\FloatBarrier
 \subsection{Joint Value Coupling}
 \label{app:joint-coupling}
 \begin{example}\label{ex:joint-coupling}
@@ -119,6 +126,7 @@ optimization gives $[-1/2,3/4]$. This compares metadata geometry without
 asserting token realizability of every vertex.
 \end{example}
 
+\FloatBarrier
 \subsection{Margin and Refinement}
 \label{app:margin-refinement}
 The residual width separates mass and numerator uncertainty:
@@ -129,10 +137,17 @@ The residual width separates mass and numerator uncertainty:
  \end{aligned}
  \label{eq:residual-width}
 \end{equation}
+\begin{samepage}
 \begin{proposition}[Margin versus uncertainty]\label{prop:margin-uncertainty}
 For $a_j<y_j<b_j$, certification follows if
-$W_j(a_j)<Z(y_j-a_j)$ and $W_j(b_j)<Z(b_j-y_j)$.
+\begin{equation*}
+ \begin{aligned}
+ W_j(a_j)&<Z(y_j-a_j),\\
+ W_j(b_j)&<Z(b_j-y_j).
+ \end{aligned}
+\end{equation*}
 \end{proposition}
+\end{samepage}
 \begin{proof}
 The lower endpoint is at least the true residual minus its enclosure width;
 the upper endpoint is at most the true residual plus its width. The proposed
@@ -144,6 +159,7 @@ width contributions. If sound widths converge to zero and the output stays
 strictly inside a fixed cell, that cell eventually passes. The bounded executor
 does not assume convergence before fallback.
 
+\FloatBarrier
 \subsection{Diagonal Retention Need Not Produce Nested Intervals}
 \label{app:diagonal-nonnesting}
 Retaining the diagonal weakly reduces the row-sum witness but shifts the
@@ -153,15 +169,18 @@ both witnesses equal $10$. Retaining the diagonal changes $[-10,10]$ to
 $9+[-10,10]$. Acceptance need not improve for every cell; both representations
 are exposed by the implementation.
 
+\FloatBarrier
 \subsection{Remainder and Projection Growth}
 \label{app:remainder-growth}
 \Cref{fig:remainder-mechanism} compares the sharp remainder coefficient with
 the Lagrange bound and isolates the separate cost of discarded-score variation.
-\begin{figure*}[!t]
+\begin{figure}[!htbp]
  \centering
  \includegraphics[width=\textwidth]{figures/remainder_mechanism.pdf}
  \caption{The sharp coefficient improves the Lagrange constant but still
  grows exponentially. Discarded scores impose a separate exponential cost.
  The BF16 line is a unit-scale guide, not a sufficient certificate.}
  \label{fig:remainder-mechanism}
-\end{figure*}
+\end{figure}
+
+\FloatBarrier

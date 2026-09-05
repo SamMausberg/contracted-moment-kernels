@@ -1,6 +1,8 @@
+\FloatBarrier
 \section{Validation and Experimental Protocols}
 \label{sec:experiments-appendix}
 
+\FloatBarrier
 \subsection{Arithmetic and Implementation Validation}
 \label{sec:experimental-validation}
 
@@ -18,11 +20,15 @@ comparisons with an independent half-plane intersection implementation,
 40 direct 100-digit attention comparisons across rank and refinement, and
 40 numerical/exact geometry comparisons. Invalid dimensions, nonintegral
 indices, negative bounds, unsupported domains, stale source/query/shift state,
-and midpoint behavior are covered. This audit found an arithmetic defect:
+and midpoint behavior are covered.
+
+\begin{samepage}
+This audit found an arithmetic defect:
 integer endpoints allowed reciprocal evaluation through Python's floating-point
-\texttt{1 / int}, so the upper endpoint of $[1,1]/[3,3]$ could lie below $1/3$.
+\mbox{\texttt{1 / int}}, so the upper endpoint of $[1,1]/[3,3]$ could lie below $1/3$.
 Endpoints and scale factors now normalize to exact fractions; the regression
 requires both endpoints to equal $1/3$ exactly.
+\end{samepage}
 
 The imported CUDA checker retains all 74 rational-certified rows among
 160 rationally generated rows, certifies no rationally refused row in that
@@ -33,11 +39,19 @@ checks report no errors on the exercised numerical paths; imported CUDA memory
 checking also reports no errors. These finite checks complement the theorem
 chain without establishing instruction-level correctness for all inputs.
 
-
+\FloatBarrier
 \subsection{Exact-Rational Coupling Checks}
 \label{sec:coupling-validation}
 
-\begin{table}[tbp]
+Independent high-precision coverage comparisons use 110 decimal digits and a
+scaled $10^{-95}$ tolerance to compare against exact zero-width intervals.
+An initial zero-tolerance attempt failed through cancellation in a constant
+channel and is documented. Certificate and rational-oracle comparisons use
+exact fractions without this tolerance. Stored decimal endpoints are display
+approximations; broad-channel failures and exact-midpoint abstentions remain
+in the artifact.
+
+\begin{table}[!htbp]
   \centering
   \caption{Initial exact-rational coupling results. Denominators count
   coordinates, not independent model examples.}
@@ -57,19 +71,15 @@ chain without establishing instruction-level correctness for all inputs.
   \end{tabular}
 \end{table}
 
-Independent high-precision coverage comparisons use 110 decimal digits and a
-scaled $10^{-95}$ tolerance to compare against exact zero-width intervals.
-An initial zero-tolerance attempt failed through cancellation in a constant
-channel and is documented. Certificate and rational-oracle comparisons use
-exact fractions without this tolerance. Stored decimal endpoints are display
-approximations; broad-channel failures and exact-midpoint abstentions remain
-in the artifact.
-
-
+\FloatBarrier
 \subsection{Uncertainty Localization and GPU Controls}
 \label{sec:localized-uncertainty}
 
-\begin{figure*}[!t]
+The CPU experiment in \cref{sec:coupling-experiment} isolates correction work.
+\Cref{fig:selective-refinement} shows the selected token fractions for every
+query before the GPU controls below compare complete-output coverage and cost.
+
+\begin{figure}[!htbp]
   \centering
   \includegraphics[width=\textwidth]{figures/selective_refinement.pdf}
   \caption{Correction-token fractions for every query in tight, mixed, and
@@ -77,7 +87,7 @@ in the artifact.
   uncertainty requires all tokens. Full-source validation reads are additional
   and included in CPU timings.}
   \label{fig:selective-refinement}
-\end{figure*}
+\end{figure}
 
 GPU synthetic controls use $d=h=64$ and BF16 input values represented exactly
 in binary64 on the summary path. Tight clusters can pass completely. Moderate
@@ -90,15 +100,16 @@ This observation assumes no coordinate independence. Exact-midpoint controls
 reject every strict cell by design. In the measured GPU path, one failed
 coordinate triggers full-batch fallback (\cref{fig:gh200-coverage-cost}).
 
-\begin{figure*}[!t]
+\begin{figure}[!htbp]
   \centering
   \includegraphics[width=\textwidth]{figures/gh200_coverage_cost.pdf}
   \caption{Whole-output coverage and complete GPU costs for rank-four,
   $N=8192$, $Q=32$ controls varying uncertainty and cell margins. The cost
   includes the full-batch fallback triggered by any failed coordinate.}
   \label{fig:gh200-coverage-cost}
-\end{figure*}
+\end{figure}
 
+\FloatBarrier
 \subsection{Trained-Activation Capture and Diagnostics}
 \label{sec:trained-protocol}
 
@@ -116,7 +127,7 @@ entire prefix; contiguous GQA groups contain seven query heads per KV head,
 and scaling by $1/8$ is exact. This is an activation diagnostic, not a
 language-model accuracy benchmark or production-traffic sample.
 
-\begin{table*}[tbp]
+\begin{table}[!htbp]
   \centering
   \caption{Medians of trained-activation radius and cell-margin diagnostics.
   Full rank uses the three representative layers.}
@@ -132,9 +143,9 @@ language-model accuracy benchmark or production-traffic sample.
       & $8.95\times10^{-7}$ & $6.66\times10^{-7}$ \\
     \bottomrule
   \end{tabular}
-\end{table*}
+\end{table}
 
-\begin{figure*}[!t]
+\begin{figure}[!htbp]
   \centering
   \includegraphics[width=\textwidth]{figures/model_score_radii.pdf}
   \caption{Trained-model score radii by layer and head. Low rank leaves large
@@ -142,8 +153,9 @@ language-model accuracy benchmark or production-traffic sample.
   radii, while actual score variation remains substantial. Computing scanned
   diagnostic radii reads tokens and is not free query metadata.}
   \label{fig:model-score-radii}
-\end{figure*}
+\end{figure}
 
+\FloatBarrier
 \subsection{GH200 Environment and Timing Protocol}
 \label{sec:gh200-protocol}
 
@@ -164,8 +176,7 @@ workspace, and graph capture are recorded separately. Complete eager timings
 include screening, device decision reduction, CPU synchronization, and either
 an output cast or executed full-batch fallback (\cref{fig:gh200-latency}).
 
-
-\begin{figure*}[!t]
+\begin{figure}[!htbp]
   \centering
   \includegraphics[width=\textwidth]{figures/gh200_latency.pdf}
   \caption{GH200 resident screening and complete-path latency against fused
@@ -173,7 +184,7 @@ an output cast or executed full-batch fallback (\cref{fig:gh200-latency}).
   10th--90th sample quantiles include each complete path's actual decisions
   and fallback behavior.}
   \label{fig:gh200-latency}
-\end{figure*}
+\end{figure}
 
 The eager timing helper performs three warmup calls and synchronizes before
 sampling. Each sample brackets 20 invocations with CUDA events, waits for the
@@ -193,10 +204,24 @@ captures, from layers 0, 12, and 23 at prefix length 4,096, evaluated at ranks
 0, 4, and 16. They are separate from the rank-eight and full-rank CPU activation
 diagnostics.
 
+\FloatBarrier
 \subsection{Kernel Ablation, Setup, and Footprint}
 \label{sec:gh200-costs}
 
-\begin{table*}[tbp]
+Even the favorable $N=32768,Q=1,r=4$ case loses end to end. Its resident
+parallel screen takes \SI{20.09}{\micro\second} under fixed-input graph replay
+versus dense attention's \SI{31.30}{\micro\second}; the complete eager path
+takes \SI{83.11}{\micro\second} versus \SI{35.62}{\micro\second}, plus about
+\SI{51.50}{\milli\second} of reusable summary/workspace setup. CPU
+moment-and-extrema arrays occupy 1,000,448 bytes, the uploaded box summary
+869,376 bytes, and original BF16 K/V 8,388,608 bytes. These payloads exclude
+262,144 bytes of group indices and Python object/hash overhead; scratch and
+retained original K/V are reported separately. Neither serving-system memory
+savings nor a complete-path speedup follows. Every measured complete path is
+slower than dense, so no finite reuse count repays setup under these costs
+(\cref{fig:gh200-amortization}).
+
+\begin{table}[!htbp]
   \centering
   \caption{Matched graph replay medians in microseconds for tight rank-four
   inputs. All three screening implementations and the dense baseline are
@@ -212,39 +237,27 @@ diagnostics.
     32768 & 32 & 143.28 & 147.52 & 64.89 & 34.21 \\
     \bottomrule
   \end{tabular}
-\end{table*}
+\end{table}
 
-\begin{figure*}[!t]
+\begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{figures/gh200_cost_breakdown.pdf}
   \caption{Isolated GPU phase medians and summary setup costs. CPU
   construction, upload, and workspace allocation remain explicit; complete
   latency is measured separately rather than reconstructed from phase sums.}
   \label{fig:gh200-cost-breakdown}
-\end{figure*}
+\end{figure}
 
-Even the favorable $N=32768,Q=1,r=4$ case loses end to end. Its resident
-parallel screen takes \SI{20.09}{\micro\second} under fixed-input graph replay
-versus dense attention's \SI{31.30}{\micro\second}; the complete eager path
-takes \SI{83.11}{\micro\second} versus \SI{35.62}{\micro\second}, plus about
-\SI{51.50}{\milli\second} of reusable summary/workspace setup. CPU
-moment-and-extrema arrays occupy 1,000,448 bytes, the uploaded box summary
-869,376 bytes, and original BF16 K/V 8,388,608 bytes. These payloads exclude
-262,144 bytes of group indices and Python object/hash overhead; scratch and
-retained original K/V are reported separately. Neither serving-system memory
-savings nor a complete-path speedup follows. Every measured complete path is
-slower than dense, so no finite reuse count repays setup under these costs
-(\cref{fig:gh200-amortization}).
-
-\begin{figure*}[!t]
+\begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{figures/gh200_amortization.pdf}
   \caption{Setup amortization and matched graph device costs. No measured
   complete path has a finite setup break-even. Fixed-input graph replay omits
   the adaptive host decision and constitutes a separate experiment.}
   \label{fig:gh200-amortization}
-\end{figure*}
+\end{figure}
 
+\begin{minipage}{\textwidth}
 \subsection{Retained Failures and Same-Machine Reproduction}
 \label{sec:gh200-reproduction}
 
@@ -267,3 +280,7 @@ median ratios $1.075$ and $1.112$. Every complete screened path remains slower
 than dense, with no finite setup break-even. This reproduces the conclusions
 on the same machine, without estimating variation across devices, model
 families, or serving systems.
+\par
+\end{minipage}
+
+\FloatBarrier

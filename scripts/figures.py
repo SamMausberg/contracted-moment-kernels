@@ -16,6 +16,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.patches import Polygon, Rectangle
+from matplotlib.ticker import FixedLocator, FuncFormatter, NullFormatter
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
@@ -32,10 +33,15 @@ COLORS = {
 plt.rcParams.update(
     {
         "font.family": "DejaVu Sans",
-        "font.size": 12,
-        "axes.titlesize": 13,
-        "axes.labelsize": 12,
-        "legend.fontsize": 11,
+        "font.size": 8.5,
+        "axes.titlesize": 9,
+        "axes.labelsize": 8.5,
+        "axes.titlelocation": "left",
+        "axes.titlepad": 8,
+        "legend.fontsize": 8.5,
+        "legend.frameon": False,
+        "lines.linewidth": 1.35,
+        "lines.markersize": 4,
         "axes.spines.top": False,
         "axes.spines.right": False,
         "axes.grid": True,
@@ -48,21 +54,102 @@ plt.rcParams.update(
     }
 )
 MANIFEST = []
+LAYOUT = []
+
+
+def panels(height=2.8):
+    """Draw at the manuscript's physical width so text is not scaled down."""
+    fig, axes = plt.subplots(1, 2, figsize=(6.75, height), layout="constrained")
+    fig.get_layout_engine().set(w_pad=0.035, h_pad=0.035, wspace=0.1)
+    return fig, axes
+
+
+def legend_below(axis, columns=1):
+    return axis.legend(
+        loc="upper center",
+        bbox_to_anchor=(0.5, -0.3),
+        ncols=columns,
+        borderaxespad=0,
+        handlelength=2,
+    )
+
+
+def shared_legend(fig, axis, columns=3):
+    handles, labels = axis.get_legend_handles_labels()
+    return fig.legend(handles, labels, loc="outside lower center", ncols=columns)
+
+
+def context_ticks(axis, values):
+    """Label the measured context lengths instead of unrelated log ticks."""
+    axis.xaxis.set_major_locator(FixedLocator(values))
+    axis.xaxis.set_major_formatter(FuncFormatter(lambda value, _: f"{value:,.0f}"))
+    axis.xaxis.set_minor_formatter(NullFormatter())
 
 
 def save(fig, name, sources, explanation):
     OUT.mkdir(parents=True, exist_ok=True)
+    plot_axes = [axis for axis in fig.axes if axis.get_label() != "<colorbar>"]
+    for letter, axis in zip("ab", plot_axes):
+        title = axis.get_title(loc="left")
+        axis.set_title(f"({letter}) {title}", loc="left")
+    # Outside legends depend on axes height. Let constrained layout settle,
+    # then keep identical positions in all three export backends.
+    for _ in range(3):
+        fig.canvas.draw()
+    fig.set_layout_engine(None)
+    renderer = fig.canvas.get_renderer()
+    legends = [*fig.legends, *(axis.get_legend() for axis in plot_axes if axis.get_legend())]
+    overlaps = [
+        {"legend": index, "panel": panel}
+        for index, legend in enumerate(legends)
+        for panel, axis in enumerate(plot_axes)
+        if legend.get_window_extent(renderer).overlaps(axis.get_window_extent(renderer))
+    ]
+    if overlaps:
+        raise ValueError(f"{name}: legend covers a data panel: {overlaps}")
+    figure_bounds = fig.get_window_extent(renderer)
+    for axis in fig.axes:
+        bounds = axis.get_tightbbox(renderer)
+        if bounds is not None and (
+            bounds.x0 < figure_bounds.x0 - 1
+            or bounds.y0 < figure_bounds.y0 - 1
+            or bounds.x1 > figure_bounds.x1 + 1
+            or bounds.y1 > figure_bounds.y1 + 1
+        ):
+            raise ValueError(
+                f"{name}: axis decorations {bounds.bounds} extend beyond canvas {figure_bounds.bounds}"
+            )
+    LAYOUT.append(
+        {
+            "figure": name,
+            "width_inches": float(fig.get_figwidth()),
+            "height_inches": float(fig.get_figheight()),
+            "legend_count": len(legends),
+            "legend_data_panel_overlaps": overlaps,
+            "axis_decorations_inside_canvas": True,
+            "minimum_legend_font_points": min(
+                (text.get_fontsize() for legend in legends for text in legend.get_texts()),
+                default=None,
+            ),
+        }
+    )
     for extension in ["svg", "pdf", "png"]:
         output = OUT / f"{name}.{extension}"
         fig.savefig(
             output,
-            bbox_inches="tight",
+            bbox_inches=None,
             metadata={"Creator": "scripts/figures.py"} if extension in ["svg", "pdf"] else None,
         )
         if extension == "svg":
             output.write_text(
                 "\n".join(line.rstrip() for line in output.read_text().splitlines()) + "\n"
             )
+    LAYOUT[-1]["export_sha256"] = {
+        f"paper/figures/{name}.{extension}": hashlib.sha256(
+            (OUT / f"{name}.{extension}").read_bytes()
+        ).hexdigest()
+        for extension in ("svg", "pdf", "png")
+    }
     MANIFEST.append(
         {
             "figure": name,
@@ -77,7 +164,7 @@ def save(fig, name, sources, explanation):
 
 
 def analytic_figures():
-    fig, ax = plt.subplots(1, 2, figsize=(10.4, 3.6), layout="constrained")
+    fig, ax = panels()
     c = np.linspace(0.25, 1.75, 250)
     lower = np.minimum(-c, -2 * c) + np.minimum(2 - c, 2 * (2 - c))
     upper = np.maximum(-c, -2 * c) + np.maximum(2 - c, 2 * (2 - c))
@@ -91,9 +178,9 @@ def analytic_figures():
     ax[0].set(
         xlabel="Boundary c",
         ylabel="Attainable residual N − cZ",
-        title="Two signs determine the observation",
+        title="Boundary residuals",
     )
-    ax[0].legend(loc="upper right")
+    legend_below(ax[0])
     for y, (lo, hi), color in zip(
         [2, 1, 0],
         [(0.6, 1.4), (2 / 3, 4 / 3), (0.5, 1.5)],
@@ -114,7 +201,7 @@ def analytic_figures():
         xlabel="Normalized output",
         ylim=(-0.7, 2.7),
         xlim=(0.35, 1.65),
-        title="Preserving mass dependence matters",
+        title="Output intervals",
     )
     save(
         fig,
@@ -123,7 +210,7 @@ def analytic_figures():
         "Analytic two-block example: centers 0 and 2, masses in [1,2], centered numerators zero. No measured data.",
     )
 
-    fig, ax = plt.subplots(1, 2, figsize=(10.4, 3.7), layout="constrained")
+    fig, ax = panels(3.0)
     polygon = np.array([[1, -0.25], [3, -0.75], [3, 1.5], [1, 0.5]])
     ax[0].add_patch(
         Rectangle((1, -3), 2, 6, facecolor=COLORS["orange"], alpha=0.12, edgecolor=COLORS["orange"])
@@ -139,9 +226,9 @@ def analytic_figures():
         ylim=(-3.4, 3.4),
         xlabel="Block mass Z",
         ylabel="Centered numerator M",
-        title="Value bounds remove impossible box corners",
+        title="Coupled feasible set",
     )
-    ax[0].legend(loc="lower left")
+    legend_below(ax[0])
     bounds = [(-2.7, 3.9), (0.05, 2.4), (-4.8, 2.4), (-2.55, -0.1)]
     for y, (lo, hi), color in zip(
         range(4), bounds, [COLORS["orange"], COLORS["blue"], COLORS["orange"], COLORS["blue"]]
@@ -158,7 +245,7 @@ def analytic_figures():
             "Coupled at upper boundary",
         ],
         xlabel="Residual interval",
-        title="Cell (0.7, 1.6), block center 1",
+        title="Boundary residual intervals",
         ylim=(-0.6, 3.6),
     )
     ax[1].invert_yaxis()
@@ -169,7 +256,7 @@ def analytic_figures():
         "Analytic block: Z in [1,3], M in [-3,3], centered values in [-1/4,1/2]. Polygon support establishes both strict signs.",
     )
 
-    fig, ax = plt.subplots(1, 2, figsize=(10.4, 3.6), layout="constrained")
+    fig, ax = panels()
     rho = np.geomspace(0.001, 8, 300)
     sharp = np.array([tail_coefficient(x) for x in rho])
     old = np.array([tail_coefficient(x, False) for x in rho])
@@ -178,18 +265,18 @@ def analytic_figures():
     ax[0].set(
         xlabel="Retained score radius ρ",
         ylabel="Quadratic remainder coefficient",
-        title="Sharper constants still grow exponentially",
+        title="Exponential remainder growth",
     )
-    ax[0].legend()
+    legend_below(ax[0])
     epsilon = np.linspace(0, 8, 200)
     ax[1].semilogy(epsilon, np.expm1(epsilon) + 1e-7, color=COLORS["red"], label=r"$e^\epsilon-1$")
     ax[1].axhline(1 / 256, color=COLORS["green"], ls="--", label="Upper BF16 half-cell at 1")
     ax[1].set(
         xlabel="Discarded score radius ε",
         ylabel="Projection inflation coefficient",
-        title="Rank reduction has an explicit accuracy cost",
+        title="Discarded-score inflation",
     )
-    ax[1].legend()
+    legend_below(ax[1])
     save(
         fig,
         "remainder_mechanism",
@@ -208,7 +295,7 @@ def cpu_refinement():
         for r in data["ablations"]
         if r["rank"] == 4 and r.get("adaptive_scanned_tokens") is not None
     ]
-    fig, ax = plt.subplots(1, 2, figsize=(10.4, 3.5), layout="constrained")
+    fig, ax = panels(3.1)
     x = np.arange(len(rows))
     labels = ["Tight blocks", "One broad block", "All blocks broad"]
     ax[0].bar(
@@ -227,22 +314,22 @@ def cpu_refinement():
     )
     ax[0].set(
         xticks=x,
-        xticklabels=labels,
+        xticklabels=["Tight\nblocks", "One broad\nblock", "All blocks\nbroad"],
         ylabel="Fraction",
         ylim=(0, 1.14),
-        title="Refinement reveals where uncertainty lives",
+        title="Acceptance and correction work",
     )
-    ax[0].legend(loc="upper left")
+    legend_below(ax[0])
     for i, row in enumerate(rows):
         fractions = np.asarray(row["adaptive_scanned_tokens"]) / data["dimensions"]["N"]
         ax[1].scatter(np.arange(len(fractions)), fractions, s=20, label=labels[i], alpha=0.8)
     ax[1].set(
         xlabel="Query index",
         ylabel="Correction-token fraction",
-        title="Every query is retained, including failures",
+        title="Correction work for every query",
         ylim=(-0.05, 1.08),
     )
-    ax[1].legend()
+    legend_below(ax[1])
     save(
         fig,
         "selective_refinement",
@@ -259,7 +346,7 @@ def coupling_figure():
     summary = data["summary"]
     coords = [c for case in data["cases"] for c in case["stages"][0]["coordinates"]]
     ratios = sorted(c["width_coupled"] / c["width_box"] for c in coords if c["width_box"] > 0)
-    fig, ax = plt.subplots(1, 2, figsize=(10.4, 3.6), layout="constrained")
+    fig, ax = panels(2.4)
     counts = [
         summary[k] for k in ["global_value_hull_accepted", "box_accepted", "coupled_accepted"]
     ]
@@ -268,20 +355,20 @@ def coupling_figure():
         ax[0].text(i, count + 1.5, f"{count}/149", ha="center")
     ax[0].set(
         xticks=range(3),
-        xticklabels=["Global value hull", "Block boxes", "Coupled blocks"],
+        xticklabels=["Global value\nhull", "Block\nboxes", "Coupled\nblocks"],
         ylabel="Initially certified coordinates",
         ylim=(0, 78),
-        title="Which baseline explains the added certificates?",
+        title="Initial certificates",
     )
     ax[1].step(
         ratios, np.arange(1, len(ratios) + 1) / len(ratios), where="post", color=COLORS["blue"]
     )
     ax[1].set(
-        xlabel="Coupled residual width / box residual width",
-        ylabel="Fraction of positive-width coordinates",
+        xlabel="Coupled / box residual width",
+        ylabel="Cumulative fraction",
         xlim=(-0.02, 1.02),
         ylim=(0, 1.05),
-        title="Most widths stay unchanged",
+        title="Residual-width distribution",
     )
     ax[1].text(
         0.04,
@@ -289,7 +376,7 @@ def coupling_figure():
         "30 strict improvements\n119 unchanged\n1 added accept beyond global hull",
         transform=ax[1].transAxes,
         bbox={"facecolor": "white", "alpha": 0.8, "edgecolor": "none"},
-        fontsize=11,
+        fontsize=8.5,
     )
     save(
         fig,
@@ -305,7 +392,7 @@ def gpu_figures():
         return
     data = json.loads(path.read_text())
     rows = [r for r in data["cases"] if r.get("status") == "ok"]
-    fig, axes = plt.subplots(1, 2, figsize=(10.4, 4.2), layout="constrained")
+    fig, axes = panels(3.1)
     for ax, Q in zip(axes, [1, 32]):
         selected = sorted(
             [r for r in rows if r.get("profile") == "tight" and r["rank"] == 4 and r["Q"] == Q],
@@ -330,10 +417,10 @@ def gpu_figures():
             yscale="log",
             xlabel="Visible keys N",
             ylabel="Measured batch latency (µs)",
-            title="One decode query" if Q == 1 else "32 queries sharing K/V",
+            title="One decode query" if Q == 1 else "32 queries, shared K/V",
         )
-    handles, labels = axes[0].get_legend_handles_labels()
-    fig.legend(handles, labels, loc="outside lower center", ncol=3)
+        context_ticks(ax, [r["N"] for r in selected])
+    shared_legend(fig, axes[0])
     save(
         fig,
         "gh200_latency",
@@ -350,7 +437,7 @@ def gpu_figures():
         and r["N"] == 8192
     ]
     if chosen:
-        fig, ax = plt.subplots(1, 2, figsize=(10.4, 3.6), layout="constrained")
+        fig, ax = panels()
         labels = [r["profile"] for r in chosen]
         x = np.arange(len(chosen))
         ax[0].bar(
@@ -361,9 +448,9 @@ def gpu_figures():
             xticklabels=labels,
             ylim=(0, 1.08),
             ylabel="Whole-output pass fraction",
-            title="A small absolute error is not enough",
+            title="Complete-output acceptance",
         )
-        ax[0].tick_params(axis="x", rotation=20)
+        plt.setp(ax[0].get_xticklabels(), rotation=30, ha="right", rotation_mode="anchor")
         for name, label, color in [
             ("dense_bf16_flash", "Fused BF16", COLORS["green"]),
             ("screen_and_batch_fallback", "Complete screened path", COLORS["orange"]),
@@ -379,10 +466,10 @@ def gpu_figures():
             xticks=x,
             xticklabels=labels,
             ylabel="Batch wall time (µs)",
-            title="Rejection carries measured fallback cost",
+            title="Complete-path latency",
         )
-        ax[1].tick_params(axis="x", rotation=20)
-        ax[1].legend()
+        plt.setp(ax[1].get_xticklabels(), rotation=30, ha="right", rotation_mode="anchor")
+        legend_below(ax[1])
         save(
             fig,
             "gh200_coverage_cost",
@@ -395,7 +482,7 @@ def gpu_figures():
         key=lambda r: r["N"],
     )
     if selected:
-        fig, ax = plt.subplots(1, 2, figsize=(10.4, 3.6), layout="constrained")
+        fig, ax = panels(2.55)
         x = np.arange(len(selected))
         bottom = np.zeros(len(selected))
         for name, label, color in [
@@ -408,12 +495,12 @@ def gpu_figures():
             bottom += values
         ax[0].set(
             xticks=x,
-            xticklabels=[str(r["N"]) for r in selected],
+            xticklabels=[f"{r['N']:,}" for r in selected],
             xlabel="Visible keys N",
-            ylabel="Sum of isolated phase medians (µs)",
-            title="Which phase sets the cost?",
+            ylabel="Sum of phase medians (µs)",
+            title="Isolated device phases",
         )
-        ax[0].legend()
+        legend_below(ax[0])
         for name, label, color in [
             ("summary_cpu_ms", "CPU summary construction", COLORS["blue"]),
             ("summary_upload_ms", "Summary upload", COLORS["orange"]),
@@ -431,9 +518,10 @@ def gpu_figures():
             yscale="log",
             xlabel="Visible keys N",
             ylabel="One-time measured cost (ms)",
-            title="The reuse requirement starts before the query",
+            title="Construction and setup",
         )
-        ax[1].legend()
+        context_ticks(ax[1], [r["N"] for r in selected])
+        legend_below(ax[1])
         save(
             fig,
             "gh200_cost_breakdown",
@@ -441,7 +529,7 @@ def gpu_figures():
             "Isolated phase times diagnose bottlenecks; their sum is not substituted for measured end-to-end latency. Setup includes construction, upload, and allocation.",
         )
 
-        fig, ax = plt.subplots(1, 2, figsize=(10.4, 3.6), layout="constrained")
+        fig, ax = panels(2.55)
         for r in [selected[0], selected[-1]]:
             reuse = np.geomspace(1, 1e6, 160)
             setup = r["setup"]["reusable_summary_and_workspace_ms"]
@@ -450,11 +538,11 @@ def gpu_figures():
             ax[0].loglog(reuse, total / dense, label=f"N={r['N']:,}, Q=32")
         ax[0].axhline(1, color=COLORS["green"], ls="--", label="Break-even")
         ax[0].set(
-            xlabel="Reuses of the same immutable summary",
-            ylabel="Setup-inclusive time / fused dense time",
-            title="Reuse cannot rescue a slower query path",
+            xlabel="Reuses of one immutable summary",
+            ylabel="Total time / fused dense time",
+            title="Setup amortization",
         )
-        ax[0].legend()
+        legend_below(ax[0])
         for name, label, color in [
             ("screen_parallel", "Summary screen", COLORS["blue"]),
             ("dense_bf16_flash", "Fused BF16", COLORS["green"]),
@@ -468,10 +556,11 @@ def gpu_figures():
             )
         ax[1].set(
             xlabel="Visible keys N",
-            ylabel="Fixed-input graph replay (µs / batch)",
-            title="Removing Python still leaves device costs",
+            ylabel="Graph latency (µs / batch)",
+            title="Device graph replay",
         )
-        ax[1].legend()
+        context_ticks(ax[1], [r["N"] for r in selected])
+        legend_below(ax[1])
         save(
             fig,
             "gh200_amortization",
@@ -479,7 +568,7 @@ def gpu_figures():
             "Left: derived amortization from measured setup and steady-state costs, no modeled speedup. Right: matched fixed-input CUDA graphs, excluding construction and fallback; not serving throughput.",
         )
 
-        fig, ax = plt.subplots(1, 2, figsize=(10.4, 3.6), layout="constrained")
+        fig, ax = panels(2.5)
         for axis, Q in zip(ax, [1, 32]):
             sweep = sorted(
                 [r for r in rows if r.get("profile") == "tight" and r["rank"] == 4 and r["Q"] == Q],
@@ -500,10 +589,11 @@ def gpu_figures():
                 )
             axis.set(
                 xlabel="Visible keys N",
-                ylabel="Fixed-input graph latency (µs / batch)",
-                title="One decode query" if Q == 1 else "32 queries sharing K/V",
+                ylabel="Graph latency (µs / batch)",
+                title="One decode query" if Q == 1 else "32 queries, shared K/V",
             )
-        ax[0].legend()
+            context_ticks(axis, [r["N"] for r in sweep])
+        shared_legend(fig, ax[0], columns=2)
         save(
             fig,
             "gh200_kernel_ablation",
@@ -519,7 +609,7 @@ def trace_figures():
     rows = json.loads(path.read_text())["rows"]
     low = [r for r in rows if r["rank"] == 8]
     full = [r for r in rows if r["rank"] == r["d"]]
-    fig, ax = plt.subplots(1, 2, figsize=(10.4, 4.2), layout="constrained")
+    fig, ax = panels(3.1)
     heat = np.array(
         [
             [
@@ -533,8 +623,9 @@ def trace_figures():
     )
     im = ax[0].imshow(heat, aspect="auto", cmap="magma", origin="upper")
     ax[0].set(xlabel="Query head", ylabel="Layer", title="Discarded radius at rank 8")
+    ax[0].set(xticks=range(0, 14, 2), yticks=[0, 4, 8, 12, 16, 20, 23])
     ax[0].grid(False)
-    fig.colorbar(im, ax=ax[0], label="Median of max-block ε across six traces")
+    fig.colorbar(im, ax=ax[0], label="Median max-block ε", pad=0.035, fraction=0.055)
     a = np.array([r["actual_projected_radius_max"] for r in full])
     b = np.array([r["rho_max"] for r in full])
     ax[1].scatter(a, b, alpha=0.45, s=15, color=COLORS["blue"])
@@ -543,11 +634,11 @@ def trace_figures():
     ax[1].set(
         xscale="log",
         yscale="log",
-        xlabel="Actual max |qᵀδ| from a diagnostic scan",
-        ylabel="Stored coordinate-radius bound ρ",
-        title="Full rank removes projection, not score spread",
+        xlabel=r"Scanned radius $\max |q^T\delta|$",
+        ylabel="Coordinate-radius bound ρ",
+        title="Full-rank score-radius bounds",
     )
-    ax[1].legend()
+    legend_below(ax[1])
     save(
         fig,
         "model_score_radii",
@@ -555,9 +646,9 @@ def trace_figures():
         "Qwen2.5-0.5B actual post-RoPE arrays. Left: all 24 layers and 14 heads at rank 8. Right: full rank in layers 0, 12, 23; scan-derived radii are diagnostic and cost token reads.",
     )
 
-    fig, ax = plt.subplots(1, 2, figsize=(10.4, 3.8), layout="constrained")
+    fig, ax = panels(2.4)
     for axis, selected, title in zip(
-        ax, [low, full], ["Rank 8: projection dominates", "Rank 64: Taylor growth remains"]
+        ax, [low, full], ["Rank 8: projection term", "Rank 64: Taylor term"]
     ):
         fields = [
             "omitted_quadratic_over_true_mass",
@@ -572,7 +663,7 @@ def trace_figures():
         plot = axis.boxplot(
             [v for _, v in active],
             positions=[i + 1 for i, _ in active],
-            tick_labels=["Quadratic", "Taylor", "Projection", "Cell margin"]
+            tick_labels=["Quadratic", "Taylor", "Projection", "Cell\nmargin"]
             if len(active) == 4
             else None,
             showfliers=False,
@@ -586,13 +677,13 @@ def trace_figures():
             patch.set_alpha(0.65)
         axis.set(
             xticks=[1, 2, 3, 4],
-            xticklabels=["Quadratic", "Taylor", "Projection", "Cell margin"],
+            xticklabels=["Quadratic", "Taylor", "Projection", "Cell\nmargin"],
             ylabel="log₁₀(value in output units)",
             title=title,
             xlim=(0.5, 4.5),
         )
         if not values[2]:
-            axis.text(3, axis.get_ylim()[0] + 1, "exactly zero", ha="center", fontsize=11)
+            axis.text(3, axis.get_ylim()[0] + 1, "exactly zero", ha="center", fontsize=8.5)
     save(
         fig,
         "model_error_budget",
@@ -612,6 +703,7 @@ def main():
         gpu_figures()
         trace_figures()
     (OUT / "manifest.json").write_text(json.dumps(MANIFEST, indent=2) + "\n")
+    (ROOT / "results/figure-layout.json").write_text(json.dumps(LAYOUT, indent=2) + "\n")
     print(f"Generated {len(MANIFEST)} figures as SVG, PDF, and PNG.")
 
 

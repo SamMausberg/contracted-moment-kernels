@@ -13,7 +13,7 @@ The manuscript contains two native TikZ drawings and ten imported vector plots.
 | --- | --- | --- |
 | Lean build and complete axiom audit | 64 theorems; only `propext`, `Classical.choice`, `Quot.sound` | [Build](lean-build.log), [audit](lean-axioms.log), [source hashes](lean-verification.json) |
 | GitHub checks | CPU, host C++, formatting, documentation, and Lean pass | [CI record](ci.json) |
-| Manuscript GitHub build | Fresh Ubuntu build; 15 pages, 12 figure captions, embedded fonts, no overfull boxes | [Paper CI record](paper-ci.json) |
+| Manuscript GitHub build | Fresh Ubuntu build, figure captions, embedded fonts, no overfull boxes | [Paper CI record](paper-ci.json) |
 | Python tests | 46 passed after formatting | [Log](pytest.log) |
 | Ruff / clang-format | Formatting and lint checks pass | [Log](lint.log) |
 | Rational coupling | 61/149 initial accepts versus 57/149 boxes; 0 observed false certificates | [Data](certification/coupling.json), [interpretation](certification/validation.md) |
@@ -48,11 +48,15 @@ and artifact hashes are in [verification.json](verification.json).
 then runs the Poppler-based publication checker. Its
 [layout report](paper-layout.json) records reference, caption, font, page, and
 text-bound checks plus source and imported-figure hashes. The built PDF has
-seven main-text pages, seven appendix pages, and one references page; all twelve
-figure captions occur once, all 27 fonts are embedded, and the final LaTeX log
-has no overfull boxes. This is publication
-validation, separate from the scientific evidence above; graphical overlap and
-reading order still require visual review. The build uses committed plots and
+seven main-text pages, nine appendix pages, and one references page; all twelve
+figure captions occur once, all 28 fonts are embedded, and the final LaTeX log
+has no overfull boxes. The [visual review](paper-visual-review.json) covers all
+17 rendered pages, including equation tags, legend placement, labels, and float
+order. Plots use the manuscript's physical width, with legends below data panels.
+The [figure layout report](figure-layout.json) records legend/data intersections,
+canvas bounds, and export hashes; these checks also run in CI. Publication
+checks have a separate scope from the scientific evidence above.
+The build uses committed plots and
 does not rerun experiments. See the [paper build guide](../paper/README.md).
 The [standalone source build](paper-source-build.json) also compiles the extracted
 archive independently and confirms that its PDF text matches the repository PDF.
