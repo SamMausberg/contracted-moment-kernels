@@ -1,75 +1,120 @@
 # Formalization status
 
-**No Lean build has run for this release. No theorem in this repository is
-claimed to have been machine-checked.** Lean/Lake were absent, and compiler
-retrieval was unavailable. The build scripts and CI describe checks to execute;
-they are not evidence that those checks already passed.
+The repository builds with Lean 4.24.0 and mathlib `v4.24.0` on this GH200's
+aarch64 host. All 64 local theorem declarations have an axiom-audit entry.
+The successful build and complete audit are recorded in
+[`results/lean-build.log`](../results/lean-build.log) and
+[`results/lean-axioms.log`](../results/lean-axioms.log). The only foundational
+dependencies admitted by the audit are `propext`, `Classical.choice`, and
+`Quot.sound`. [`results/lean-verification.json`](../results/lean-verification.json)
+records the checked source hashes and dependencies of each theorem.
 
-## Scope
+The formalization now proves the analytic chain from concrete real-valued block
+witnesses to a strict observation interval for the finite real-attention
+quotient. This claim concerns the Lean statements and their hypotheses. The
+Python and CUDA implementations have separate verification gaps below.
 
-The project pins Lean 4.24.0 and the mathlib `v4.24.0` tag. There are 25 named
-Lean theorem declarations with proof scripts, no intentional proof holes, and
-an axiom-audit entry for every declaration. Source inspection found no `sorry`,
-`admit`, new `axiom`, `unsafe`, or `native_decide` declaration/use in our Lean
-files. Absence of those strings is not evidence of successful elaboration.
+## Theorem scope
 
-| File | Source statements | Coverage |
-|---|---|---|
-| `CMK/Envelopes.lean` | 12 | Multiplication intervals, residual identity/enclosures, strict observation cell, endpoint extremizers, monotone refinement. |
-| `CMK/Observation.lean` | 5 | Constant consumer, abstract monotone rounding, strict argmax, interval intersection, composition of equal state transitions. |
-| `CMK/Moments.lean` | 6 | Exponential algebraic decomposition, centered expansions, conditional scalar remainder lifting, generic smooth-gate residual identity/bound. |
-| `CMK/Projection.lean` | 2 | Conditional multiplicative positive-weight bounds and centered-value perturbation. |
+| File | Theorems | Coverage |
+| --- | ---: | --- |
+| `CMK/Analytic.lean` | 14 | Actual exponential-series tail, sharp quadratic remainder, nonnegative and optimal coefficient, strict improvement over the Lagrange coefficient, and discarded-score exponential bounds. |
+| `CMK/Quadratic.lean` | 2 | Symmetric row-sum quadratic bound and coordinate-radius contraction. |
+| `CMK/FiniteMoments.lean` | 9 | Exact finite-mean centering, projected-score centering, symmetric finite tensors, linear and quadratic contractions, and omitted signed-tensor bound. |
+| `CMK/Attention.lean` | 8 | Summed remainder bounds, centered mass floor, projected enclosures, discarded-coordinate inflation, and integrated full-score block enclosure. |
+| `CMK/CertifiedAttention.lean` | 4 | Common-offset scaling, positive block mass, original per-token numerator identity, and full real-attention observation certificate. |
+| `CMK/Envelopes.lean` | 13 | Residual interval bounds, endpoint attainment, refinement, and necessary-and-sufficient strict observation tests over the box. |
+| `CMK/Observation.lean` | 5 | Constant consumer, abstract monotone rounding, strict argmax, interval intersection, and equal state-transition composition. |
+| `CMK/Moments.lean` | 6 | Expansion algebra, scalar remainder lifting, and generic smooth-gate residual bounds. |
+| `CMK/Projection.lean` | 3 | Positive-weight perturbations and centered value-range/mass coupling. |
 
-Every listed statement has a proof-script body, but may still require source
-repairs after the first actual Lean run. `CMK/Audit.lean` lists the exact names.
-The paper points to these names, rather than presenting a generic certification
-badge over unrelated theorems.
+`CMK/Audit.lean` gives every exact theorem name. The central proof chain is:
 
-## Missing proof bridges
+1. `exp_tail_hasSum` and `exp_coefficient_hasSum` connect the actual `Real.exp`
+   series to the quadratic coefficient. `exp_remainder_sharp`,
+   `exp_remainder_endpoint`, and `exp_coefficient_optimal` prove its sharpness.
+   `exp_coefficient_lt_lagrange` proves the strict coefficient improvement for
+   positive radius.
+2. `finite_mean_centering`, `projected_score_centering`,
+   `second_moment_contraction`, and `signed_moment_contraction` establish the
+   finite-sum identities. `quadratic_rowsum_bound` derives the error from an
+   explicit symmetric tensor and its absolute row sums.
+3. `projected_mass_enclosure` and `projected_center_enclosure` use these analytic
+   and tensor results. `full_score_enclosure` restores the discarded score
+   coordinates and proves the four full-score block endpoints.
+4. `moment_block_enclosure` includes a common exponential offset.
+   `moment_block_numerator` identifies the centered representation with the
+   original per-token weighted sum. `full_attention_observation` applies the
+   derived block bounds to the actual finite real-attention quotient.
 
-The sharp exponential tail inequality is proved in the manuscript by power
-series, not formalized from `Real.exp`. Centering, coordinate-radius bounds,
-Jensen's mass lower bound, the row-sum quadratic witness, and the combination
-that produces Theorem 7 still need a complete matrix/finite-sum instantiation.
-The gate-specific analytic curvature bound for SwiGLU is also absent.
+`MomentBlock.Witness` contains concrete premises: nonempty tokens, nonnegative
+radii, key and value centering, score/value radius bounds, retained-tensor
+symmetry, and an absolute row-sum bound on the actual omitted signed tensor.
+It does not assume a Taylor remainder or a final mass/numerator enclosure.
+`coordinate_radius_bound` proves the score-radius contraction from coordinate
+radii. `finite_mean_centering` proves that exact finite means supply centering.
+
+The Lean finite tensors use sums. For a block with cardinality `n`, the paper's
+mean tensors correspond to `H_sum = n H_mean`, `D_sum = n D_mean`, and
+`eta_sum = n eta_mean`. Accordingly, `massApprox` is `n + sum(t²)/2` and the
+common multiplier in `MomentBlock` is `exp(offset)`. These are the unnormalized
+finite-sum forms of the manuscript's block formulas. The retained tensor may
+be any symmetric tensor; retaining its diagonal is a special case.
+
+`observation_cell_iff` proves the box certificate converse when the sum of
+lower mass bounds is positive. If either strict test fails, an admissible box
+vertex witnesses failure of the corresponding universal cell claim. This
+characterizes the information in that independent interval box; it does not
+assert that every such vertex can arise from the original token data.
+`centered_value_mass_coupling` proves an additional constraint that can exclude
+box vertices. The rational coupled-support optimizer is not extracted from
+this theorem.
+
+## Remaining implementation bridges
 
 The exact-rational executable is not extracted from Lean. Its interval
-exponential algorithm, data conversion, and rounding implementation have not
-been connected to the real-number theorem. The concrete IEEE BF16 model,
-including signed zero, infinities, NaNs, and exact midpoint tie handling, is not
-formalized. The supplied strict-cell theorem deliberately avoids ties.
+exponential algorithm, rational conversion, rounding-cell construction,
+polytope support calculation, and runtime validation have not been connected
+to the formal real-number semantics. An executable acceptance claim therefore
+still depends on those implementation steps. The numerical summary path does
+not produce outward intervals and cannot discharge a directed checker's
+sound-input premises.
+
+The concrete IEEE BF16 model, including signed zero, infinities, NaNs, and
+exact midpoint ties, is not formalized. `monotone_rounding` is an abstract real
+function theorem; `observation_cell` and `full_attention_observation` use strict
+open intervals. Neither specifies the rounded accumulation order or
+exponential approximation of a particular GPU attention kernel.
 
 The C++/CUDA memory accesses, instruction rounding, overflow behavior, compiler
-transformations, and state identity have not been formally verified. Directed
-rounding in the final checker is conditional on sound imported inputs; it does
-not establish soundness of a numerical summary builder. Complexity arguments
-are ordinary arithmetic-model arguments, not Lean cost-semantics theorems.
+transformations, input identity, and state mutations have not been formally
+verified. The generic state-transition theorem assumes pointwise equal
+transitions; it does not establish that any executor or fallback satisfies
+that premise. The SwiGLU-specific analytic curvature witness also remains
+outside the formalization.
 
-## Reproduce the intended check
+A proof of exact-real attention alone does not establish bitwise equality to a
+particular GPU reference. GPU timings and the literature comparison are
+empirical evidence, not consequences of the algebraic theorems.
+
+## Reproduce the build and audit
+
+Install the pinned toolchain on a fresh aarch64 or x86-64 host:
 
 ```sh
+curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o /tmp/elan-init.sh
+sh /tmp/elan-init.sh -y --default-toolchain leanprover/lean4:v4.24.0
+export PATH="$HOME/.elan/bin:$PATH"
 bash scripts/check_lean.sh
 ```
 
-The script builds all imported modules and runs `#print axioms` for all 25
-statements. It rejects `sorryAx` and native proof-evaluation shortcuts. Standard
-Lean/mathlib foundations, such as propositional extensionality, classical
-choice, and quotient soundness, are not advertised as eliminated.
+The committed Lake manifest pins mathlib to
+`f897ebcf72cd16f89ab4577d0c826cd14afaafc7` and records its dependency revisions.
+The script downloads mathlib's build cache, builds all imported modules, and
+runs `#print axioms` for every local theorem. It checks that the source and
+audit declaration sets match exactly, then rejects every axiom outside the
+three foundational dependencies listed above. Missing, duplicate, malformed,
+or unexpected audit results also fail the check.
 
-A successful future build proves exactly the statements in the source, under
-their explicit hypotheses. In particular, proving a conditional lifting lemma
-with a remainder bound supplied as a premise does not prove the missing
-remainder bound. Do not change a status label to "fully verified" merely because
-`lake build` succeeds.
-
-## Release gate for a verified inference claim
-
-A verified real-attention result requires the full analytic chain, an executable
-witness checker connected to its formal semantics, and exact input identity.
-A claim of bitwise equality to a particular GPU reference additionally requires
-that reference's numerical contract. Formal real attention alone does not
-specify its rounded accumulation order or exponential approximation.
-
-All state, including cache mutations and fallback behavior, must be included
-before claiming equal network execution. Empirical GPU benchmarks and empirical
-novelty reviews cannot be proved by an algebraic Lean theorem.
+`python3 scripts/check_source.py` checks source/audit consistency and Markdown
+source conventions only. It does not run Lean or establish proof validity.

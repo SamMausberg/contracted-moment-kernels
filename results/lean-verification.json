@@ -1,0 +1,341 @@
+{
+  "theorem_count": 64,
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "theorem_axioms": {
+    "centered_mass_lower": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "centered_remainder_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "centered_value_mass_coupling": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "central_expansion": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "central_weight_perturbation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "constant_consumer": [],
+    "coordinate_radius_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "discarded_center_perturbation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "exp_coefficient_abs_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "exp_coefficient_hasSum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "exp_coefficient_le_lagrange": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "exp_coefficient_lt_lagrange": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "exp_coefficient_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "exp_coefficient_optimal": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "exp_coefficient_term_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "exp_decomposition": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "exp_discarded_bounds": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "exp_discarded_distance": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "exp_remainder_endpoint": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "exp_remainder_factor": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "exp_remainder_sharp": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "exp_tail_hasSum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "factorial_shift_three": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "finite_mean_centering": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "full_attention_observation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "full_mass_enclosure": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "full_score_enclosure": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "gated_remainder_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "gated_residual_identity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "interval_intersection": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "linear_moment_contraction": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "lowerChoice_attains": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "lowerChoice_mem": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "lower_attained": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "mass_expansion": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "moment_block_enclosure": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "moment_block_mass_positive": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "moment_block_numerator": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "monotone_rounding": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "mul_enclosure": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "observation_cell": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "observation_cell_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "positive_weight_perturbation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "projected_center_enclosure": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "projected_mass_enclosure": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "projected_score_centering": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "quadratic_rowsum_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "quadratic_sub": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "residual_enclosure": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "residual_identity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "residual_refinement": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "second_moment_contraction": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "second_moment_symmetric": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "signed_moment_contraction": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "signed_moment_omission_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "signed_second_moment_symmetric": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "strict_argmax": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "summed_centered_remainder": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "summed_exp_remainder": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "term_refinement": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "transition_composition": [
+      "Quot.sound"
+    ],
+    "upperChoice_attains": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "upperChoice_mem": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "upper_attained": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "source_sha256": {
+    "lean/CMK/Analytic.lean": "29230adefac0ee6d4628ad77f498a78a8f7fb948ae9777ddfa4cc653f70ca595",
+    "lean/CMK/Attention.lean": "a836ee32d39b4bd1ee0bb36479f1d313d4cf3ea6e487ba0e3f10921ab3fcd57a",
+    "lean/CMK/Audit.lean": "0c6bf8f7382a04a9c093686f924d8a16f03ed929c3aa6aa56a3b992fdd8e3dbd",
+    "lean/CMK/CertifiedAttention.lean": "ccf4bd665fbcf4519207ffbea91129ad164e00f955f48fa315befe436fb37c7b",
+    "lean/CMK/Envelopes.lean": "713dee338939b38d0327161ba24218dce312f3b97682c5c7c82a3a1b748843b8",
+    "lean/CMK/FiniteMoments.lean": "2aac1cd89cc613bd8e3e54d867d4ddf24ab0e7953753b2f2af499cc7e8a832f1",
+    "lean/CMK/Moments.lean": "6a07de793d04b719c9cf734bb1084699ddb3413de1b60743692ed732058eb8b0",
+    "lean/CMK/Observation.lean": "29f6fae2e57a62a767c230c94348bd0ee5e95222da58214204c3e148842c398f",
+    "lean/CMK/Projection.lean": "8c3dac746f09909c0dcb0c189019b1925e60f57e4808412830bc4d53d9785675",
+    "lean/CMK/Quadratic.lean": "3597ae55505a2d8db462c4aa1e0c4c0bbf3b8da05a5b3caf979a7ab18eb6b120",
+    "lean/CMK.lean": "2fbb160c664ae40fdb579350554aabea91a0e845b9782b7fdedd2ea9b3d6289e",
+    "lean/lean-toolchain": "42779d67b81608af8a12aa4328d2ab47ca201925b3b2bd68369587b5340bb434",
+    "lean/lakefile.toml": "971698a474bb6545ad052edaeed95ec4e8f50d9f986482f524f179277a4bb281",
+    "lean/lake-manifest.json": "10856924d85343922c261e45707ead11bf2bafe017854ee3ab11ef00a28e0f5b"
+  },
+  "audit_log_sha256": "e6a3b7a83467dd8ed377f61300a64ad0e69848867203e8d689b63b39337f5fb2"
+}

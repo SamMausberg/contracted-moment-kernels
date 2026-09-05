@@ -7,8 +7,6 @@ __pycache__/
 *.egg-info/
 build/
 lean/.lake/
-lean/lake-manifest.json
-results/lean-axioms.log
 *.bin
 *.so
 *.npz

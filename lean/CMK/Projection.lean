@@ -28,9 +28,17 @@ theorem central_weight_perturbation (w f v c E R : ℝ)
   have hid : w*f*(v-c)-w*(v-c) = w*((f-1)*(v-c)) := by ring
   rw [hid, abs_mul, abs_of_nonneg hw, abs_mul]
   calc
-    w*(|f-1|*|v-c|) ≤ w*(E*R) :=
+    w*(|f-1| *|v-c|) ≤ w*(E*R) :=
       mul_le_mul_of_nonneg_left
         (mul_le_mul hf hv (abs_nonneg _) hE) hw
     _ = w*E*R := by ring
+
+/-- Positive weights couple centered values to the actual mass. -/
+theorem centered_value_mass_coupling (s : Finset ι) (w x : ι → ℝ) (a b : ℝ)
+    (hw : ∀ i ∈ s, 0 ≤ w i)
+    (hx : ∀ i ∈ s, a ≤ x i ∧ x i ≤ b) :
+    a * (∑ i ∈ s, w i) ≤ (∑ i ∈ s, w i * x i) ∧
+      (∑ i ∈ s, w i * x i) ≤ b * (∑ i ∈ s, w i) :=
+  positive_weight_perturbation s w x a b hw hx
 
 end CMK

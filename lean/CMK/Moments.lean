@@ -1,6 +1,6 @@
 /- SPDX-License-Identifier: Apache-2.0
-   The analytic Taylor inequality is an explicit input contract here.
-   This file does not claim to derive it from Real.exp's power series.
+   Algebraic moment identities. CMK.Analytic derives the scalar remainder witness
+   from the exponential series; CMK.Attention combines the finite sums.
 -/
 import Mathlib
 
@@ -51,7 +51,7 @@ theorem central_expansion (s : Finset ι) (t v : ι → ℝ) (c : ℝ)
 
 /-- Contract lifting: a scalar remainder witness bounds a centered weighted term. -/
 theorem centered_remainder_bound (r t v c K R : ℝ)
-    (hK : 0 ≤ K) (hR : 0 ≤ R)
+    (hK : 0 ≤ K) (_hR : 0 ≤ R)
     (hr : |r| ≤ K*t^2) (hv : |v-c| ≤ R) :
     |r*(v-c)| ≤ K*t^2*R := by
   rw [abs_mul]
@@ -66,19 +66,19 @@ theorem gated_remainder_bound (p p0 p1 a s b rg ru E : ℝ)
     (hga : |a| ≤ rg) (hub : |b| ≤ ru) (hE : 0 ≤ E)
     (hr : |p-p0-p1*a| ≤ E) :
     |p*(s+b)-(p0*s+p1*a*s+p0*b)| ≤
-      |p1|*rg*ru + E*(|s|+ru) := by
+      |p1| *rg*ru + E*(|s|+ru) := by
   have hrg : 0 ≤ rg := (abs_nonneg a).trans hga
   have hru : 0 ≤ ru := (abs_nonneg b).trans hub
   rw [gated_residual_identity]
   calc
     |p1*a*b+(p-p0-p1*a)*(s+b)| ≤
-        |p1*a*b|+|(p-p0-p1*a)*(s+b)| := abs_add _ _
-    _ = |p1|*|a|*|b| + |p-p0-p1*a|*|s+b| := by simp only [abs_mul]
-    _ ≤ |p1|*rg*ru + E*(|s|+ru) := by
+        |p1*a*b|+|(p-p0-p1*a)*(s+b)| := abs_add_le _ _
+    _ = |p1| *|a| *|b| + |p-p0-p1*a| *|s+b| := by simp only [abs_mul]
+    _ ≤ |p1| *rg*ru + E*(|s|+ru) := by
       apply add_le_add
       · exact mul_le_mul (mul_le_mul_of_nonneg_left hga (abs_nonneg p1)) hub
           (abs_nonneg b) (mul_nonneg (abs_nonneg p1) hrg)
-      · have hs : |s+b| ≤ |s|+ru := (abs_add s b).trans (add_le_add_left hub _)
+      · have hs : |s+b| ≤ |s|+ru := (abs_add_le s b).trans (add_le_add_left hub _)
         exact mul_le_mul hr hs (abs_nonneg _) hE
 
 end CMK

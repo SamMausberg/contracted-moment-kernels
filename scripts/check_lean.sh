@@ -2,16 +2,20 @@
 # SPDX-License-Identifier: Apache-2.0
 set -euo pipefail
 cd "$(dirname "$0")/../lean"
+if ! command -v lake >/dev/null && [[ -x "$HOME/.elan/bin/lake" ]]; then
+  export PATH="$HOME/.elan/bin:$PATH"
+fi
 command -v lake >/dev/null || { echo 'Lean/Lake is required; no verification performed.' >&2; exit 127; }
-# Reject proof escape hatches in our source. Comments are deliberately included.
-if grep -RnwE --include='*.lean' '(sorry|admit|axiom|unsafe|native_decide)' CMK CMK.lean; then
-  echo 'Rejected proof source escape hatch.' >&2; exit 1
+mkdir -p ../results
+python3 ../scripts/check_source.py --lean-only
+if [[ ! -f lake-manifest.json ]]; then
+  lake update
 fi
-lake update
 lake exe cache get
-lake build
+{
+  date -u '+Build date: %Y-%m-%dT%H:%M:%SZ'
+  lean --version
+  lake build
+} 2>&1 | tee ../results/lean-build.log
 lake env lean CMK/Audit.lean | tee ../results/lean-axioms.log
-# Standard foundational axioms such as propext/choice/quotient soundness are not holes.
-if grep -E 'sorryAx|ofReduceBool|Lean\.ofReduceBool' ../results/lean-axioms.log; then
-  echo 'Rejected non-kernel proof dependency.' >&2; exit 1
-fi
+python3 ../scripts/check_source.py --lean-only --audit-log ../results/lean-axioms.log --write-manifest ../results/lean-verification.json

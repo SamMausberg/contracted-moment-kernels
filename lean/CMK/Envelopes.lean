@@ -1,5 +1,4 @@
 /- SPDX-License-Identifier: Apache-2.0
-   Proof source. Build status: not checked in the authoring environment.
    All witnesses below are explicit hypotheses, not new axioms.
 -/
 import Mathlib
@@ -148,5 +147,37 @@ theorem residual_refinement (s : Finset ι) (l u ml mu lp up mlp mup v : ι → 
     exact add_le_add (hm i hi).2
       (term_refinement (v i-a) (l i) (u i) (lp i) (up i)
         (h i hi).1 (h i hi).2.1 (h i hi).2.2).2
+
+/-- With a positive mass floor, the strict residual tests exactly characterize a box-wide cell. -/
+theorem observation_cell_iff (s : Finset ι) (l u ml mu v : ι → ℝ) (a b : ℝ)
+    (hlu : ∀ i ∈ s, l i ≤ u i) (hmu : ∀ i ∈ s, ml i ≤ mu i)
+    (hfloor : 0 < mass s l) :
+    (0 < lowerResidual s l u ml v a ∧ upperResidual s l u mu v b < 0) ↔
+      (∀ z m : ι → ℝ,
+        (∀ i ∈ s, l i ≤ z i ∧ z i ≤ u i) →
+        (∀ i ∈ s, ml i ≤ m i ∧ m i ≤ mu i) →
+        a < numerator s z m v / mass s z ∧ numerator s z m v / mass s z < b) := by
+  have hpositive (z : ι → ℝ) (hz : ∀ i ∈ s, l i ≤ z i ∧ z i ≤ u i) :
+      0 < mass s z :=
+    hfloor.trans_le (Finset.sum_le_sum (fun i hi => (hz i hi).1))
+  constructor
+  · intro h z m hz hm
+    exact observation_cell s z m v l u ml mu hz hm (hpositive z hz) a b h.1 h.2
+  · intro h
+    have hlz : ∀ i ∈ s, l i ≤ lowerChoice (v i - a) (l i) (u i) ∧
+        lowerChoice (v i - a) (l i) (u i) ≤ u i :=
+      fun i hi => lowerChoice_mem _ _ _ (hlu i hi)
+    have huz : ∀ i ∈ s, l i ≤ upperChoice (v i - b) (l i) (u i) ∧
+        upperChoice (v i - b) (l i) (u i) ≤ u i :=
+      fun i hi => upperChoice_mem _ _ _ (hlu i hi)
+    have hl := (h (fun i => lowerChoice (v i - a) (l i) (u i)) ml hlz
+      (fun i hi => ⟨le_refl _, hmu i hi⟩)).1
+    have hu := (h (fun i => upperChoice (v i - b) (l i) (u i)) mu huz
+      (fun i hi => ⟨hmu i hi, le_refl _⟩)).2
+    have hl' := (lt_div_iff₀ (hpositive _ hlz)).1 hl
+    have hu' := (div_lt_iff₀ (hpositive _ huz)).1 hu
+    have hla := lower_attained s l u ml v hlu a
+    have hua := upper_attained s l u mu v hlu b
+    exact ⟨by linarith, by linarith⟩
 
 end CMK

@@ -2,3 +2,8 @@ import CMK.Envelopes
 import CMK.Observation
 import CMK.Moments
 import CMK.Projection
+import CMK.Analytic
+import CMK.Quadratic
+import CMK.FiniteMoments
+import CMK.Attention
+import CMK.CertifiedAttention
