@@ -1,0 +1,5 @@
+.venv/bin/ruff check cmk tests scripts
+All checks passed!
+.venv/bin/ruff format --check cmk tests scripts
+18 files already formatted
+clang-format --dry-run --Werror kernels/host_check.cpp kernels/imported_check.cpp kernels/fixture.hpp kernels/imported.hpp kernels/benchmark_api.cu kernels/imported_smoke.cu kernels/moments.cu kernels/smoke.cu kernels/directed.cuh kernels/moments.cuh

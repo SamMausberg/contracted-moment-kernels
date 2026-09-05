@@ -5,11 +5,15 @@ Input queries already include attention scaling. Summaries cover exactly the
 visible keys, after positional transformations. Every approximate result and
 screen in this module is heuristic with respect to machine roundoff.
 """
+
 from __future__ import annotations
-from dataclasses import dataclass
+
 import math
-import numpy as np
+from dataclasses import dataclass
 from hashlib import sha256
+
+import numpy as np
+
 from .rational import _integer
 
 
@@ -76,8 +80,19 @@ class Summary:
     def __post_init__(self):
         # Defensive copies keep subsequent caller input edits from changing
         # existing summaries. This is not an authenticated import format.
-        for name in ("mu", "nu", "cov", "cross", "diagonal", "eta", "key_radius",
-                     "value_radius", "count", "value_lower", "value_upper"):
+        for name in (
+            "mu",
+            "nu",
+            "cov",
+            "cross",
+            "diagonal",
+            "eta",
+            "key_radius",
+            "value_radius",
+            "count",
+            "value_lower",
+            "value_upper",
+        ):
             a = np.array(getattr(self, name), dtype=np.float64, copy=True)
             a.setflags(write=False)
             object.__setattr__(self, name, a)
@@ -89,9 +104,22 @@ class Summary:
 
     @property
     def nbytes(self) -> int:
-        return sum(getattr(self, name).nbytes for name in
-                   ("mu", "nu", "cov", "cross", "diagonal", "eta",
-                    "key_radius", "value_radius", "count", "value_lower", "value_upper"))
+        return sum(
+            getattr(self, name).nbytes
+            for name in (
+                "mu",
+                "nu",
+                "cov",
+                "cross",
+                "diagonal",
+                "eta",
+                "key_radius",
+                "value_radius",
+                "count",
+                "value_lower",
+                "value_upper",
+            )
+        )
 
 
 def _validate_summary(s):
@@ -101,21 +129,38 @@ def _validate_summary(s):
     h, r = s.nu.shape[1], _integer(s.rank, "rank")
     if not 0 <= r <= d or len(s.groups) != B:
         raise ValueError("Invalid summary rank or groups")
-    shapes = {"nu": (B,h), "cov": (B,r,r), "cross": (B,r,h), "diagonal": (B,r,h),
-              "eta": (B,h), "key_radius": (B,d), "value_radius": (B,h), "count": (B,),
-              "value_lower": (B,h), "value_upper": (B,h)}
+    shapes = {
+        "nu": (B, h),
+        "cov": (B, r, r),
+        "cross": (B, r, h),
+        "diagonal": (B, r, h),
+        "eta": (B, h),
+        "key_radius": (B, d),
+        "value_radius": (B, h),
+        "count": (B,),
+        "value_lower": (B, h),
+        "value_upper": (B, h),
+    }
     for name, shape in shapes.items():
         a = getattr(s, name)
         if a.shape != shape or not np.isfinite(a).all():
             raise ValueError("Invalid summary array: " + name)
-    if not np.isfinite(s.mu).all() or any(np.any(getattr(s,n) < 0) for n in ("eta", "key_radius", "value_radius")):
+    if not np.isfinite(s.mu).all() or any(
+        np.any(getattr(s, n) < 0) for n in ("eta", "key_radius", "value_radius")
+    ):
         raise ValueError("Nonfinite center or negative summary bound")
-    if any(g.ndim != 1 or not len(g) or not np.issubdtype(g.dtype,np.integer) for g in s.groups):
+    if any(g.ndim != 1 or not len(g) or not np.issubdtype(g.dtype, np.integer) for g in s.groups):
         raise ValueError("Invalid summary group")
     flat = np.concatenate(s.groups)
-    if not np.array_equal(np.sort(flat),np.arange(len(flat))) or not np.array_equal(s.count,[len(g) for g in s.groups]):
+    if not np.array_equal(np.sort(flat), np.arange(len(flat))) or not np.array_equal(
+        s.count, [len(g) for g in s.groups]
+    ):
         raise ValueError("Summary groups must partition visible rows with matching counts")
-    if np.any(s.value_lower > s.value_upper) or np.any(s.value_lower < -s.value_radius) or np.any(s.value_upper > s.value_radius):
+    if (
+        np.any(s.value_lower > s.value_upper)
+        or np.any(s.value_lower < -s.value_radius)
+        or np.any(s.value_upper > s.value_radius)
+    ):
         raise ValueError("Invalid centered value range")
 
 
@@ -129,7 +174,7 @@ def summarize(keys, values, groups, rank=None, keep_diagonal=True) -> Summary:
     groups = tuple(np.asarray(g) for g in groups)
     if not groups or any(g.ndim != 1 or not len(g) for g in groups):
         raise ValueError("Empty/invalid group")
-    if any(not np.issubdtype(g.dtype,np.integer) for g in groups):
+    if any(not np.issubdtype(g.dtype, np.integer) for g in groups):
         raise ValueError("Group indices must be integers")
     if not np.array_equal(np.sort(np.concatenate(groups)), np.arange(n)):
         raise ValueError("Groups must partition all and only the visible keys")
@@ -138,13 +183,13 @@ def summarize(keys, values, groups, rank=None, keep_diagonal=True) -> Summary:
     cov, cross = np.empty((B, r, r)), np.empty((B, r, h))
     diagonal, eta = np.zeros((B, r, h)), np.empty((B, h))
     kr, vr = np.empty((B, d)), np.empty((B, h))
-    lower, upper = np.empty((B,h)), np.empty((B,h))
+    lower, upper = np.empty((B, h)), np.empty((B, h))
     for b, ids in enumerate(groups):
         mu[b], nu[b] = k[ids].mean(0), v[ids].mean(0)
         dk, dv = k[ids] - mu[b], v[ids] - nu[b]
         z = dk[:, :r]
         cov[b], cross[b] = z.T @ z / len(ids), z.T @ dv / len(ids)
-        H = np.einsum('ni,nj,nk->kij', z, z, dv, optimize=True) / len(ids)
+        H = np.einsum("ni,nj,nk->kij", z, z, dv, optimize=True) / len(ids)
         if r:
             if keep_diagonal:
                 diagonal[b] = np.diagonal(H, axis1=1, axis2=2).T
@@ -155,9 +200,22 @@ def summarize(keys, values, groups, rank=None, keep_diagonal=True) -> Summary:
             eta[b] = 0
         kr[b], vr[b] = np.abs(dk).max(0), np.abs(dv).max(0)
         lower[b], upper[b] = dv.min(0), dv.max(0)
-    return Summary(groups, mu, nu, cov, cross, diagonal, eta, kr, vr,
-                   np.array([len(g) for g in groups], dtype=np.float64), r,
-                   lower, upper, _fingerprint(k,v))
+    return Summary(
+        groups,
+        mu,
+        nu,
+        cov,
+        cross,
+        diagonal,
+        eta,
+        kr,
+        vr,
+        np.array([len(g) for g in groups], dtype=np.float64),
+        r,
+        lower,
+        upper,
+        _fingerprint(k, v),
+    )
 
 
 @dataclass
@@ -177,8 +235,7 @@ class Envelopes:
     summary: Summary | None = None
 
     def candidate(self) -> np.ndarray:
-        return ((self.nu * self.zhat[:, None] + self.mhat).sum(0)
-                / self.zhat.sum())
+        return (self.nu * self.zhat[:, None] + self.mhat).sum(0) / self.zhat.sum()
 
     def residual(self, boundary: np.ndarray, *, coupled=False) -> tuple[np.ndarray, np.ndarray]:
         a = self.nu - np.asarray(boundary)
@@ -189,30 +246,30 @@ class Envelopes:
                 raise ValueError("Coupled residual requires source value extrema")
             for b in range(len(self.zlo)):
                 for j in range(self.nu.shape[1]):
-                    lower, upper = self.value_lower[b,j], self.value_upper[b,j]
+                    lower, upper = self.value_lower[b, j], self.value_upper[b, j]
                     zs = [self.zlo[b], self.zhi[b]]
-                    for slope in (lower,upper):
+                    for slope in (lower, upper):
                         if slope:
-                            zs.extend((self.mlo[b,j]/slope,self.mhi[b,j]/slope))
+                            zs.extend((self.mlo[b, j] / slope, self.mhi[b, j] / slope))
                     vals = []
                     for z in zs:
                         if self.zlo[b] <= z <= self.zhi[b]:
-                            lo = max(self.mlo[b,j],lower*z)
-                            hi = min(self.mhi[b,j],upper*z)
+                            lo = max(self.mlo[b, j], lower * z)
+                            hi = min(self.mhi[b, j], upper * z)
                             if lo <= hi:
-                                vals.extend((lo+a[b,j]*z,hi+a[b,j]*z))
+                                vals.extend((lo + a[b, j] * z, hi + a[b, j] * z))
                     # Rounding may make a numerical polygon appear empty.
                     # Abstain from tightening in that case. Still heuristic.
                     if vals:
-                        low[b,j] = max(low[b,j],min(vals))
-                        high[b,j] = min(high[b,j],max(vals))
+                        low[b, j] = max(low[b, j], min(vals))
+                        high[b, j] = min(high[b, j], max(vals))
         low, high = low.sum(0), high.sum(0)
         return low, high
 
     def contains_cell(self, lower, upper, *, coupled=False) -> np.ndarray:
         """Strict endpoint screen. Numerical only; ties are rejected."""
-        lo, _ = self.residual(lower,coupled=coupled)
-        _, hi = self.residual(upper,coupled=coupled)
+        lo, _ = self.residual(lower, coupled=coupled)
+        _, hi = self.residual(upper, coupled=coupled)
         finite = np.isfinite(self.zlo).all() and np.isfinite(self.zhi).all()
         return (lo > 0) & (hi < 0) & finite & (self.zlo.sum() > 0)
 
@@ -227,7 +284,7 @@ def evaluate(q, s: Summary, sharp=True) -> Envelopes:
     logits = s.mu @ q
     shift = float(np.max(logits + np.log(s.count)))
     w = s.count * np.exp(logits - shift)
-    variance = np.maximum(0, np.einsum('i,bij,j->b', u, s.cov, u))
+    variance = np.maximum(0, np.einsum("i,bij,j->b", u, s.cov, u))
     rho = s.key_radius[:, :r] @ np.abs(u)
     eps = s.key_radius[:, r:] @ np.abs(q[r:])
     if np.any(rho > 650) or np.any(eps > 650):
@@ -236,23 +293,42 @@ def evaluate(q, s: Summary, sharp=True) -> Envelopes:
     A = 1 + variance / 2
     zhat = w * A
     projected_lo, projected_hi = w * np.maximum(1, A - tau), w * (A + tau)
-    mhat = w[:, None] * (np.einsum('i,bih->bh', u, s.cross)
-                           + np.einsum('i,bih->bh', u*u, s.diagonal) / 2)
-    beta = w[:, None] * (s.eta * float(u@u) / 2 + tau[:, None] * s.value_radius)
+    mhat = w[:, None] * (
+        np.einsum("i,bih->bh", u, s.cross) + np.einsum("i,bih->bh", u * u, s.diagonal) / 2
+    )
+    beta = w[:, None] * (s.eta * float(u @ u) / 2 + tau[:, None] * s.value_radius)
     # Bound discarded-coordinate scores rather than silently dropping them.
     inflate = np.exp(eps)
     beta += np.expm1(eps)[:, None] * projected_hi[:, None] * s.value_radius
-    out = Envelopes(projected_lo / inflate, projected_hi * inflate,
-                    mhat-beta, mhat+beta, s.nu, zhat, mhat, shift,
-                    s.value_lower,s.value_upper,q.copy(),s.source_identity,s)
+    out = Envelopes(
+        projected_lo / inflate,
+        projected_hi * inflate,
+        mhat - beta,
+        mhat + beta,
+        s.nu,
+        zhat,
+        mhat,
+        shift,
+        s.value_lower,
+        s.value_upper,
+        q.copy(),
+        s.source_identity,
+        s,
+    )
     out.query.setflags(write=False)
-    if any(not np.isfinite(getattr(out,name)).all() for name in ("zlo","zhi","mlo","mhi","zhat","mhat")) or out.zlo.sum() <= 0:
+    if (
+        any(
+            not np.isfinite(getattr(out, name)).all()
+            for name in ("zlo", "zhi", "mlo", "mhi", "zhat", "mhat")
+        )
+        or out.zlo.sum() <= 0
+    ):
         raise OverflowError("Nonfinite or degenerate numerical envelope: use reference fallback")
     return out
 
 
 def dense_attention(q, keys, values) -> np.ndarray:
-    keys, values, q = _inputs(keys,values,q)
+    keys, values, q = _inputs(keys, values, q)
     score = keys @ q
     if not np.isfinite(score).all():
         raise OverflowError("Nonfinite numerical attention scores")
@@ -270,24 +346,34 @@ def bf16_cells(x):
     Distinguishes numerical values, not signed-zero bit patterns.
     """
     from fractions import Fraction
-    from .rational import bf16_round, bf16_cell
+
+    from .rational import bf16_cell, bf16_round
+
     x = np.asarray(x, dtype=np.float64)
     lower, upper, rounded = [], [], []
     for t in x:
         b = bf16_round(Fraction(float(t)))
         lo, hi = bf16_cell(b)
-        lower.append(float(lo)); upper.append(float(hi)); rounded.append(float(b))
+        lower.append(float(lo))
+        upper.append(float(hi))
+        rounded.append(float(b))
     return np.array(lower), np.array(upper), np.array(rounded)
 
 
 def refine_block(q, s, e: Envelopes, b, keys, values):
     """Dense numerical block scan. Not an exact arithmetic certificate."""
-    keys, values, q = _inputs(keys,values,q)
-    b = _integer(b,"Block index")
+    keys, values, q = _inputs(keys, values, q)
+    b = _integer(b, "Block index")
     if not 0 <= b < len(s.groups):
         raise ValueError("Invalid block index")
     shift = float(np.max(s.mu @ q + np.log(s.count)))
-    if _fingerprint(keys,values) != s.source_identity or e.summary is not s or e.source_identity != s.source_identity or not np.array_equal(q,e.query) or e.shift != shift:
+    if (
+        _fingerprint(keys, values) != s.source_identity
+        or e.summary is not s
+        or e.source_identity != s.source_identity
+        or not np.array_equal(q, e.query)
+        or e.shift != shift
+    ):
         raise ValueError("Refinement source, summary or query is stale")
     ids = s.groups[b]
     p = np.exp(np.asarray(keys)[ids] @ q - e.shift)
@@ -300,24 +386,30 @@ def refine_block(q, s, e: Envelopes, b, keys, values):
 
 def adaptive(q, s, keys, values, max_blocks=None, *, coupled=False):
     """Numerical scheduling experiment; never call it verified inference."""
-    keys, values, q = _inputs(keys,values,q)
-    if _fingerprint(keys,values) != s.source_identity:
+    keys, values, q = _inputs(keys, values, q)
+    if _fingerprint(keys, values) != s.source_identity:
         raise ValueError("Adaptive source differs from summarized visible data")
     e = evaluate(q, s)
     B = len(s.groups)
-    limit = B if max_blocks is None else min(B, max(0, _integer(max_blocks,"max_blocks")))
+    limit = B if max_blocks is None else min(B, max(0, _integer(max_blocks, "max_blocks")))
     remaining = set(range(B))
     scans = []
     for step in range(limit + 1):
         candidate = e.candidate()
         lower, upper, rounded = bf16_cells(candidate)
-        accepted = e.contains_cell(lower, upper,coupled=coupled)
+        accepted = e.contains_cell(lower, upper, coupled=coupled)
         if accepted.all() or step == limit:
-            return dict(candidate=candidate, rounded=rounded, accepted=accepted,
-                        scanned_blocks=scans, scanned_tokens=sum(len(s.groups[b]) for b in scans))
-        width = e.mhi - e.mlo + np.abs(e.nu-candidate) * (e.zhi-e.zlo)[:, None]
+            return dict(
+                candidate=candidate,
+                rounded=rounded,
+                accepted=accepted,
+                scanned_blocks=scans,
+                scanned_tokens=sum(len(s.groups[b]) for b in scans),
+            )
+        width = e.mhi - e.mlo + np.abs(e.nu - candidate) * (e.zhi - e.zlo)[:, None]
         priority = np.max(width[:, ~accepted], axis=1)
         b = max(remaining, key=lambda j: float(priority[j]))
         refine_block(q, s, e, b, keys, values)
-        remaining.remove(b); scans.append(b)
+        remaining.remove(b)
+        scans.append(b)
     raise AssertionError("unreachable")

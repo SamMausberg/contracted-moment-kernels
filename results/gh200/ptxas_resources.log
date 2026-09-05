@@ -1,0 +1,41 @@
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_ZN3cmk22screen_tensor_parallelENS_11SummaryViewEPKNS_13BlockEnvelopeEiPd' for 'sm_90'
+ptxas info    : Function properties for _ZN3cmk22screen_tensor_parallelENS_11SummaryViewEPKNS_13BlockEnvelopeEiPd
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 38 registers, used 1 barriers, 156 bytes smem
+ptxas info    : Compile time = 31.162 ms
+ptxas info    : Compiling entry function '_ZN3cmk13screen_tensorENS_11SummaryViewEPKNS_13BlockEnvelopeEiPd' for 'sm_90'
+ptxas info    : Function properties for _ZN3cmk13screen_tensorENS_11SummaryViewEPKNS_13BlockEnvelopeEiPd
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 40 registers, used 0 barriers
+ptxas info    : Compile time = 37.378 ms
+ptxas info    : Compiling entry function '_ZN3cmk12query_shiftsENS_11SummaryViewEPKdiPd' for 'sm_90'
+ptxas info    : Function properties for _ZN3cmk12query_shiftsENS_11SummaryViewEPKdiPd
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 32 registers, used 1 barriers, 1024 bytes smem
+ptxas info    : Compile time = 11.851 ms
+ptxas info    : Compiling entry function '_ZN3cmk21screen_imported_boxesEPKNS_11ImportedBoxEPKdS4_iiPh' for 'sm_90'
+ptxas info    : Function properties for _ZN3cmk21screen_imported_boxesEPKNS_11ImportedBoxEPKdS4_iiPh
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 38 registers, used 0 barriers
+ptxas info    : Compile time = 5.554 ms
+ptxas info    : Compiling entry function '_ZN3cmk20scan_selected_blocksENS_11SummaryViewEPKdS2_S2_S2_PKiS4_iPNS_13BlockEnvelopeE' for 'sm_90'
+ptxas info    : Function properties for _ZN3cmk20scan_selected_blocksENS_11SummaryViewEPKdS2_S2_S2_PKiS4_iPNS_13BlockEnvelopeE
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 48 registers, used 0 barriers
+ptxas info    : Compile time = 24.106 ms
+ptxas info    : Compiling entry function '_ZN3cmk17reduce_and_screenENS_11SummaryViewEPKNS_13BlockEnvelopeEiPNS_12ScreenResultE' for 'sm_90'
+ptxas info    : Function properties for _ZN3cmk17reduce_and_screenENS_11SummaryViewEPKNS_13BlockEnvelopeEiPNS_12ScreenResultE
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 48 registers, used 0 barriers
+ptxas info    : Compile time = 32.560 ms
+ptxas info    : Compiling entry function '_ZN3cmk15evaluate_blocksENS_11SummaryViewEPKdS2_iPNS_13BlockEnvelopeE' for 'sm_90'
+ptxas info    : Function properties for _ZN3cmk15evaluate_blocksENS_11SummaryViewEPKdS2_iPNS_13BlockEnvelopeE
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 44 registers, used 0 barriers
+ptxas info    : Compile time = 56.121 ms
+ptxas info    : Compiling entry function '_ZN3cmk22evaluate_blocks_sharedENS_11SummaryViewEPKdS2_iPNS_13BlockEnvelopeE' for 'sm_90'
+ptxas info    : Function properties for _ZN3cmk22evaluate_blocks_sharedENS_11SummaryViewEPKdS2_iPNS_13BlockEnvelopeE
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 48 registers, used 1 barriers, 64 bytes smem
+ptxas info    : Compile time = 53.400 ms

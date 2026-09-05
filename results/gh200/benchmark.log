@@ -1,0 +1,67 @@
+[1/66] {'N': 1024, 'd': 64, 'h': 64, 'Q': 1, 'rank': 0, 'profile': 'tight'}
+[2/66] {'N': 1024, 'd': 64, 'h': 64, 'Q': 1, 'rank': 0, 'profile': 'moderate'}
+[3/66] {'N': 1024, 'd': 64, 'h': 64, 'Q': 1, 'rank': 0, 'profile': 'broad'}
+[4/66] {'N': 1024, 'd': 64, 'h': 64, 'Q': 1, 'rank': 4, 'profile': 'tight'}
+[5/66] {'N': 1024, 'd': 64, 'h': 64, 'Q': 1, 'rank': 4, 'profile': 'moderate'}
+[6/66] {'N': 1024, 'd': 64, 'h': 64, 'Q': 1, 'rank': 4, 'profile': 'broad'}
+[7/66] {'N': 1024, 'd': 64, 'h': 64, 'Q': 1, 'rank': 16, 'profile': 'tight'}
+[8/66] {'N': 1024, 'd': 64, 'h': 64, 'Q': 1, 'rank': 16, 'profile': 'moderate'}
+[9/66] {'N': 1024, 'd': 64, 'h': 64, 'Q': 1, 'rank': 16, 'profile': 'broad'}
+[10/66] {'N': 1024, 'd': 64, 'h': 64, 'Q': 32, 'rank': 0, 'profile': 'tight'}
+[11/66] {'N': 1024, 'd': 64, 'h': 64, 'Q': 32, 'rank': 0, 'profile': 'moderate'}
+[12/66] {'N': 1024, 'd': 64, 'h': 64, 'Q': 32, 'rank': 0, 'profile': 'broad'}
+[13/66] {'N': 1024, 'd': 64, 'h': 64, 'Q': 32, 'rank': 4, 'profile': 'tight'}
+[14/66] {'N': 1024, 'd': 64, 'h': 64, 'Q': 32, 'rank': 4, 'profile': 'moderate'}
+[15/66] {'N': 1024, 'd': 64, 'h': 64, 'Q': 32, 'rank': 4, 'profile': 'broad'}
+[16/66] {'N': 1024, 'd': 64, 'h': 64, 'Q': 32, 'rank': 16, 'profile': 'tight'}
+[17/66] {'N': 1024, 'd': 64, 'h': 64, 'Q': 32, 'rank': 16, 'profile': 'moderate'}
+[18/66] {'N': 1024, 'd': 64, 'h': 64, 'Q': 32, 'rank': 16, 'profile': 'broad'}
+[19/66] {'N': 8192, 'd': 64, 'h': 64, 'Q': 1, 'rank': 0, 'profile': 'tight'}
+[20/66] {'N': 8192, 'd': 64, 'h': 64, 'Q': 1, 'rank': 0, 'profile': 'moderate'}
+[21/66] {'N': 8192, 'd': 64, 'h': 64, 'Q': 1, 'rank': 0, 'profile': 'broad'}
+[22/66] {'N': 8192, 'd': 64, 'h': 64, 'Q': 1, 'rank': 4, 'profile': 'tight'}
+[23/66] {'N': 8192, 'd': 64, 'h': 64, 'Q': 1, 'rank': 4, 'profile': 'moderate'}
+[24/66] {'N': 8192, 'd': 64, 'h': 64, 'Q': 1, 'rank': 4, 'profile': 'broad'}
+[25/66] {'N': 8192, 'd': 64, 'h': 64, 'Q': 1, 'rank': 16, 'profile': 'tight'}
+[26/66] {'N': 8192, 'd': 64, 'h': 64, 'Q': 1, 'rank': 16, 'profile': 'moderate'}
+[27/66] {'N': 8192, 'd': 64, 'h': 64, 'Q': 1, 'rank': 16, 'profile': 'broad'}
+[28/66] {'N': 8192, 'd': 64, 'h': 64, 'Q': 32, 'rank': 0, 'profile': 'tight'}
+[29/66] {'N': 8192, 'd': 64, 'h': 64, 'Q': 32, 'rank': 0, 'profile': 'moderate'}
+[30/66] {'N': 8192, 'd': 64, 'h': 64, 'Q': 32, 'rank': 0, 'profile': 'broad'}
+[31/66] {'N': 8192, 'd': 64, 'h': 64, 'Q': 32, 'rank': 4, 'profile': 'tight'}
+[32/66] {'N': 8192, 'd': 64, 'h': 64, 'Q': 32, 'rank': 4, 'profile': 'moderate'}
+[33/66] {'N': 8192, 'd': 64, 'h': 64, 'Q': 32, 'rank': 4, 'profile': 'broad'}
+[34/66] {'N': 8192, 'd': 64, 'h': 64, 'Q': 32, 'rank': 16, 'profile': 'tight'}
+[35/66] {'N': 8192, 'd': 64, 'h': 64, 'Q': 32, 'rank': 16, 'profile': 'moderate'}
+[36/66] {'N': 8192, 'd': 64, 'h': 64, 'Q': 32, 'rank': 16, 'profile': 'broad'}
+[37/66] {'N': 32768, 'd': 64, 'h': 64, 'Q': 1, 'rank': 0, 'profile': 'tight'}
+[38/66] {'N': 32768, 'd': 64, 'h': 64, 'Q': 1, 'rank': 0, 'profile': 'moderate'}
+[39/66] {'N': 32768, 'd': 64, 'h': 64, 'Q': 1, 'rank': 0, 'profile': 'broad'}
+[40/66] {'N': 32768, 'd': 64, 'h': 64, 'Q': 1, 'rank': 4, 'profile': 'tight'}
+[41/66] {'N': 32768, 'd': 64, 'h': 64, 'Q': 1, 'rank': 4, 'profile': 'moderate'}
+[42/66] {'N': 32768, 'd': 64, 'h': 64, 'Q': 1, 'rank': 4, 'profile': 'broad'}
+[43/66] {'N': 32768, 'd': 64, 'h': 64, 'Q': 1, 'rank': 16, 'profile': 'tight'}
+[44/66] {'N': 32768, 'd': 64, 'h': 64, 'Q': 1, 'rank': 16, 'profile': 'moderate'}
+[45/66] {'N': 32768, 'd': 64, 'h': 64, 'Q': 1, 'rank': 16, 'profile': 'broad'}
+[46/66] {'N': 32768, 'd': 64, 'h': 64, 'Q': 32, 'rank': 0, 'profile': 'tight'}
+[47/66] {'N': 32768, 'd': 64, 'h': 64, 'Q': 32, 'rank': 0, 'profile': 'moderate'}
+[48/66] {'N': 32768, 'd': 64, 'h': 64, 'Q': 32, 'rank': 0, 'profile': 'broad'}
+[49/66] {'N': 32768, 'd': 64, 'h': 64, 'Q': 32, 'rank': 4, 'profile': 'tight'}
+[50/66] {'N': 32768, 'd': 64, 'h': 64, 'Q': 32, 'rank': 4, 'profile': 'moderate'}
+[51/66] {'N': 32768, 'd': 64, 'h': 64, 'Q': 32, 'rank': 4, 'profile': 'broad'}
+[52/66] {'N': 32768, 'd': 64, 'h': 64, 'Q': 32, 'rank': 16, 'profile': 'tight'}
+[53/66] {'N': 32768, 'd': 64, 'h': 64, 'Q': 32, 'rank': 16, 'profile': 'moderate'}
+[54/66] {'N': 32768, 'd': 64, 'h': 64, 'Q': 32, 'rank': 16, 'profile': 'broad'}
+[55/66] {'N': 8192, 'd': 64, 'h': 64, 'Q': 32, 'rank': 4, 'profile': 'centered'}
+[56/66] {'N': 8192, 'd': 64, 'h': 64, 'Q': 32, 'rank': 4, 'profile': 'midpoint'}
+[57/66] {'N': 1024, 'd': 64, 'h': 64, 'Q': 32, 'rank': 64, 'profile': 'tight'}
+[58/66] {'trace': 'results/model_traces/gpu_prose_4096_layer0.npz', 'profile': 'trained_trace', 'rank': 0}
+[59/66] {'trace': 'results/model_traces/gpu_prose_4096_layer0.npz', 'profile': 'trained_trace', 'rank': 4}
+[60/66] {'trace': 'results/model_traces/gpu_prose_4096_layer0.npz', 'profile': 'trained_trace', 'rank': 16}
+[61/66] {'trace': 'results/model_traces/gpu_prose_4096_layer12.npz', 'profile': 'trained_trace', 'rank': 0}
+[62/66] {'trace': 'results/model_traces/gpu_prose_4096_layer12.npz', 'profile': 'trained_trace', 'rank': 4}
+[63/66] {'trace': 'results/model_traces/gpu_prose_4096_layer12.npz', 'profile': 'trained_trace', 'rank': 16}
+[64/66] {'trace': 'results/model_traces/gpu_prose_4096_layer23.npz', 'profile': 'trained_trace', 'rank': 0}
+[65/66] {'trace': 'results/model_traces/gpu_prose_4096_layer23.npz', 'profile': 'trained_trace', 'rank': 4}
+[66/66] {'trace': 'results/model_traces/gpu_prose_4096_layer23.npz', 'profile': 'trained_trace', 'rank': 16}
+/home/ubuntu/contracted-moment-kernels/results/gh200/benchmark.json
