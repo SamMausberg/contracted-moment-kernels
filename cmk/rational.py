@@ -10,13 +10,48 @@ particular GPU accumulation/exp implementation. Not a machine-checked proof.
 from __future__ import annotations
 from dataclasses import dataclass
 from fractions import Fraction as F
+from hashlib import sha256
+from numbers import Integral
 
 
 def dot(a: list[F], b: list[F]) -> F:
-    return sum((x*y for x, y in zip(a, b)), F(0))
+    if len(a) != len(b):
+        raise ValueError("Dot-product dimensions do not match")
+    return sum((F(x)*F(y) for x, y in zip(a, b)), F(0))
+
+
+def _integer(x, name):
+    if isinstance(x, bool) or not isinstance(x, Integral):
+        raise ValueError(f"{name} must be an integer")
+    return int(x)
+
+
+def _inputs(keys, values, q=None):
+    if not len(keys) or not len(values) or not len(keys[0]) or not len(values[0]):
+        raise ValueError("Nonempty arrays required")
+    n, d, h = len(keys), len(keys[0]), len(values[0])
+    if len(values) != n or any(len(k) != d for k in keys) or any(len(v) != h for v in values):
+        raise ValueError("Invalid dimensions")
+    K = tuple(tuple(F(x) for x in row) for row in keys)
+    V = tuple(tuple(F(x) for x in row) for row in values)
+    Q = None if q is None else tuple(F(x) for x in q)
+    if Q is not None and len(Q) != d:
+        raise ValueError("Invalid query dimension")
+    return K, V, Q
+
+
+def _fingerprint(keys, values, ids):
+    """Bind refinement to the exact visible rows used at summary construction."""
+    digest = sha256()
+    for i in ids:
+        digest.update(f"{i}:".encode())
+        for row in (keys[i], values[i]):
+            digest.update((",".join(str(F(x)) for x in row) + ";").encode())
+    return digest.hexdigest()
 
 
 def pow2(p: int) -> F:
+    p = _integer(p, "Exponent")
     return F(2**p) if p >= 0 else F(1, 2**(-p))
 
 
@@ -26,6 +61,10 @@ class Interval:
     hi: F
 
     def __post_init__(self) -> None:
+        # Even integer endpoints must become Fractions: 1 / int is floating
+        # arithmetic and would invalidate the reciprocal enclosure below.
+        object.__setattr__(self, "lo", F(self.lo))
+        object.__setattr__(self, "hi", F(self.hi))
         if self.lo > self.hi:
             raise ValueError("Reversed interval")
 
@@ -37,6 +76,7 @@ class Interval:
         return Interval(self.lo+other.lo, self.hi+other.hi)
 
     def scale(self, x: F) -> 'Interval':
+        x = F(x)
         return Interval(min(self.lo*x, self.hi*x), max(self.lo*x, self.hi*x))
 
     def __mul__(self, other: 'Interval') -> 'Interval':
@@ -58,6 +98,7 @@ def exp_interval(x: F, bits: int = 64) -> Interval:
     Range is limited to avoid pathological resource use in this slow prototype.
     """
     x = F(x)
+    bits = _integer(bits, "bits")
     if bits < 16 or abs(x) > 32:
         raise ValueError("Use bits >= 16 and |x| <= 32 in this reference")
     if x == 0:
@@ -133,34 +174,75 @@ def bf16_cell(b: F) -> tuple[F, F]:
     return b-previous_step/2, b+step/2
 
 
-@dataclass
+@dataclass(frozen=True)
 class Summary:
-    ids: list[int]
-    mu: list[F]
-    nu: list[F]
-    cov: list[list[F]]
-    cross: list[list[F]]
-    diagonal: list[list[F]]
-    eta: list[F]
-    kr: list[F]
-    vr: list[F]
+    """Immutable exact metadata. Use summarize; structural checks alone do not
+    certify arbitrary caller-supplied moment identities or error bounds.
+    """
+    ids: tuple[int, ...]
+    mu: tuple[F, ...]
+    nu: tuple[F, ...]
+    cov: tuple[tuple[F, ...], ...]
+    cross: tuple[tuple[F, ...], ...]
+    diagonal: tuple[tuple[F, ...], ...]
+    eta: tuple[F, ...]
+    kr: tuple[F, ...]
+    vr: tuple[F, ...]
     rank: int
+    value_lower: tuple[F, ...]
+    value_upper: tuple[F, ...]
+    source_fingerprint: str
+    source_size: int
+    source_identity: str
+
+    def __post_init__(self):
+        for name in ("ids", "mu", "nu", "eta", "kr", "vr", "value_lower", "value_upper"):
+            convert = (lambda x: _integer(x, "Key index")) if name == "ids" else F
+            object.__setattr__(self, name, tuple(convert(x) for x in getattr(self, name)))
+        for name in ("cov", "cross", "diagonal"):
+            object.__setattr__(self, name, tuple(tuple(F(x) for x in row) for row in getattr(self, name)))
+        _validate_summary(self)
+
+
+def _validate_summary(s):
+    """Check structure and necessary conditions, not source moment identities.
+
+    Sound use requires summaries produced by summarize from the intended data;
+    these checks cannot establish arbitrary imported moment bounds.
+    """
+    d, h, r = len(s.mu), len(s.nu), _integer(s.rank, "rank")
+    n = _integer(s.source_size, "source_size")
+    if not d or not h or not 0 <= r <= d or not s.ids or len(set(s.ids)) != len(s.ids):
+        raise ValueError("Invalid summary dimensions, rank or indices")
+    if n <= 0 or any(i < 0 or i >= n for i in s.ids):
+        raise ValueError("Summary index outside source")
+    if len(s.kr) != d or any(len(getattr(s, name)) != h for name in ("eta", "vr", "value_lower", "value_upper")):
+        raise ValueError("Invalid summary radius dimensions")
+    for name, width in (("cov", r), ("cross", h), ("diagonal", h)):
+        a = getattr(s, name)
+        if len(a) != r or any(len(row) != width for row in a):
+            raise ValueError("Invalid summary moment dimensions")
+    if any(x < 0 for x in (*s.kr, *s.vr, *s.eta)):
+        raise ValueError("Negative summary bound")
+    if any(s.cov[a][a] < 0 or s.cov[a][a] > s.kr[a]**2 for a in range(r)):
+        raise ValueError("Invalid covariance diagonal")
+    if any(s.cov[a][b] != s.cov[b][a] for a in range(r) for b in range(r)):
+        raise ValueError("Nonsymmetric covariance")
+    if any(not -s.vr[j] <= s.value_lower[j] <= 0 <= s.value_upper[j] <= s.vr[j] for j in range(h)):
+        raise ValueError("Invalid centered value range")
 
 
 def summarize(keys, values, groups, rank=None, keep_diagonal=True):
-    if not keys or not values or not keys[0] or not values[0]:
-        raise ValueError("Nonempty arrays required")
-    n, d, h = len(keys), len(keys[0]), len(values[0])
-    if len(values) != n or any(len(k)!=d for k in keys) or any(len(v)!=h for v in values):
-        raise ValueError("Invalid dimensions")
+    K, V, _ = _inputs(keys, values)
+    n, d, h = len(K), len(K[0]), len(V[0])
+    groups = [tuple(_integer(i, "Key index") for i in g) for g in groups]
     if not groups or any(not g for g in groups) or sorted(i for g in groups for i in g) != list(range(n)):
         raise ValueError("Groups must be an exact visible-key partition")
-    r = d if rank is None else int(rank)
+    r = d if rank is None else _integer(rank, "rank")
     if not 0 <= r <= d:
         raise ValueError("Invalid rank")
-    K = [[F(x) for x in row] for row in keys]
-    V = [[F(x) for x in row] for row in values]
     out = []
+    source_identity = _fingerprint(K,V,range(n))
     for ids in groups:
         nb = len(ids)
         mu = [sum((K[i][a] for i in ids),F(0))/nb for a in range(d)]
@@ -180,21 +262,50 @@ def summarize(keys, values, groups, rank=None, keep_diagonal=True):
             eta.append(max((sum((abs(x) for x in row),F(0)) for row in H),default=F(0)))
         kr = [max(abs(z[a]) for z in dk) for a in range(d)]
         vr = [max(abs(v[j]) for v in dv) for j in range(h)]
-        out.append(Summary(list(ids),mu,nu,cov,cross,diagonal,eta,kr,vr,r))
+        lower = tuple(min(v[j] for v in dv) for j in range(h))
+        upper = tuple(max(v[j] for v in dv) for j in range(h))
+        out.append(Summary(ids,mu,nu,cov,cross,diagonal,eta,kr,vr,r,
+                           lower,upper,_fingerprint(K,V,ids),n,source_identity))
     return out
 
 
-@dataclass
+@dataclass(frozen=True)
 class Envelope:
     mass: Interval
-    central: list[Interval]
-    center: list[F]
+    central: tuple[Interval, ...]
+    center: tuple[F, ...]
+    value_lower: tuple[F, ...] | None = None
+    value_upper: tuple[F, ...] | None = None
+    provenance: tuple | None = None
+
+    def __post_init__(self):
+        object.__setattr__(self, "central", tuple(self.central))
+        object.__setattr__(self, "center", tuple(F(x) for x in self.center))
+        if not self.center or len(self.central) != len(self.center) or self.mass.lo < 0:
+            raise ValueError("Invalid envelope dimensions or mass")
+        if (self.value_lower is None) != (self.value_upper is None):
+            raise ValueError("Both value extrema are required")
+        if self.value_lower is not None:
+            for name in ("value_lower", "value_upper"):
+                object.__setattr__(self, name, tuple(F(x) for x in getattr(self, name)))
+            if len(self.value_lower) != len(self.center) or len(self.value_upper) != len(self.center):
+                raise ValueError("Invalid envelope value dimensions")
+            if any(a > b for a, b in zip(self.value_lower, self.value_upper)):
+                raise ValueError("Reversed value range")
 
 
 def evaluate(q, summaries, bits=80, sharp=True):
-    q = [F(x) for x in q]
+    q = tuple(F(x) for x in q)
     if not summaries or len(q) != len(summaries[0].mu):
         raise ValueError("Invalid query")
+    for s in summaries:
+        _validate_summary(s)
+        if len(s.mu) != len(q) or len(s.nu) != len(summaries[0].nu) or s.source_size != summaries[0].source_size:
+            raise ValueError("Inconsistent summary dimensions")
+        if s.source_identity != summaries[0].source_identity:
+            raise ValueError("Summaries belong to different visible sources")
+    if sorted(i for s in summaries for i in s.ids) != list(range(summaries[0].source_size)):
+        raise ValueError("Summaries must partition the visible source")
     shift = max(dot(q,s.mu) for s in summaries)
     envelopes = []
     for s in summaries:
@@ -203,7 +314,8 @@ def evaluate(q, summaries, bits=80, sharp=True):
         w = exp_interval(dot(q,s.mu)-shift,bits).scale(F(len(s.ids)))
         variance = sum((u[a]*u[b]*s.cov[a][b] for a in range(r) for b in range(r)),F(0))
         rho, eps = dot([abs(x) for x in u],s.kr[:r]), dot([abs(x) for x in q[r:]],s.kr[r:])
-        assert variance >= 0
+        if variance < 0:
+            raise ValueError("Negative query variance in summary")
         if rho == 0:
             tau = F(0)
         elif sharp:
@@ -221,18 +333,62 @@ def evaluate(q, summaries, bits=80, sharp=True):
             m = w*Interval(c-beta,c+beta)
             discarded = (ex-1)*projected.hi*s.vr[j]
             central.append(Interval(m.lo-discarded,m.hi+discarded))
-        envelopes.append(Envelope(mass,central,s.nu))
+        envelopes.append(Envelope(mass,central,s.nu,s.value_lower,s.value_upper,(s,q,shift)))
     return envelopes, shift
 
 
-def residual(envelopes, boundary, j):
+def coupled_block_residual(mass, central, lower, upper, coefficient):
+    """Exact support interval of a box intersected with lower*Z <= M <= upper*Z.
+
+    Vertices occur at mass endpoints or at an intersection of a horizontal
+    central bound with one of the two sloping value bounds. No division by a
+    vanishing value extremum is needed. Inconsistent metadata is rejected.
+    """
+    lower, upper, coefficient = F(lower), F(upper), F(coefficient)
+    if mass.lo < 0 or lower > upper:
+        raise ValueError("Invalid mass or value range")
+    zs = {mass.lo, mass.hi}
+    for slope in (lower, upper):
+        if slope:
+            zs.update((central.lo/slope, central.hi/slope))
+    vals = []
+    for z in zs:
+        if mass.lo <= z <= mass.hi:
+            lo, hi = max(central.lo, lower*z), min(central.hi, upper*z)
+            if lo <= hi:
+                vals.extend((lo+coefficient*z, hi+coefficient*z))
+    if not vals:
+        raise ValueError("Inconsistent mass, central and value-range bounds")
+    return Interval(min(vals), max(vals))
+
+
+def _validate_envelopes(envelopes, j=None):
+    if not envelopes or any(len(b.center) != len(envelopes[0].center) for b in envelopes):
+        raise ValueError("Empty or dimensionally inconsistent envelopes")
+    if j is not None and not 0 <= _integer(j, "Coordinate") < len(envelopes[0].center):
+        raise ValueError("Invalid coordinate")
+    if sum((b.mass.lo for b in envelopes), F(0)) <= 0:
+        raise ValueError("Nonpositive denominator lower bound")
+
+
+def residual(envelopes, boundary, j, *, coupled=False):
+    _validate_envelopes(envelopes, j)
+    boundary = F(boundary)
     total = Interval.point(F(0))
     for b in envelopes:
-        total = total + b.central[j] + b.mass.scale(b.center[j]-boundary)
+        if coupled:
+            if b.value_lower is None:
+                raise ValueError("Coupled residual requires source value extrema")
+            term = coupled_block_residual(b.mass,b.central[j],b.value_lower[j],
+                                           b.value_upper[j],b.center[j]-boundary)
+        else:
+            term = b.central[j] + b.mass.scale(b.center[j]-boundary)
+        total = total + term
     return total
 
 
 def candidate(envelopes, j):
+    _validate_envelopes(envelopes, j)
     den, num = F(0),F(0)
     for b in envelopes:
         z=(b.mass.lo+b.mass.hi)/2
@@ -241,14 +397,13 @@ def candidate(envelopes, j):
     return num/den
 
 
-def screen(envelopes):
-    if sum((b.mass.lo for b in envelopes),F(0)) <= 0:
-        raise ValueError("Nonpositive denominator lower bound")
+def screen(envelopes, *, coupled=False):
+    _validate_envelopes(envelopes)
     out = []
     for j in range(len(envelopes[0].center)):
         b = bf16_round(candidate(envelopes,j))
         lo,hi = bf16_cell(b)
-        good = residual(envelopes,lo,j).lo > 0 and residual(envelopes,hi,j).hi < 0
+        good = residual(envelopes,lo,j,coupled=coupled).lo > 0 and residual(envelopes,hi,j,coupled=coupled).hi < 0
         out.append(b if good else None)
     return out
 
@@ -259,6 +414,11 @@ def intersect(a: Interval,b: Interval):
 
 def refine(q, keys, values, summary, old, shift, bits=112):
     """Intersect with a direct rational exponential-interval block scan."""
+    keys, values, q = _inputs(keys, values, q)
+    if len(keys) != summary.source_size or _fingerprint(keys,values,range(len(keys))) != summary.source_identity or _fingerprint(keys,values,summary.ids) != summary.source_fingerprint:
+        raise ValueError("Refinement source differs from summarized visible data")
+    if old.provenance != (summary,q,F(shift)):
+        raise ValueError("Refinement query, summary or normalization shift is stale")
     mass=Interval.point(F(0)); central=[Interval.point(F(0)) for _ in summary.nu]
     for i in summary.ids:
         e=exp_interval(dot(q,keys[i])-shift,bits)
@@ -266,11 +426,13 @@ def refine(q, keys, values, summary, old, shift, bits=112):
         for j in range(len(central)):
             central[j]=central[j]+e.scale(F(values[i][j])-summary.nu[j])
     return Envelope(intersect(old.mass,mass),
-                    [intersect(a,b) for a,b in zip(old.central,central)],old.center)
+                    [intersect(a,b) for a,b in zip(old.central,central)],old.center,
+                    old.value_lower,old.value_upper,old.provenance)
 
 
 def direct_oracle(q,keys,values,bits=128):
     """Independent direct normalized sum; no summaries or moment formulas."""
+    keys, values, q = _inputs(keys, values, q)
     shift=max(dot(q,k) for k in keys)
     den=Interval.point(F(0));num=[Interval.point(F(0)) for _ in values[0]]
     for k,v in zip(keys,values):

@@ -6,7 +6,7 @@ Each conversion is checked against Fraction.from_float. This is separate from
 """
 from fractions import Fraction as F
 import math
-from .rational import bf16_round, bf16_cell, candidate
+from .rational import bf16_round, bf16_cell, candidate, _validate_envelopes
 
 
 def outward(x, upper: bool) -> float:
@@ -26,7 +26,12 @@ def outward(x, upper: bool) -> float:
 
 
 def export_rows(envelopes):
-    """Return rows of [zlo,zhi,mlo,mhi,centerlo,centerhi] and exact cell bounds."""
+    """Return box rows [zlo,zhi,mlo,mhi,centerlo,centerhi] and exact cell bounds.
+
+    Value-range coupling is deliberately not part of the GPU wire format.
+    A coupled Python acceptance is not a prediction of this box check.
+    """
+    _validate_envelopes(envelopes)
     rows=[]
     for j in range(len(envelopes[0].center)):
         b=bf16_round(candidate(envelopes,j));lo,hi=bf16_cell(b)
